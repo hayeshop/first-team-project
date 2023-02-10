@@ -57,6 +57,34 @@
 		        }
 		    }).open();
 		}
+		
+		var uchk=0;
+		function userid_check(userid)
+		{
+			if(userid.length<4 && userid.length>16)
+			{
+				document.getElementById("umsg").innerText="아이디의 길이는 4~16자입니다.";
+				document.getElementById("umsg").color="red";
+			}
+			else
+			{
+				var chk=new XMLHttpRequest();
+				
+				chk.onload=function()
+				{
+					if(chk.responseText=="0")
+					{
+						document.getElementById("umsg").innerText="사용 가능한 아이디입니다.";
+						document.getElementById("umsg").color="blue";
+					}
+					else
+					{
+						document.getElementById("umsg").innerText="이미 사용중인 아이디입니다.";
+						document.getElementById("umsg").color="red";
+					}
+				}
+			}
+		}
 	</script>
 </head>
 <body>
@@ -64,8 +92,9 @@
 	<form id="member_input" method="post" action="member_input_ok">
 		<div>
 		아이디를 입력해주세요. <p>
-		<input type="text" name="userid" placeholder="아이디">
+		<input type="text" name="userid" placeholder="아이디" onblur="userid_check(this.value)">
 		</div>
+		<span id="umsg" style="font-size:12px;"></span>
 		<div>
 		비밀번호를 입력해주세요. <p>
 		<input type="password" name="pwd" placeholder="비밀번호"> <p>
@@ -86,8 +115,8 @@
 		성별을 선택해주세요. <p>
 		<select name="gender">
 			<option value="" disabled selected>성별</option>
-			<option>남성</option>
-			<option>여성</option>
+			<option value="1">남성</option>
+			<option value="2">여성</option>
 		</select>
 		</div>
 		<div>
@@ -98,12 +127,12 @@
 		본인명의의 휴대전화번호를 입력해주세요. <p>
 		<select>
 			<option value="" disabled selected>통신사</option>
-			<option>SKT</option>
-			<option>KT</option>
-			<option>LG U+</option>
-			<option>SKT 알뜰폰</option>
-			<option>KT 알뜰폰</option>
-			<option>LG U+ 알뜰폰</option>
+			<option value="1">SKT</option>
+			<option value="2">KT</option>
+			<option value="3">LG U+</option>
+			<option value="4">SKT 알뜰폰</option>
+			<option value="5">KT 알뜰폰</option>
+			<option value="6">LG U+ 알뜰폰</option>
 		</select>
 		<span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
 		</div>
