@@ -10,12 +10,18 @@
 	<!-- css파일 불러오기 -->
 	<link rel="stylesheet" href="../resources/css/main.css" type="text/css">
 	<script>
+	  var cnt=0;
 	  function show_jung(n)
 	  {
-		  for(i=0;i<=n;i++)
-		  {
-			  document.getElementsByClassName("jung")[i].style.height="250px";
-		  }
+	  	cnt++;
+	  	if(cnt%2!=0)
+	  	{
+	  		document.getElementsByClassName("jung")[n].style.height="300px";
+	  	}
+	  	else
+	  	{
+	  		document.getElementsByClassName("jung")[n].style.height="0px";
+	  	}
 	  }
 	</script>
 </head>
@@ -92,21 +98,12 @@
 		        <li> <span> 서재의자 </span> </li>
 		    </ul>
 	    </li>
-	    <li onclick="show_jung(5)"> 유아가구 
-		    <ul class="jung">
-		        <li> <span> 침대 </span> </li>
-		        <li> <span> 옷장/수납 </span> </li>
-		        <li> <span> 책상/책장 </span> </li>
-		        <li> <span> 학생의자 </span> </li>
-		        <li> <span> 유아 소가구 </span> </li>
-		    </ul>
-	    </li>
-	   </ul>
-	  </li>
+	   </ul>	<!-- .dae ul태그 끝 -->
+	  </li>	<!-- 카테고리 끝 -->
 	  <li> new </li>
       <li> best </li>
       <li> 검색폼 </li>
-	</ul>
+	</ul>	<!-- #menu ul태그 끝 -->
 	</nav>
   <decorator:body/>
   	<footer>
