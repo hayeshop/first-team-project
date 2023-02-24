@@ -44,10 +44,7 @@
 	}
    
     *{padding:0;margin:0}
-	nav .menu li {
-	  list-style:none;
-	}
-	
+
 	nav .menu {
 	  width: 1000px;
 	  overflow: hidden;
@@ -55,6 +52,7 @@
 	}
 	
 	nav .menu > li {
+	  list-style:none;
 	  width: 25%; /* 25*4=100% */
 	  float: left;
 	  text-align: center;
@@ -64,16 +62,15 @@
 	
 	nav .menu a {
 	  color: #fff;
-	}
-	
-	nav .submenu > li {
-	  line-height: 50px;
-	  background-color: #94a9ff;
-	}
+	}	
 	
 	nav .submenu {
 	  height: 0; /*ul의 높이를 안보이게 처리*/
 	  overflow: hidden;
+	}
+	nav .submenu > li {
+	  line-height: 50px;
+	  background-color: #94a9ff;
 	}
 	
 	nav .menu > li:hover {
@@ -90,8 +87,8 @@
       width:1000px;
       height:150px;
       margin:auto;
-      margin-top:40px;
-      background: skyblue;
+      margin-top:100px;
+      border-top:2px solid lightblue;
    }
    footer #bottom {
    	  width:800px;
