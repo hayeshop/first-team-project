@@ -8,29 +8,31 @@
 	<style>
 	  section {
 	  	width:1000px;
-	  	height:800px;
 	  	margin:auto;
 	  }
-	  section input[type=text],[type=password] {
+	  section #login #member_input {
+	  	margin-top:40px;
+	  }
+	  section #login input[type=text],[type=password] {
 	  	width:300px;
 	  	height:30px;
 	  }
-	  section input[type=submit] {
+	  section #login input[type=submit] {
 	  	margin-top:30px;
 	  	width:307px;
 	  	height:40px;
 	  	background:black;
 	  	color:white;
 	  }
-	  section input[type=button] {
+	  section #login input[type=button] {
 	  	margin-left:5px;
 	  	width:120px;
 	  	height:30px;
 	  }
-	  section select option[value=""][disabled] {
+	  section #login select option[value=""][disabled] {
 	  	display:none;
 	  }
-	  section select {
+	  section #login select {
 	  	position: relative;
   		width: 307px;
   		height: 35px;
@@ -89,6 +91,9 @@
 </head>
 <body>
 	<section>
+	<h1>회원가입</h1>
+
+	<div id="login">
 	<form id="member_input" method="post" action="member_input_ok">
 		<div>
 		아이디를 입력해주세요. <p>
@@ -143,6 +148,7 @@
 		<input type="submit" value="가입하기">
 		</div>
 	</form>
+	</div>
 	</section>
 </body>
 </html>

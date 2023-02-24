@@ -8,13 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<!-- css파일 불러오기 -->
-	<link rel="stylesheet" href="../resources/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../resources/css/main.css?ver=1" type="text/css">
 </head>
   <decorator:head/>
 <body>
 	<header>
 	<div id="top"> <!-- top 로그인,회원가입 / 장바구니, 마이페이지-->
-		<div id="left" style="color:#0080c0;font-size:100px;font-weight:bold;">LOGO</div>
+		<div id="left"><a href="../main/main" style="color:#0080c0;font-size:100px;font-weight:bold;">LOGO</a></div>
 		<div id="right">  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a> | <a>장바구니</a> | <a>마이페이지</a></div>
 	</div>	
 	</header>
