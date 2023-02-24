@@ -5,15 +5,24 @@
 	
 	#top {
 	  width:1000px;
-      height:150px;
       margin:auto;
+	}
+	
+	#top a {
+	  text-decoration:none;
+	  color:black;
+	  font-size:14px;
+	}
+	
+	#top a:hover {
+	  color:#0080c0;
 	}
 	
 	#top #left {
 	  width: 700px;
 	  height:150px;
 	  float: left;
-	  text-align: center;
+	  text-align:left;
 	}
 	
 	#top #right {
@@ -24,7 +33,7 @@
 	}
 	nav {
 		width:1000px;
-		height:40px;
+		height:800px;
 		margin:auto;
 	}
 	nav a {
@@ -34,59 +43,70 @@
 	nav a:hover {
 		color:lightblue;
 	}
+   
+    *{padding:0;margin:0}
+	nav .menu li {
+	  list-style:none;
+	}
+	
+	nav .menu {
+	  width: 1000px;
+	  overflow: hidden;
+	  margin: 150px auto;
+	}
+	
+	nav .menu > li {
+	  width: 25%; /* 25*4=100% */
+	  float: left;
+	  text-align: center;
+	  line-height: 40px;
+	  background-color: #5778ff;
+	}
+	
+	nav .menu a {
+	  color: #fff;
+	}
+	
+	nav .submenu > li {
+	  line-height: 50px;
+	  background-color: #94a9ff;
+	}
+	
+	nav .submenu {
+	  height: 0; /*ul의 높이를 안보이게 처리*/
+	  overflow: hidden;
+	}
+	
+	nav .menu > li:hover {
+	  background-color: #94a9ff;
+	  transition-duration: 0.5s;
+	}
+	
+	nav .menu > li:hover .submenu {
+	  height: 250px; /*서브메뉴 li한개의 높이 50*5*/
+	  transition-duration: 1s;
+	}	
 
 	footer {
       width:1000px;
-      height:100px;
+      height:150px;
       margin:auto;
+      margin-top:40px;
       background: skyblue;
    }
-   
-   *{padding:0;margin:0}
-	li{list-style:none}
-	a{text-decoration:none;font-size:14px}
-
-	nav #menu {
-  	  width: 1000px;
-   	  overflow: hidden;
-  	  margin: 150px auto;
-	}
-
-	nav #menu > li {
-  	  width: 25%; /*25*4=100%*/
-  	  float: left;
-  	  text-align: center;
-  	  line-height: 40px;
-      background-color: skyblue;
-	}
-
-	nav .dae > li {
-	  line-height: 50px;
-	  background-color: lightblue;
-	}
-
-	nav .dae {
-	  height: 0; /*ul의 높이를 안보이게 처리*/
-	  overflow: hidden;
-	}
-	
-	nav .jung {
-	  height: 0; /*ul의 높이를 안보이게 처리*/
-	  overflow: hidden;
-	}
-	
-	nav .so {
-	  height: 0; /*ul의 높이를 안보이게 처리*/
-	  overflow: hidden;
-	}
-	
-	nav #menu > li:hover {
-	  background-color: lightblue;
-	  transition-duration: 0.5s;
-	}
-
-	nav #menu > li:hover .dae {
-	  height: 250px; /*서브메뉴 li한개의 높이 50*5*/
-	  transition-duration: 1s;
-	}
-	
+   footer #bottom {
+   	  width:800px;
+   	  height:150px;
+   	  margin:0 auto;
+   }
+   #bottom #footer_logo {
+      float:left;
+      margin:45px 0 0 30px;
+   }
+   #bottom #address {
+   	  float:right;
+   	  margin:45px 0 0 30px;
+   }
+   #bottom #address li {
+   	  list-style:none;
+   }
