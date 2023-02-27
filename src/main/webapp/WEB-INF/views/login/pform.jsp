@@ -5,10 +5,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	section {
+	      width:1000px;
+	      height:600px;
+	      margin:auto;
+	      margin-top:50px;
+	      text-align:center;
+	   	}
+	   
+		section input[type=text] {
+	      width:330px;
+	      height:35px;
+	      border:1px solid skyblue; 
+	   	}
+	   
+	   section input[type=button] {
+	      width:336px;
+	      height:39px;
+	      border:1px solid skyblue; 
+	      background:skyblue;
+	      border:1px solid skyblue; 
+	      color:white;
+	   	}
+</style>
 <script>
 <c:if test="${chk == 2}">
 </c:if>
-    function pwd_search()
+	function pwd_search()
     {
            	
        var chk=new XMLHttpRequest();
@@ -36,12 +60,15 @@
 </script>
 </head>
 <body>
+<section>
 <!-- 비밀번호 조회폼 -->
+	<h4>비밀번호 찾기 </h4>
      <form name="pform" id="pform">
       <input type="text" name="userid" placeholder="아이디"> <p>
       <input type="text" name="name" placeholder="이 름"> <p>
       <input type="text" name="email" placeholder="이메일"> <p>
       <input type="button" onclick="pwd_search()" value="비밀번호찾기">
      </form>
+</section>
 </body>
 </html>
