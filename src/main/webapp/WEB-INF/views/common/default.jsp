@@ -61,6 +61,7 @@
   				<li>경기도</li>
   				<li>TEL:031-123-4567 Email : mola@email.com</li>
   				<li>COPYRIGHT (C) 하예 ALL RIGHTS RESERVED</li>
+  				<li><a style="text-decoration:none;color:grey;font-size:13px;" href="../admin/adminlogin">관리자</a></li>
   			</ul>
   		</div>
   	</div>
