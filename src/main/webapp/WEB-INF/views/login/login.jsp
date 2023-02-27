@@ -31,7 +31,6 @@
       height:39px;
       border:1px solid skyblue; 
       background:skyblue;
-      border:1px solid skyblue; 
       color:white;
    }
    section input[type=button] {
