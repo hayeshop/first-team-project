@@ -8,7 +8,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<!-- css파일 불러오기 -->
-	<link rel="stylesheet" href="../resources/css/main.css?ver=1" type="text/css">
+	<link rel="stylesheet" href="../resources/css/main.css" type="text/css">
+	
+	<script>
+	  // 검색 기능
+	  function send()
+	  {
+		  document.search_form.submit();
+	  }
+	</script>
 </head>
   <decorator:head/>
 <body>
@@ -33,7 +41,13 @@
 	  </li>	
 	  <li> <a href="#">new</a> </li>
       <li> <a href="#">best</a> </li>
-      <li> <a href="#">검색폼</a> </li>
+      <li> <div class="search">
+      	   <form name="search_form" method="post" action="search">
+		     <input type="text" placeholder="검색어를 입력하세요." name="search_text" maxlength="50"/>
+		     <div class="icon" onclick="send()"><img src="../resources/img/search.png" width="20px"></div>
+      	   </form>
+		   </div>
+	  </li>
 	</ul>
 	</nav>
   <decorator:body/>
