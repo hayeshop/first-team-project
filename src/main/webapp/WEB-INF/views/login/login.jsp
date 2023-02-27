@@ -34,18 +34,6 @@
       border:1px solid skyblue; 
       color:white;
    }
-   section input[type=button] {
-      width:336px;
-      height:39px;
-      border:1px solid skyblue; 
-      background:skyblue;
-      border:1px solid skyblue; 
-      color:white;
-   }
-   
-   #uform ,#pform {
-      display:none;
-   }
   </style>
   
 </head>
@@ -62,8 +50,8 @@
        </c:if>
       </form>
       <div align="center">
-        <span onclick="../login/uform()"> 아이디 찾기 </span> 
-        <span action="../login/pform()"> 비밀번호 찾기 </span>
+        <span style="cursor:pointer;" onclick="location='uform'"> 아이디 찾기 </span> 
+        <span style="cursor:pointer;" onclick="location='pform'"> 비밀번호 찾기 </span>
       </div>
    </section>
 </body>
