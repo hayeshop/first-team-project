@@ -5,15 +5,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!--  <style>
-#uform {
-      	크기 정하고 가운데 정렬 / login창 style에서 같이 설정할 수 있는지??
-}
-</style> -->
+<style>
+	section {
+      width:1000px;
+      height:600px;
+      margin:auto;
+      margin-top:50px;
+      text-align:center;
+   	}
+   
+	section input[type=text] {
+      width:330px;
+      height:35px;
+      border:1px solid skyblue; 
+   	}
+   
+   section input[type=button] {
+      width:336px;
+      height:39px;
+      border:1px solid skyblue; 
+      background:skyblue;
+      border:1px solid skyblue; 
+      color:white;
+   	}
+</style>
 <script>
-function userid_search()
-{
-   var chk=new XMLHttpRequest();
+	function userid_search()
+	{
+  	   var chk=new XMLHttpRequest();
 	   var name=document.uform.name.value;
 	   var email=document.uform.email.value;
 	   
@@ -31,15 +50,18 @@ function userid_search()
 	   
 	   chk.open("get","userid_search?name="+name+"&email="+email);
 	   chk.send();
-}
+	}
 </script>
 </head>
 <body>
+<section>
 <!-- 아이디 조회폼 -->
+	<h4>아이디 찾기 </h4>
      <form name="uform" id="uform">
       <input type="text" name="name" placeholder="이 름"> <p>
       <input type="text" name="email" placeholder="이메일"> <p>
       <input type="button" onclick="userid_search()" value="아이디찾기">
      </form>
+</section>
 </body>
 </html>
