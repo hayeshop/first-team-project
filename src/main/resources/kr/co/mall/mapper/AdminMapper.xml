@@ -6,4 +6,17 @@
 	<select id="adminlogin" parameterType="kr.co.mall.vo.AdminVo" resultType="kr.co.mall.vo.AdminVo">
 		select userid from admin where userid=#{userid} and pwd=#{pwd}
 	</select>
+	
+	<select id="getCat" resultType="kr.co.mall.vo.CatVo">
+		select * from category order by id
+	</select>
+	<select id="getCat2" resultType="kr.co.mall.vo.Cat2Vo">
+		select * from category2 where catcode=#{param} order by id
+	</select>
+	<select id="getCat3" resultType="kr.co.mall.vo.Cat3Vo">
+		select * from category3 where catncat2=#{param} order by id
+	</select>
+	<select id="getCode" resultType="int">
+		select ifnull(max(right(pcode,3)),0)+1 from product where pcode like concat(#{param},'%')
+	</select>
 </mapper>
