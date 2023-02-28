@@ -1,5 +1,6 @@
 package kr.co.mall.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,5 +60,10 @@ public class AdminController {
 	public void getCode(HttpServletRequest request,PrintWriter out)
 	{
 		service.getCode(request,out);
+	}
+	@RequestMapping("/admin/product_input")
+	public String product_input(HttpServletRequest request) throws IOException
+	{
+		return service.product_input(request);
 	}
 }

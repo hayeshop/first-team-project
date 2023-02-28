@@ -1,8 +1,11 @@
 package kr.co.mall.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 import kr.co.mall.mapper.AdminMapper;
 import kr.co.mall.vo.AdminVo;
@@ -99,5 +106,25 @@ public class AdminServiceImpl implements AdminService {
 	public void getCode(HttpServletRequest request, PrintWriter out) {
 		String pcode=request.getParameter("pcode");
 		out.print(mapper.getCode(pcode));
+	}
+
+	@Override
+	public String product_input(HttpServletRequest request) throws IOException {
+		String path=request.getRealPath("resources/product");
+		int size=1024*1024*10;
+		MultipartRequest multi=new MultipartRequest(request,path,size,"utf-8",new DefaultFileRenamePolicy());
+		
+		String pcode=multi.getParameter("pcode");
+		String img1=multi.getFilesystemName("img1");
+		
+		Enumeration file=multi.getFileNames();
+		
+		String img2="";
+		while(file.hasMoreElements())
+		{
+			img2=img2+multi.getFilesystemName(file.nextElement().toString())+",";
+		}
+		
+		return null;
 	}
 }

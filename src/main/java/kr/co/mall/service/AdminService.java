@@ -1,5 +1,6 @@
 package kr.co.mall.service;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,5 +23,7 @@ public interface AdminService {
 	public void getCat3(HttpServletRequest request, PrintWriter out);
 
 	public void getCode(HttpServletRequest request, PrintWriter out);
+
+	public String product_input(HttpServletRequest request) throws IOException;
 
 }
