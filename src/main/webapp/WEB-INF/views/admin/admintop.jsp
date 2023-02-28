@@ -21,13 +21,20 @@
     border:1px solid skyblue;
     margin-right:35px;
   }
+  a {
+    text-decoration:none;
+    color:black;
+  }
+  a:hover {
+    color:skyblue;
+  }
 </style>
 </head>
 <body>
 	<a href="../main/main" style="text-decoration:none;"><h2 align="center" style="color:#0080c0;">LOGO</h2></a>
 	<div>
 	<ul>
-	  <li>상품관리</li>
+	  <li><a href="adminproduct">상품관리</a></li>
 	  <li>회원관리</li>
 	  <li>고객센터</li>
 	  <li>판매관리</li>

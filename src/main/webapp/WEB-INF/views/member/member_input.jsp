@@ -96,8 +96,8 @@
 	<div id="login">
 	<form id="member_input" method="post" action="member_input_ok">
 		<div>
-		아이디를 입력해주세요. <p>
-		<input type="text" name="userid" placeholder="아이디" onblur="userid_check(this.value)">
+			<p> 아이디를 입력해주세요. </p>
+		 <input type="text" name="userid" placeholder="아이디" onblur="userid_check(this.value)">
 		</div>
 		<span id="umsg" style="font-size:12px;"></span>
 		<div>
