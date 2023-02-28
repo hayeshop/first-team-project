@@ -15,7 +15,7 @@
   		margin-top:10px;
   	}
   	section input[type=file] {
-  		margin-top:10px;
+  		margin-top:5px;
   		width:320px;
   		height:30px;
   	}
@@ -27,9 +27,20 @@
   		border:1px solid skyblue;
   		margin-top:10px;
   	}
+  	section select option[value=""][disabled] {
+  		display:none;
+  	}
 </style>
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
+  $(function()
+  {
+     $("#slide_btn").click(function()
+     {
+    	 $("#pro").slideUp(1000);
+     });
+  });
+
   // 카테고리2,3 불러오기
   function getCat2(catcode)
   {
@@ -81,10 +92,28 @@
 	  chk.open("get","getCode?pcode="+pcode);
 	  chk.send();
   }
+  
+  // 상품 상세사진 추가,삭제
+  function add_form()
+  {
+	  var size=document.getElementsByClassName("up").length;
+	  if(size<10)
+	  {
+		  var outer=document.getElementById("outer");
+		  outer.innerHTML=outer.innerHTML+"<p class='up'> <input type='file' name='img2"+(size+1)+"'> (상세사진) </p>";
+	  }
+  }
+  function del_form()
+  {
+	  var size=document.getElementsByClassName("up").length;
+	  if(size!=1)
+		  document.getElementsByClassName("up")[size-1].remove();
+  }
 </script>
 
   <section>
-	<form method="post" name="pro" action="product_input" enctype="multipart/form-data">
+  	<button id="slide_btn">접기△</button>
+	<form method="post" name="pro" id="pro" action="product_input" enctype="multipart/form-data">
 	  <div>
 	    <select name="category" onchange="getCat2(this.value)">
 	      <option value="" disabled selected>카테고리</option>
@@ -103,8 +132,15 @@
 	  <div><input type="text" name="title" placeholder="품명"></div>
 	  <div><input type="text" name="made" placeholder="제조사"></div>
 	  <div><input type="text" name="price" placeholder="가격"></div>
+	  <div><input type="text" name="su" placeholder="재고량"></div>
+	  <div><input type="text" name="halin" placeholder="할인율"></div>
+	  <div><input type="text" name="juk" placeholder="적립률"></div>
 	  <div><input type="file" name="img1"> (대표사진)</div>
-	  <div><input type="file" name="img2"> (상세사진)</div>
+	  <div id="outer">
+	  	<p><input type="button" value="추가" onclick="add_form()">
+	  	<input type="button" value="삭제" onclick="del_form()"> <br>
+	  	<input type="file" name="img2" class="up"> (상세사진) <br>
+	  </div>
 	  <div><input type="submit" value="등록"></div>
 	</form>
   </section>
