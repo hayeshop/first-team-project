@@ -14,7 +14,7 @@ public interface AdminService {
 	public String write(AdminVo avo, HttpServletRequest request);
 	public String write_ok(AdminVo avo, HttpServletRequest request);
 	public String list(HttpServletRequest request);
-	public String content(AdminVo avo);
+	public String content(HttpServletRequest request);
 	public String delete(AdminVo avo);
 	public String update(AdminVo avo, Model model);
 	public String update_ok(AdminVo avo);
