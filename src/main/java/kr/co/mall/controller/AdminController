@@ -1,0 +1,54 @@
+package kr.co.mall.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.co.mall.service.AdminService;
+import kr.co.mall.vo.AdminVo;
+
+@Controller
+public class AdminController {
+	
+	@Autowired
+	@Qualifier("as")
+	private AdminService service;
+	
+	@RequestMapping("/gongji/write")
+	public String write()
+	{
+		return "/gongji/write";
+	}
+	
+	@RequestMapping("/gongji/write_ok")
+	public String write_ok(AdminVo avo)
+	{
+		return "/gongji/write_ok";
+	}
+	
+	@RequestMapping("/gongji/list")
+	public String write_ok(Model model)
+	{
+		return "/gongji/list";
+	}
+
+	@RequestMapping("/gongji/delete")
+	public String delete(AdminVo avo)
+	{
+		return "/gongji/delete";
+	}
+	
+	@RequestMapping("/gongji/update")
+	public String update(AdminVo avo, Model model)
+	{
+		return "/gongji/update";
+	}
+	
+	@RequestMapping("/gongji/update_ok")
+	public String update_ok(AdminVo avo)
+	{
+		return "/gongji/update_ok";
+	}
+}
