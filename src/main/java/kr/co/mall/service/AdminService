@@ -1,0 +1,22 @@
+package kr.co.mall.service;
+
+import java.net.ConnectException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.ui.Model;
+
+import kr.co.mall.vo.AdminVo;
+
+public interface AdminService {
+	public String write(AdminVo avo, HttpServletRequest request);
+	public String write_ok(AdminVo avo, HttpServletRequest request);
+	public String list(HttpServletRequest request);
+	public String content(AdminVo avo);
+	public String delete(AdminVo avo);
+	public String update(AdminVo avo, Model model);
+	public String update_ok(AdminVo avo);
+	
+}
