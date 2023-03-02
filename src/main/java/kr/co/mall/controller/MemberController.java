@@ -1,5 +1,9 @@
 package kr.co.mall.controller;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -25,5 +29,11 @@ public class MemberController {
 	public String member_input_ok(MemberVo mvo)
 	{
 		return service.member_input_ok(mvo);
+	}
+	
+	@RequestMapping("/member/userid_check")
+	public void userid_check(HttpServletRequest request,PrintWriter out)
+	{
+		service.userid_check(request,out);
 	}
 }

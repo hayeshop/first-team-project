@@ -7,4 +7,8 @@
 		insert into member(userid,pwd,pwd2,name,post,juso,juso_etc,gender,birth,telecom,phone,writeday) 
 		values(#{userid},#{pwd},#{pwd2},#{name},#{post},#{juso},#{juso_etc},#{gender},#{birth},#{telecom},#{phone},now())
 	</insert>
+	
+	<select id="userid_check" resultType="int">
+		select count(*) from member where userid=#{param}
+	</select>
 </mapper>

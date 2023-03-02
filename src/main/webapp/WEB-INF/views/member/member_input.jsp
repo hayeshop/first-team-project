@@ -66,13 +66,13 @@
 		    }).open();
 		}
 		
-		var uchk=0;
+		var uchk=0;	// submit할 때 아이디가 제대로 들어갔는 지 체크하기 위해
 		function userid_check(userid)
 		{
-			if(userid.length<4 && userid.length>16)
+			if(userid.length<4 || userid.length>16)
 			{
 				document.getElementById("umsg").innerText="아이디의 길이는 4~16자입니다.";
-				document.getElementById("umsg").color="red";
+				document.getElementById("umsg").style.color="red";
 			}
 			else
 			{
@@ -83,33 +83,79 @@
 					if(chk.responseText=="0")
 					{
 						document.getElementById("umsg").innerText="사용 가능한 아이디입니다.";
-						document.getElementById("umsg").color="blue";
+						document.getElementById("umsg").style.color="blue";
+						uchk=1;
 					}
 					else
 					{
 						document.getElementById("umsg").innerText="이미 사용중인 아이디입니다.";
-						document.getElementById("umsg").color="red";
+						document.getElementById("umsg").style.color="red";
+						uchk=0;
 					}
 				}
+				chk.open("get","userid_check?userid="+userid);
+				chk.send();
 			}
+		}
+		
+		var pchk=0;	// submit할 때 두 비밀번호가 똑같은 값으로 들어갔는 지 체크하기 위해
+		function pwd_check()
+		{
+			var pwd=document.mem.pwd.value;
+			var pwd2=document.mem.pwd2.value;
+			if(pwd2.length!=0)
+			{
+				if(pwd==pwd2)
+				{
+					document.getElementById("pmsg").innerText="비밀번호가 일치합니다.";
+					document.getElementById("pmsg").style.color="blue";
+					pchk=1;
+				}
+				else
+				{
+					document.getElementById("pmsg").innerText="비밀번호가 불일치합니다.";
+					document.getElementById("pmsg").style.color="red";
+					pchk=0;
+				}
+			}
+		}
+		
+		function mem_check()
+		{
+			if(uchk==0)
+			{
+				alert("아이디를 다시 입력해주세요.");
+				return false;
+			}
+			else if(pchk==0)
+			{
+				alert("비밀번호를 다시 입력해주세요.");
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+			
 		}
 	</script>
 </head>
 <body>
 	<section>
 	<h1>회원가입</h1>
-	<form id="member_input" method="post" action="member_input_ok">
+	<form id="member_input" name="mem" method="post" action="member_input_ok" onsubmit="return mem_check()">
 		<div>
 		  <div>아이디를 입력해주세요.</div>
-		<input type="text" name="userid" placeholder="아이디" onblur="userid_check(this.value)">
+		<input type="text" name="userid" placeholder="아이디" maxlength="16" onblur="userid_check(this.value)">
 		</div>
 		<span id="umsg" style="font-size:12px;"></span>
 		<div>
 		  <div>비밀번호를 입력해주세요.</div>
-		<input type="password" name="pwd" placeholder="비밀번호"> <p>
+		<input type="password" name="pwd" placeholder="비밀번호" maxlength="16" onkeyup="pwd_check()"> <p>
 		  <div>비밀번호를 다시 입력해주세요.</div>
-		<input type="password" name="pwd2" placeholder="비밀번호 확인">
+		<input type="password" name="pwd2" placeholder="비밀번호 확인" onkeyup="pwd_check()">
 		</div>
+		<span id="pmsg" style="font-size:12px;"></span>
 		<div>
 		  <div>이름을 입력해주세요.</div>
 		<input type="text" name="name" placeholder="이름 입력">

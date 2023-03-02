@@ -23,7 +23,15 @@
 	<header>
 	<div id="top"> <!-- top 로그인,회원가입 / 장바구니, 마이페이지-->
 		<div id="left"><a href="../main/main" style="color:#0080c0;font-size:100px;font-weight:bold;">LOGO</a></div>
-		<div id="right">  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a> | <a>장바구니</a> | <a>마이페이지</a></div>
+		<div id="right">
+		<c:if test="${userid==null}">
+		  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a>
+		</c:if>
+		<c:if test="${userid!=null}">
+		  ${name}님,	<a href="../login/logout">로그아웃</a>
+		</c:if>
+		   | <a>장바구니</a> | <a>마이페이지</a>
+		</div>
 	</div>	
 	</header>
 	
