@@ -51,7 +51,7 @@
        </tr>
      <c:forEach items="${alist}" var="avo">
      <tr>
-        <td align="center"> <c:if test="${chk.get(i).getchk()==1}"> <b style='color:red;'>[공지]</b> </c:if> </td>
+        <td align="center"> <c:if test="${avo.chk==1}"> <b style='color:red;'>[공지]</b> </c:if> </td>
         <td align="center"> ${avo.name} </td>
         <td align="center"> ${avo.writeday} </td>
       </tr>
