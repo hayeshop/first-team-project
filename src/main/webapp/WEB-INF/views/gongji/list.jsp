@@ -49,39 +49,19 @@
 	        <td> 작성자 </td>
 	        <td> 작성일 </td>
        </tr>
-       <%
-       String chk= request.getParameter("chk");
-     for(int i=0;i<chk();i++)	// 체크 시 첫 페이지에 나오게 하는 것
-     {
-    	 String imsi="";
-    	 if(chk.get(i).getChk()==1)
-    		 imsi="<b style='color:red;'>[공지]</b>";
-     %> 
-      <tr>
-        <td> ${list.imsi} ${avo.title} </a> </td>
-        <td align="center"> 관리자 </td>
+       
+     <tr>
+        <td align="center"> <c:forEach var="i" begin="0" end="1">
+        	if(chk.get(i).getChk()==1) {<b style='color:red;'>[공지]</b>} </c:forEach>${avo.title} </a> </td>
+        <td align="center"> ${avo.name} </td>
         <td align="center"> ${avo.writeday} </td>
       </tr>
-     <% 
-     }
-     %> 
-     
-     <%
-       //admin만 글쓰기 가능
-    if(session.getAttribute("userid")!=null)
-    {
-       if(session.getAttribute("userid").equals("admin"))
-       {
-     %>
-     <tr>
+	  
+	  <tr>
         <td colspan="4" align="center">
           <a href="write.jsp">공지사항 글쓰기</a>
         </td>
       </tr>
-     <%
-       }
-    }
-     %> 
 	</table>
 </div>
 </body>
