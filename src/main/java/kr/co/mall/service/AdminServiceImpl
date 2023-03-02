@@ -28,28 +28,13 @@ public class AdminServiceImpl implements AdminService {
 	public String write(AdminVo avo,
 			HttpServletRequest request) {
 		mapper.write(avo);
-		int chk;
+    	int chk;
     	if(request.getParameter("chk")==null)
     	{
     		chk=0;
     	}
     	else
-    	{
-    		// (체크시 항상 첫 페이지에 나오는 공지사항)
-    		chk=1;
-    	}
-	}
-	
-	@Override
-	public String write_ok(AdminVo avo,
-			HttpServletRequest request) {
-		int chk;
-    	if(request.getParameter("chk")==null)
-    	{
-    		chk=0;
-    	}
-    	else
-    	{
+    	{// (체크시 항상 첫 페이지에 나오는 공지사항)
     		chk=1;
     	}
     	
@@ -65,35 +50,29 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
+	public String write_ok(AdminVo avo) {
+		 mapper.write_ok(avo);
+		 return "redirect:/list";
+	}
+	
+	@Override
 	public String list(HttpServletRequest request) {
 		ArrayList<AdminVo> list = mapper.list<AdminVo>();
 		return "gongji/list";
 	}
 	
 	@Override
-	public String content(HttpServletRequest request) {
-		String id=request.getParameter("id");
-		
-		PreparedStatement pstmt=conn.prepareStatement(sql);
-    	pstmt.setString(1, id);
-    	
-    	ResultSet rs=pstmt.executeQuery();
-    	rs.next();
-    	
-    	GongjiDto gdto=new GongjiDto();
-		gdto.setTitle(rs.getString("title"));
-		gdto.setWriteday(rs.getString("writeday"));
-		gdto.setChk(rs.getInt("chk"));
-		gdto.setContent(rs.getString("content"));
-		
-		request.setAttribute("gdto", gdto);
-		
+	public String content(AdminVo avo, Model model) {
+		int index = 0;
+		ArrayList<AdminVo> list=mapper.list(index);
+		model.addAttribute("list",list);
+		return "/list";
 	}
 	
 	@Override
 	public String delete(AdminVo avo) {
 		mapper.delete(avo.getId());
-		return "redirect:/gongji/list";
+		return "redirect:/list";
 	}
 	
 	@Override
