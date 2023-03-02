@@ -49,14 +49,13 @@
 	        <td> 작성자 </td>
 	        <td> 작성일 </td>
        </tr>
-       
+     <c:forEach items="${alist}" var="avo">
      <tr>
-        <td align="center"> <c:forEach var="i" begin="0" end="1">
-        	if(chk.get(i).getChk()==1) {<b style='color:red;'>[공지]</b>} </c:forEach>${avo.title} </a> </td>
+        <td align="center"> <c:if test="${chk.get(i).getchk()==1}"> <b style='color:red;'>[공지]</b> </c:if> </td>
         <td align="center"> ${avo.name} </td>
         <td align="center"> ${avo.writeday} </td>
       </tr>
-	  
+	  </c:forEach>
 	  <tr>
         <td colspan="4" align="center">
           <a href="write.jsp">공지사항 글쓰기</a>
