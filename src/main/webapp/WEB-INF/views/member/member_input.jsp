@@ -10,33 +10,39 @@
 	  	width:1000px;
 	  	margin:auto;
 	  }
-	  section #login #member_input {
+	  section #member_input div {
+	  	margin-top:10px;
+	  }
+	  section #member_input {
 	  	margin-top:40px;
 	  }
-	  section #login input[type=text],[type=password] {
+	  section #member_input input[type=text],[type=password] {
+	  	margin-top:10px;
 	  	width:300px;
 	  	height:30px;
 	  }
-	  section #login input[type=submit] {
+	  section #member_input input[type=submit] {
 	  	margin-top:30px;
 	  	width:307px;
 	  	height:40px;
-	  	background:black;
+	  	background:skyblue;
+	  	border:1px solid skyblue;
 	  	color:white;
 	  }
-	  section #login input[type=button] {
+	  section #member_input input[type=button] {
 	  	margin-left:5px;
 	  	width:120px;
 	  	height:30px;
 	  }
-	  section #login select option[value=""][disabled] {
+	  section #member_input select option[value=""][disabled] {
 	  	display:none;
 	  }
-	  section #login select {
+	  section #member_input select {
 	  	position: relative;
   		width: 307px;
   		height: 35px;
   		border: 1px solid black;
+  		margin-top:10px;
 	  }
 	</style>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -92,32 +98,30 @@
 <body>
 	<section>
 	<h1>회원가입</h1>
-
-	<div id="login">
 	<form id="member_input" method="post" action="member_input_ok">
 		<div>
-			<p> 아이디를 입력해주세요. </p>
-		 <input type="text" name="userid" placeholder="아이디" onblur="userid_check(this.value)">
+		  <div>아이디를 입력해주세요.</div>
+		<input type="text" name="userid" placeholder="아이디" onblur="userid_check(this.value)">
 		</div>
 		<span id="umsg" style="font-size:12px;"></span>
 		<div>
-		비밀번호를 입력해주세요. <p>
+		  <div>비밀번호를 입력해주세요.</div>
 		<input type="password" name="pwd" placeholder="비밀번호"> <p>
-		비밀번호를 다시 입력해주세요. <p>
+		  <div>비밀번호를 다시 입력해주세요.</div>
 		<input type="password" name="pwd2" placeholder="비밀번호 확인">
 		</div>
 		<div>
-		이름을 입력해주세요. <p>
+		  <div>이름을 입력해주세요.</div>
 		<input type="text" name="name" placeholder="이름 입력">
 		</div>
 		<div>
-		주소를 입력해주세요. <p>
+		  <div>주소를 입력해주세요.</div>
 		<input style="width:150px;" type="text" name="post" id="post" placeholder="우편번호" readonly><input type="button" value="주소검색" onclick="search_post()" id="postbtn"> <p>
 		<input type="text" name="juso" id="juso" placeholder="주소" readonly> <p>
 		<input type="text" name="juso_etc" id="juso_etc" placeholder="상세주소">
 		</div>
 		<div>
-		성별을 선택해주세요. <p>
+		  <div>성별을 선택해주세요.</div>
 		<select name="gender">
 			<option value="" disabled selected>성별</option>
 			<option value="1">남성</option>
@@ -125,11 +129,11 @@
 		</select>
 		</div>
 		<div>
-		생년월일을 입력해주세요.(예:19990101) <p>
+		  <div>생년월일을 입력해주세요.(예:19990101)</div>
 		<input type="text" name="birth" placeholder="법정생년월일 8자리">
 		</div>
 		<div>
-		본인명의의 휴대전화번호를 입력해주세요. <p>
+		  <div>본인명의의 휴대전화번호를 입력해주세요.</div>
 		<select>
 			<option value="" disabled selected>통신사</option>
 			<option value="1">SKT</option>
@@ -140,15 +144,13 @@
 			<option value="6">LG U+ 알뜰폰</option>
 		</select>
 		<span class="icoArrow"><img src="https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png" alt=""></span>
-		</div>
-		<div>
+		<p>
 		<input type="text" name="phone" placeholder="-없이 휴대폰 번호 입력">
 		</div>
 		<div>
 		<input type="submit" value="가입하기">
 		</div>
 	</form>
-	</div>
 	</section>
 </body>
 </html>

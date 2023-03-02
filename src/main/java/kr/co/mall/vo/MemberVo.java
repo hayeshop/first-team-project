@@ -1,8 +1,8 @@
 package kr.co.mall.vo;
 
 public class MemberVo {
-	private int id,gender,state,juk;
-	private String pwd,pwd2,userid,name,post,juso,juso_etc,birth,telecom,phone,writeday;
+	private int id,gender,telecom,state,juk;
+	private String pwd,pwd2,userid,name,post,juso,juso_etc,birth,phone,writeday;
 	public int getId() {
 		return id;
 	}
@@ -75,10 +75,10 @@ public class MemberVo {
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public String getTelecom() {
+	public int getTelecom() {
 		return telecom;
 	}
-	public void setTelecom(String telecom) {
+	public void setTelecom(int telecom) {
 		this.telecom = telecom;
 	}
 	public String getPhone() {
