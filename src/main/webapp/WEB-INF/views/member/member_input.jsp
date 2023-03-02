@@ -120,6 +120,7 @@
 			}
 		}
 		
+		// 제출 전 아이디랑 비번 잘 들어갔는 지 확인
 		function mem_check()
 		{
 			if(uchk==0)

@@ -28,7 +28,7 @@
 		  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a>
 		</c:if>
 		<c:if test="${userid!=null}">
-		  ${name}님,	<a href="../login/logout">로그아웃</a>
+		  <a href="#">${name}님</a>,	<a href="../login/logout">로그아웃</a>
 		</c:if>
 		   | <a>장바구니</a> | <a>마이페이지</a>
 		</div>
@@ -69,7 +69,7 @@
   				<li>경기도</li>
   				<li>TEL:031-123-4567 Email : mola@email.com</li>
   				<li>COPYRIGHT (C) 하예 ALL RIGHTS RESERVED</li>
-  				<li><a style="text-decoration:none;color:grey;font-size:13px;" href="../admin/adminlogin">관리자</a></li>
+  				<li><a style="text-decoration:none;color:grey;font-size:13px;" href="../admin/adminmain">관리자</a></li>
   			</ul>
   		</div>
   	</div>

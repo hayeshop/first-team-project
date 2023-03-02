@@ -57,6 +57,7 @@ public class AdminServiceImpl implements AdminService {
 		else
 		{
 			session.setAttribute("userid", avo2.getUserid());
+			session.setAttribute("name", avo2.getName());
 			return "redirect:/admin/adminmain";
 		}
 	}
