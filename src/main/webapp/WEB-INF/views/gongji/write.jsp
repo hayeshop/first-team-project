@@ -42,7 +42,7 @@
 <div id="section">
     <table width="600" align="center">
      <caption> <h3> 공지사항 글쓰기 </h3></caption>
-     <form method="post" action="write_ok.jsp">
+     <form method="post" action="write_ok">
       <tr>
         <td> 제 목 </td>
         <td> <input type="text" name="title" id="title"> </td>
