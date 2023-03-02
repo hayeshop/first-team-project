@@ -162,6 +162,10 @@
 		<input type="text" name="name" placeholder="이름 입력">
 		</div>
 		<div>
+		  <div>이메일 주소를 입력해주세요.</div>
+		<input type="text" name="email" placeholder="ex) kim1234@email.com">
+		</div>
+		<div>
 		  <div>주소를 입력해주세요.</div>
 		<input style="width:150px;" type="text" name="post" id="post" placeholder="우편번호" readonly><input type="button" value="주소검색" onclick="search_post()" id="postbtn"> <p>
 		<input type="text" name="juso" id="juso" placeholder="주소" readonly> <p>

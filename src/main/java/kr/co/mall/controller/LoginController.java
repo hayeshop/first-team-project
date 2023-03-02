@@ -39,6 +39,17 @@ public class LoginController {
 		return service.logout(session);
 	}
 	
+	@RequestMapping("/login/uform")
+	public String uform()
+	{
+		return "login/uform";
+	}
+	@RequestMapping("/login/pform")
+	public String pform()
+	{
+		return "login/pform";
+	}
+	
 	@RequestMapping("/login/userid_search")
 	public void userid_search(HttpServletRequest request,PrintWriter out)
 	{

@@ -2,7 +2,13 @@ package kr.co.mall.vo;
 
 public class MemberVo {
 	private int id,gender,telecom,state,juk;
-	private String pwd,pwd2,userid,name,post,juso,juso_etc,birth,phone,writeday;
+	private String pwd,pwd2,userid,name,post,juso,juso_etc,birth,phone,email,writeday;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public int getId() {
 		return id;
 	}
