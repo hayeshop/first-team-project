@@ -23,6 +23,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private AdminMapper mapper;
+	private int index;
 	
 	@Override
 	public String write(AdminVo avo,
@@ -56,12 +57,12 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public String list(HttpServletRequest request) {
-		ArrayList<AdminVo> list = mapper.list<AdminVo>();
-		return "gongji/list";
+	public String list(AdminVo avo, Model model, HttpServletRequest request) {
+		ArrayList<AdminVo> list=mapper.list(index);
+		model.addAttribute("list",list);
+		return "/list";
 	}
 	
-	@Override
 	public String content(AdminVo avo, Model model) {
 		int index = 0;
 		ArrayList<AdminVo> list=mapper.list(index);
@@ -95,6 +96,12 @@ public class AdminServiceImpl implements AdminService {
 		{
 			return "../main/main.jsp";
 		}
+	}
+
+	@Override
+	public String content(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
