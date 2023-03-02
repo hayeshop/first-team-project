@@ -2,20 +2,15 @@ package kr.co.mall.mapper;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.ui.Model;
-
 import kr.co.mall.vo.AdminVo;
 
-public interface AdminMapper {
-	public String write_ok(AdminVo avo,HttpServletResponse response,HttpSession session);
-	public ArrayList<AdminVo> list(Model model);
+public class AdminMapper {
+	public void write(AdminVo avo);
+	public void write_ok(AdminVo avo);
+	public ArrayList<AdminVo> list(int index);
+	public AdminVo content(String id);
+	public int isPwd(AdminVo avo);
 	public void delete(int id);
-	public String update(AdminVo avo,Model model);
+	public AdminVo update(AdminVo avo);
 	public void update_ok(AdminVo avo);
-	
-
 }
