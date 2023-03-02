@@ -1,5 +1,7 @@
 package kr.co.mall.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -29,26 +31,32 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/gongji/list")
-	public String write_ok(Model model)
+	public String list(Model model,HttpServletRequest request)
 	{
-		return "/gongji/list";
+		return service.list(model,request);
+	}
+	
+	@RequestMapping("/content")
+	public String content(HttpServletRequest request, Model model)
+	{
+		return service.content(request,model);
 	}
 
 	@RequestMapping("/gongji/delete")
 	public String delete(AdminVo avo)
 	{
-		return "/gongji/delete";
+		return service.delete(avo);
 	}
 	
 	@RequestMapping("/gongji/update")
 	public String update(AdminVo avo, Model model)
 	{
-		return "/gongji/update";
+		return service.update(avo,model);
 	}
 	
 	@RequestMapping("/gongji/update_ok")
 	public String update_ok(AdminVo avo)
 	{
-		return "/gongji/update_ok";
+		return service.update_ok(avo);
 	}
 }
