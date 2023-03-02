@@ -19,4 +19,12 @@
 	<select id="getCode" resultType="int">
 		select ifnull(max(right(pcode,3)),0)+1 from product where pcode like concat(#{param},'%')
 	</select>
+	
+	<insert id="product_input" parameterType="kr.co.mall.vo.ProductVo">
+		insert into product(pcode,title,made,price,baesong,su,halin,juk,img1,img2,writeday)
+		values(#{pcode},#{title},#{made},#{price},#{baesong},#{su},#{halin},#{juk},#{img1},#{img2},now())
+	</insert>
+	<select id="product_list" resultType="kr.co.mall.vo.ProductVo">
+		select * from product order by pcode
+	</select>
 </mapper>

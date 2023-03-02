@@ -6,6 +6,7 @@ import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
 import kr.co.mall.vo.CatVo;
+import kr.co.mall.vo.ProductVo;
 
 public interface AdminMapper {
 
@@ -18,5 +19,9 @@ public interface AdminMapper {
 	public ArrayList<Cat3Vo> getCat3(String catncat2);
 
 	public int getCode(String pcode);
+
+	public void product_input(ProductVo pvo);
+
+	public ArrayList<ProductVo> product_list();
 	
 }

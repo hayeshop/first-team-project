@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <%@ include file="admintop.jsp" %>
 <style>
   	section {
@@ -26,21 +27,28 @@
   		color:white;
   		border:1px solid skyblue;
   		margin-top:10px;
+  		cursor:pointer;
   	}
   	section select option[value=""][disabled] {
   		display:none;
   	}
+  	section #show_btn {
+  		width:200px;
+  		height:30px;
+  		background:skyblue;
+  		color:white;
+  		border:1px solid skyblue;
+  		margin-bottom:20px;
+  		cursor:pointer;
+  	}
+  	section #pro {
+  		display:none;
+  	}
+  	section #pro_list {
+  		margin-top:30px;
+  	}
 </style>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-  $(function()
-  {
-     $("#slide_btn").click(function()
-     {
-    	 $("#pro").slideUp(1000);
-     });
-  });
-
   // 카테고리2,3 불러오기
   function getCat2(catcode)
   {
@@ -109,10 +117,26 @@
 	  if(size!=1)
 		  document.getElementsByClassName("up")[size-1].remove();
   }
+  
+  // 상품등록 toggle
+  function toggle()
+  {
+	  if(document.getElementById("pro").style.display==="none")
+	  {
+		  document.getElementById("pro").style.display="block";
+		  document.getElementById("show_btn").value="상품 등록 접기▲";
+	  }
+	  else
+	  {
+		  document.getElementById("pro").style.display="none";
+		  document.getElementById("show_btn").value="상품 등록 펼치기▼";
+	  }
+  }
 </script>
 
   <section>
-  	<button id="slide_btn">접기△</button>
+  	<!-- 상품 등록 -->
+  	<div><input type="button" id="show_btn" value="상품 등록 펼치기▼" onclick="toggle()"></div>
 	<form method="post" name="pro" id="pro" action="product_input" enctype="multipart/form-data">
 	  <div>
 	    <select name="category" onchange="getCat2(this.value)">
@@ -129,12 +153,13 @@
 	    </select>
 	  </div>
 	  <div><input type="text" name="pcode" placeholder="상품코드" readonly></div>
-	  <div><input type="text" name="title" placeholder="품명"></div>
+	  <div><input type="text" name="title" placeholder="상품명"></div>
 	  <div><input type="text" name="made" placeholder="제조사"></div>
-	  <div><input type="text" name="price" placeholder="가격"></div>
-	  <div><input type="text" name="su" placeholder="재고량"></div>
-	  <div><input type="text" name="halin" placeholder="할인율"></div>
-	  <div><input type="text" name="juk" placeholder="적립률"></div>
+	  <div><input type="text" name="price" placeholder="가격(원)"></div>
+	  <div><input type="text" name="baesong" placeholder="배송비(원)"></div>
+	  <div><input type="text" name="su" placeholder="재고량(개)"></div>
+	  <div><input type="text" name="halin" placeholder="할인율(%)"></div>
+	  <div><input type="text" name="juk" placeholder="적립률(%)"></div>
 	  <div><input type="file" name="img1"> (대표사진)</div>
 	  <div id="outer">
 	  	<p><input type="button" value="추가" onclick="add_form()">
@@ -143,6 +168,33 @@
 	  </div>
 	  <div><input type="submit" value="등록"></div>
 	</form>
+	<!-- // 상품등록 -->
+	
+	<!-- 상품 조회 -->
+	<table width="1000" align="center" id="pro_list">
+	  <tr align="center" style="background:skyblue;color:white">
+	  	<td>상품사진</td>
+	  	<td>상품명</td>
+	  	<td>제조사</td>
+	  	<td>가격(원)</td>
+	  	<td>배송비(원)</td>
+	  	<td>재고량(개)</td>
+	  	<td>할인율(%)</td>
+	  	<td>적립률(%)</td>
+	  </tr>
+	  <c:forEach items="${plist}" var="pvo">
+	  <tr align="center">
+	  	<td><img src="../resources/product/${pvo.img1}" width="100"></td>
+	  	<td>${pvo.title}</td>
+	  	<td>${pvo.made}</td>
+	  	<td><fmt:formatNumber value="${pvo.price}" pattern="#,###"/>원</td>
+	  	<td><fmt:formatNumber value="${pvo.baesong}" pattern="#,###"/>원</td>
+	  	<td><fmt:formatNumber value="${pvo.su}" type="number"/>개</td>
+	  	<td>${pvo.halin}%</td>
+	  	<td>${pvo.juk}%</td>
+	  </tr>
+	  </c:forEach>
+	</table>
   </section>
 </body>
 </html>

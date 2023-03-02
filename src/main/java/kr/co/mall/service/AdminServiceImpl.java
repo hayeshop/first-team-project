@@ -23,6 +23,7 @@ import kr.co.mall.mapper.AdminMapper;
 import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
+import kr.co.mall.vo.ProductVo;
 
 @Service
 @Qualifier("as")
@@ -68,6 +69,16 @@ public class AdminServiceImpl implements AdminService {
 		{
 			// category테이블 읽어오기, view에 전달
 			model.addAttribute("category",mapper.getCat());
+			
+			// product테이블 읽어오기, view에 전달
+			ArrayList<ProductVo> plist=mapper.product_list();
+			for(int i=0;i<plist.size();i++)
+			{
+				String[] img2=plist.get(i).getImg2().split(",");
+				model.addAttribute("img2",img2);
+			}
+			model.addAttribute("plist",plist);
+			
 			return "/admin/adminproduct";
 		}
 		else
@@ -115,6 +126,14 @@ public class AdminServiceImpl implements AdminService {
 		MultipartRequest multi=new MultipartRequest(request,path,size,"utf-8",new DefaultFileRenamePolicy());
 		
 		String pcode=multi.getParameter("pcode");
+		String title=multi.getParameter("title");
+		String made=multi.getParameter("made");
+		int price=Integer.parseInt(multi.getParameter("price"));
+		int baesong=Integer.parseInt(multi.getParameter("baesong"));
+		int su=Integer.parseInt(multi.getParameter("su"));
+		int halin=Integer.parseInt(multi.getParameter("halin"));
+		int juk=Integer.parseInt(multi.getParameter("juk"));
+		
 		String img1=multi.getFilesystemName("img1");
 		
 		Enumeration file=multi.getFileNames();
@@ -125,6 +144,21 @@ public class AdminServiceImpl implements AdminService {
 			img2=img2+multi.getFilesystemName(file.nextElement().toString())+",";
 		}
 		
-		return null;
+		
+		ProductVo pvo=new ProductVo();
+		pvo.setPcode(pcode);
+		pvo.setTitle(title);
+		pvo.setMade(made);
+		pvo.setPrice(price);
+		pvo.setBaesong(baesong);
+		pvo.setSu(su);
+		pvo.setHalin(halin);
+		pvo.setJuk(juk);
+		pvo.setImg1(img1);
+		pvo.setImg2(img2);
+		
+		mapper.product_input(pvo);
+		
+		return "redirect:/admin/adminproduct";
 	}
 }
