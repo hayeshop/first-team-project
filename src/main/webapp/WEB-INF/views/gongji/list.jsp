@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="kr.co.gongji.dao.GongjiDao" %>
-<%@page import="kr.co.gongji.dto.GongjiDto" %>
-<%@page import="java.util.ArrayList" %>
-<%
-    GongjiDao gdao=new GongjiDao();
-    gdao.list(request);
-    
-    ArrayList<GongjiDto> glist=(ArrayList<GongjiDto>)request.getAttribute("glist");
-%>    
+    pageEncoding="UTF-8"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -58,17 +50,17 @@
 	        <td> 작성일 </td>
        </tr>
        <%
-     for(int i=0;i<glist.size();i++)
+       String chk= request.getParameter("chk");
+     for(int i=0;i<chk();i++)	// 체크 시 첫 페이지에 나오게 하는 것
      {
     	 String imsi="";
-    	 if(glist.get(i).getChk()==1)
+    	 if(chk.get(i).getChk()==1)
     		 imsi="<b style='color:red;'>[공지]</b>";
      %> 
       <tr>
-        <td> <a href="readnum.jsp?id=<%=glist.get(i).getId()%>">
-        		<%=imsi%>  <%=glist.get(i).getTitle() %> </a> </td>
+        <td> ${list.imsi} ${avo.title} </a> </td>
         <td align="center"> 관리자 </td>
-        <td align="center"> <%=glist.get(i).getWriteday() %> </td>
+        <td align="center"> ${avo.writeday} </td>
       </tr>
      <% 
      }
