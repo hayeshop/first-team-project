@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import kr.co.mall.vo.AdminVo;
 
-public class AdminMapper {
+public interface AdminMapper {
 	public void write(AdminVo avo);
 	public void write_ok(AdminVo avo);
 	public ArrayList<AdminVo> list(int index);
