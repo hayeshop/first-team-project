@@ -11,10 +11,10 @@ import org.springframework.ui.Model;
 import kr.co.mall.vo.AdminVo;
 
 public interface AdminService {
-	public String write();
+	public String write(AdminVo avo, HttpServletRequest request);
 	public String write_ok(AdminVo avo);
-	public String list(Model model, HttpServletRequest request);
-	public String content(HttpServletRequest request, Model model);
+	public String list(AdminVo avo,Model model, HttpServletRequest request);
+	public String content(HttpServletRequest request);
 	public String delete(AdminVo avo);
 	public String update(AdminVo avo, Model model);
 	public String update_ok(AdminVo avo);
