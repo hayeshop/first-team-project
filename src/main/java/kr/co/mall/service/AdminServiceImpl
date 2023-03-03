@@ -27,26 +27,17 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public String write_ok(AdminVo avo,HttpSession session) {
 		mapper.write_ok(avo);
-    	int chk;
     	if(session.getAttribute("userid")==null)
     	{
     		return "../main/main.jsp";
     	}
-    	else
-    	{
-    		if(avo.getChk()==1)
-    		{
-    			// 맨 위 공지로 띄우기
-    		}
-    		return "redirect:/gongji/list";
-    	}
+    	return "redirect:/gongji/list";
     	
 	}
 	
 	@Override
 	public String list(Model model,HttpServletRequest request) {
-		int index = 0;
-		ArrayList<AdminVo> list=mapper.list(index);
+		ArrayList<AdminVo> list=mapper.list();
 		model.addAttribute("list",list);
 		return "/gongji/list";
 	}
