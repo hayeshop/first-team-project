@@ -36,6 +36,7 @@
      border-bottom:2px solid blue;
    }
    #section a {
+     text-decoration:none;
      color:blue;
    }
 </style>
@@ -51,14 +52,14 @@
        </tr>
      <c:forEach items="${alist}" var="avo">
      <tr>
-        <td align="center"> <c:if test="${avo.chk==1}"> <b style='color:red;'>[공지]</b> </c:if> </td>
-        <td align="center"> ${avo.name} </td>
-        <td align="center"> ${avo.writeday} </td>
+        <td> <c:if test="${avo.chk==1}"> <b style='color:red;'>[공지]</b> </c:if> ${bvo.title} </td>
+        <td> ${avo.name} </td>
+        <td> ${avo.writeday} </td>
       </tr>
 	  </c:forEach>
 	  <tr>
         <td colspan="4" align="center">
-          <a href="write.jsp">공지사항 글쓰기</a>
+          <a href="write">공지사항 글쓰기</a>
         </td>
       </tr>
 	</table>
