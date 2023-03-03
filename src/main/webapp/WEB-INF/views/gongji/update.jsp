@@ -8,10 +8,10 @@
 </head>
 <body> <!-- update.jsp -->
    <form method="post" action="update_ok">
-    <input type="hidden" name="id" value="${bvo.id}">
-   제목 <input type="text" name="title" value="${bvo.title}"> <p>
-   이름 <input type="text" name="name" value="${bvo.name}"> <p>
-   내용 <textarea cols="40" rows="5" name="content">${bvo.content}</textarea><p>
+    <input type="hidden" name="id" value="${avo.id}">
+   제목 <input type="text" name="title" value="${avo.title}"> <p>
+   이름 <input type="text" name="name" value="${avo.name}"> <p>
+   내용 <textarea cols="40" rows="5" name="content">${avo.content}</textarea><p>
    <input type="submit" value="저장">
    </form>
 </body>
