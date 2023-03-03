@@ -31,4 +31,11 @@
 	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">
 		select * from member where userid not in('admin')
 	</select>
+	
+	<select id="getFaq" resultType="kr.co.mall.vo.FaqVo">
+		select * from faq
+	</select>
+	<insert id="faq_input" parameterType="kr.co.mall.vo.FaqVo">
+		insert into faq(que,ans) values(#{que},#{ans})
+	</insert>
 </mapper>

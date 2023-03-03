@@ -6,6 +6,7 @@ import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
 import kr.co.mall.vo.CatVo;
+import kr.co.mall.vo.FaqVo;
 import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.ProductVo;
 
@@ -26,5 +27,9 @@ public interface AdminMapper {
 	public ArrayList<ProductVo> product_list();
 
 	public ArrayList<MemberVo> getMember();
+
+	public void faq_input(FaqVo fvo);
+
+	public ArrayList<FaqVo> getFaq();
 	
 }

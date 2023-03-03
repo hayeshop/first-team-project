@@ -1,0 +1,127 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	section {
+		width:1000px;
+		margin:auto;
+	}
+	section .faq {
+  		list-style:none;
+  		margin:0;
+  		padding:0;
+  	}
+  	section .faq > li {
+  		padding:10px 0;
+  		box-sizing:border-box;
+  	}
+  	section .faq > li:nth-child(n+2) {
+  		border-top:1px dashed skyblue;
+  	}
+  	section .faq input {
+  		display:none;
+  	}
+  	section .faq label {
+  		font-weight:bold;
+  		
+  		margin:20px 0 0;
+  		cursor:pointer;
+  	}
+  	section .faq label::before {
+  		display:block;
+  		content:"";
+  		width:0;
+  		height:0;
+  		border:8px solid transparent;
+  		border-left:8px solid skyblue;
+  		margin:2px 0 0 8px;
+  		float:left;
+  	}
+  	section .faq input:checked + label::before {
+  		border:8px solid transparent;
+  		border-top:8px solid skyblue;
+  		border-bottom:0;
+  		margin:8px 4px 0;
+  	}
+  	section .faq div {
+  		display:none;
+  		font-size:15px;
+  		overflow:hidden;
+  		padding:10px 0 10px 30px;
+  		box-sizing:border-box;
+  		transition:max-height 0.4s;
+  	}
+  	section .faq input:checked + label + div {
+  		display:block;
+  	}
+  	section #gongji {
+     	margin-top:10px;
+    }
+    section #gongji tr:hover {
+      	background:#E3F4FA;
+    }
+    section #gongji tr:first-child:hover {
+      	background:white;
+    }
+    section #gongji td {
+    	height:30px;
+     	font-size:15px;
+    }
+    section #gongji td {
+     	border-bottom:1px solid skyblue;
+    }
+    section #gongji tr:first-child td {
+     	border-top:2px solid skyblue;
+    	font-weight:900;
+    }
+    section #gongji tr:last-child td {
+     	border-bottom:2px solid skyblue;
+    }
+    section #gongji a {
+     	text-decoration:none;
+     	color:blue;
+    }
+</style>
+</head>
+<body>
+	<section>
+	<h3>FAQ</h3>
+	<ul class="faq">
+	  <c:forEach items="${flist}" var="fvo">
+	    <li>
+	    <input type="checkbox" id="faq${fvo.id}">
+	    <label for="faq${fvo.id}">${fvo.que}</label>
+	    <div>
+	      <p>${fvo.ans}</p>
+	    </div>
+	  </li>
+	  </c:forEach>
+	</ul>
+	
+	<br><br><br><br>
+	<h3>공지사항</h3>
+	<table width="1000" align="center" id="gongji">
+	   <tr>
+	        <td width="800"> 제목 </td>
+	        <td align="center"> 작성자 </td>
+	        <td align="right"> 작성일 </td>
+       </tr>
+     <c:forEach items="${glist}" var="gvo">
+     <tr>
+        <td> 
+        <c:if test="${gvo.chk==1}"> <b style='color:red;'>[공지]</b> </c:if> 
+        ${gvo.title}
+        </td>
+        <td align="center"> 관리자 </td>
+        <td align="right"> ${gvo.writeday} </td>
+     </tr>
+	 </c:forEach>
+	</table>
+	</section>
+</body>
+</html>

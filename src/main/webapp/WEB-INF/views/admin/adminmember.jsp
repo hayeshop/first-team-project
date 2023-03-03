@@ -10,6 +10,9 @@
   		margin:auto;
   		margin-top:100px;
   	}
+  	section #mem {
+  		font-size:15px;
+  	}
   	section #mem td {
   		border-bottom:1px solid skyblue;
   		border-right:1px solid skyblue;

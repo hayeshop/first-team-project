@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import kr.co.mall.vo.AdminVo;
+import kr.co.mall.vo.FaqVo;
 import kr.co.mall.vo.MemberVo;
 
 public interface AdminService {
@@ -28,5 +29,9 @@ public interface AdminService {
 	public String product_input(HttpServletRequest request) throws IOException;
 
 	public String adminmember(Model model, HttpSession session);
+
+	public String admincustom(HttpSession session, Model model);
+
+	public String faq_input(HttpSession session, FaqVo fvo);
 
 }

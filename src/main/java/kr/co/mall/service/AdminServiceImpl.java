@@ -23,6 +23,7 @@ import kr.co.mall.mapper.AdminMapper;
 import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
+import kr.co.mall.vo.FaqVo;
 import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.ProductVo;
 
@@ -173,6 +174,36 @@ public class AdminServiceImpl implements AdminService {
 			
 			model.addAttribute("mlist",mapper.getMember());
 			return "/admin/adminmember";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String admincustom(HttpSession session, Model model) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			model.addAttribute("flist",mapper.getFaq());
+			return "/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String faq_input(HttpSession session, FaqVo fvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.faq_input(fvo);
+			return "/admin/admincustom";
 		}
 		else
 		{

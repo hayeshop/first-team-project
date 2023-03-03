@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mall.service.AdminService;
 import kr.co.mall.vo.AdminVo;
+import kr.co.mall.vo.FaqVo;
 import kr.co.mall.vo.MemberVo;
 
 @Controller
@@ -74,4 +75,18 @@ public class AdminController {
 	{
 		return service.adminmember(model,session);
 	}
+	
+	// 고객센터 파트
+	@RequestMapping("/admin/admincustom")
+	public String admincustom(HttpSession session,Model model)
+	{
+		return service.admincustom(session,model);
+	}
+	
+	@RequestMapping("/admin/faq_input")
+	public String faq_input(HttpSession session,FaqVo fvo)
+	{
+		return service.faq_input(session,fvo);
+	}
+	
 }
