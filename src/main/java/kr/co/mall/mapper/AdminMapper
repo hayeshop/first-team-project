@@ -6,8 +6,7 @@ import kr.co.mall.vo.AdminVo;
 
 public interface AdminMapper {
 	public void write_ok(AdminVo avo);
-	public int chk(AdminVo avo);
-	public ArrayList<AdminVo> list(int index);
+	public ArrayList<AdminVo> list();
 	public AdminVo content(String id);
 	public void delete(int id);
 	public AdminVo update(AdminVo avo);
