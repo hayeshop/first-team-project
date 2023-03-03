@@ -13,6 +13,11 @@
 		select * from gongji where id=#{param}
 	</select>
 		
+	<select id="chk" resultType="kr.co.mall.vo.AdminVo">
+		select * from list order by chk=1
+		where a.chk=#{param}
+	</select>
+	
 	<select id="content" resultType="kr.co.mall.vo.AdminVo">
 		select * from gongji where id=#{param}
 	</select>
