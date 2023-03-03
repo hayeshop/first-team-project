@@ -26,12 +26,27 @@
      </tr>
      <tr>
        <td colspan="2" align="center">
-         <a href="list?page=${page}"> 목록 </a>
-         <a href="update?id=${bvo.id}&page=${page}"> 수정 </a>
+         <a href="list"> 목록 </a>
+         <a href="update?id=${avo.id}"> 수정 </a>
          <a href="javascript:viewform()"> 삭제 </a>
        </td>
      </tr>
      
+     <tr id="delform" style="display:none;">
+       <td colspan="2" align="center">
+         <form method="post" action="delete">
+           <input type="hidden" name="id" value="${bvo.id}">
+           <input type="submit" value="삭제">
+         </form>
+       </td>
+     </tr>
    </table>
+   
+   <script>
+   function viewform()
+   {
+	   document.getElementById("delform").style.display="table-row";
+   }
+  </script>
 </body>
 </html>
