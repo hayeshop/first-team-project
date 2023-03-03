@@ -10,19 +10,19 @@
    <table width="600" align="center">
      <tr>
        <td> 제 목 </td>
-       <td> ${bvo.title}</td>
+       <td> ${avo.title}</td>
      </tr>
      <tr>
        <td> 작성자 </td>
-       <td> ${bvo.name}</td>
+       <td> ${avo.name}</td>
      </tr>
      <tr>
        <td> 작성일 </td>
-       <td> ${bvo.writeday}</td>
+       <td> ${avo.writeday}</td>
      </tr>
      <tr>
        <td> 내 용 </td>
-       <td> ${bvo.content}</td>
+       <td> ${avo.content}</td>
      </tr>
      <tr>
        <td colspan="2" align="center">
@@ -35,7 +35,7 @@
      <tr id="delform" style="display:none;">
        <td colspan="2" align="center">
          <form method="post" action="delete">
-           <input type="hidden" name="id" value="${bvo.id}">
+           <input type="hidden" name="id" value="${avo.id}">
            <input type="submit" value="삭제">
          </form>
        </td>
