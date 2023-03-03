@@ -18,69 +18,58 @@ import kr.co.mall.mapper.AdminMapper;
 import kr.co.mall.vo.AdminVo;
 
 @Service
-@Qualifier("as")
+@Qualifier("as")	//adminService
 public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private AdminMapper mapper;
-	private int index;
 	
 	@Override
-	public String write(AdminVo avo,
-			HttpServletRequest request) {
-		mapper.write(avo);
+	public String write_ok(AdminVo avo,HttpSession session) {
+		mapper.write_ok(avo);
     	int chk;
-    	if(request.getParameter("chk")==null)
-    	{
-    		chk=0;
-    	}
-    	else
-    	{// (체크시 항상 첫 페이지에 나오는 공지사항)
-    		chk=1;
-    	}
-    	
-    	String userid="";
-    	if(userid.equals("admin"))
-    	{
-    		return "redirect:/gongji/list";
-    	}
-    	else
+    	if(session.getAttribute("userid")==null)
     	{
     		return "../main/main.jsp";
     	}
+    	else
+    	{
+    		if(avo.getChk()==1)
+    		{
+    			// 맨 위 공지로 띄우기
+    		}
+    		return "redirect:/gongji/list";
+    	}
+    	
 	}
 	
 	@Override
-	public String write_ok(AdminVo avo) {
-		 mapper.write_ok(avo);
-		 return "redirect:/list";
-	}
-	
-	@Override
-	public String list(AdminVo avo, Model model, HttpServletRequest request) {
-		ArrayList<AdminVo> list=mapper.list(index);
-		model.addAttribute("list",list);
-		return "/list";
-	}
-	
-	public String content(AdminVo avo, Model model) {
+	public String list(Model model,HttpServletRequest request) {
 		int index = 0;
 		ArrayList<AdminVo> list=mapper.list(index);
 		model.addAttribute("list",list);
-		return "/list";
+		return "/gongji/list";
 	}
 	
 	@Override
-	public String delete(AdminVo avo) {
+	public String content(HttpServletRequest request, Model model) {
+		String id=request.getParameter("id");
+        AdminVo avo=mapper.content(id);
+        model.addAttribute("avo",avo);
+		return "/gongji/content";
+	}
+	
+	@Override
+	public String delete(AdminVo avo, HttpSession session) {
 		mapper.delete(avo.getId());
-		return "redirect:/list";
+		return "redirect:/gongji/list";
 	}
 	
 	@Override
 	public String update(AdminVo avo,Model model) {
 		AdminVo avo2=mapper.update(avo);
 		model.addAttribute("avo",avo2);
-		return "/update";
+		return "/gongji/update";
 	}
 
 	@Override
@@ -96,12 +85,6 @@ public class AdminServiceImpl implements AdminService {
 		{
 			return "../main/main.jsp";
 		}
-	}
-
-	@Override
-	public String content(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 }
