@@ -27,4 +27,8 @@
 	<select id="product_list" resultType="kr.co.mall.vo.ProductVo">
 		select * from product order by pcode
 	</select>
+	
+	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">
+		select * from member where userid not in('admin')
+	</select>
 </mapper>

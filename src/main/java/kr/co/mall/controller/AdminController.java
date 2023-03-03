@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mall.service.AdminService;
 import kr.co.mall.vo.AdminVo;
+import kr.co.mall.vo.MemberVo;
 
 @Controller
 public class AdminController {
@@ -65,5 +66,12 @@ public class AdminController {
 	public String product_input(HttpServletRequest request) throws IOException
 	{
 		return service.product_input(request);
+	}
+	
+	// 회원 파트
+	@RequestMapping("/admin/adminmember")
+	public String adminmember(Model model,HttpSession session)
+	{
+		return service.adminmember(model,session);
 	}
 }

@@ -23,6 +23,7 @@ import kr.co.mall.mapper.AdminMapper;
 import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
+import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.ProductVo;
 
 @Service
@@ -161,5 +162,21 @@ public class AdminServiceImpl implements AdminService {
 		mapper.product_input(pvo);
 		
 		return "redirect:/admin/adminproduct";
+	}
+
+	@Override
+	public String adminmember(Model model, HttpSession session) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			
+			model.addAttribute("mlist",mapper.getMember());
+			return "/admin/adminmember";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
 	}
 }

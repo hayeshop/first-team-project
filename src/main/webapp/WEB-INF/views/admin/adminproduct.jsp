@@ -47,6 +47,16 @@
   	section #pro_list {
   		margin-top:30px;
   	}
+  	section #pro_list td {
+  		border-bottom:1px solid skyblue;
+  		border-left:1px solid skyblue;
+  	}
+  	section #pro_list td:first-child {
+  		border-left:0;
+  	}
+  	section #pro_list td:last-child {
+  		border-right:0;
+  	}
 </style>
 <script>
   // 카테고리2,3 불러오기
