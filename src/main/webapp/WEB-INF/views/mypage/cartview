@@ -11,7 +11,101 @@
       margin:auto;
       text-align:center;
    }
+   section table {
+     border-spacing:0px;
+   }
+   section table td {  
+     height:80px;
+     font-size:14px;
+     border-bottom:1px solid light blue;
+   }
+   section table tr:first-child td {  
+      border-top:2px solid light blue;
+   }
+  section table span {
+      display:inline-block;
+      width:90px;
+      height:21px;
+      border:1px solid light blue;
+      text-align:center;
+      cursor:pointer;
+   }
+   section #cdel {
+      width:70px;
+   }
 </style>
+<script>
+   function maincheck(my)
+   {
+	   var csub=document.getElementsByClassName("csub");  // csub이름의 class를 가지고 있는 요소들을 가져온 것을 변수 csub라고 선언
+	   var len=csub.length; // 전체 상품의 갯수
+	   
+	   if(my.checked)
+	   {
+		   // 체크가 되었다면 => 상품의 체크박스에 전부 체크
+		   for(i=0;i<len;i++)
+		   {
+			   csub[i].checked=true;
+		   } 	   
+		   // 전체선택 체크박스
+		   document.getElementById("up").checked=true;
+		   document.getElementById("down").checked=true;
+	   }	
+	   else
+	   {
+		   // 체크가 안되었다면 => 상품의 체크박스에 전부 해제
+		   for(i=0;i<len;i++)
+		   {
+			   csub[i].checked=false;
+		   } 	   
+		   document.getElementById("up").checked=false;
+		   document.getElementById("down").checked=false;
+	   }	   
+   }
+   
+   
+   function subcheck()
+   {
+	   var csub=document.getElementsByClassName("csub");
+	   var len=csub.length; 
+	   
+	   // 상품의 체크박스가 몇개 체크되었나를 계산
+	   var n=0;
+	   for(i=0;i<len;i++)
+	   {
+		   if(csub[i].checked)
+			   n++; // 체크가 된 상품의 갯수
+	   }
+
+       if(len==n)
+       {
+    	   document.getElementById("up").checked=true;
+		   document.getElementById("down").checked=true;
+       }	
+       else
+       {
+    	   document.getElementById("up").checked=false;
+		   document.getElementById("down").checked=false;
+       }	   
+   }
+   
+   function cartdel()
+   {
+	   var id="";
+	   var csub=document.getElementsByClassName("csub");
+	   var len=csub.length; 
+  
+       for(i=0;i<len;i++)
+       {
+		    if(csub[i].checked)
+		       id=id+csub[i].value+",";
+	   }	   
+	   
+	   // 하나이상의 상품의 wish테이블의 id를  , 로 구분하여 전달
+	   if(id!="")   
+	      location="cartdel?id="+id;
+   }
+   </script>
 </head>
 <body>
 	<section>
