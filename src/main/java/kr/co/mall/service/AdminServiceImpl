@@ -51,7 +51,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public String delete(AdminVo avo, HttpSession session) {
+	public String delete(AdminVo avo) {
 		mapper.delete(avo.getId());
 		return "redirect:/gongji/list";
 	}
