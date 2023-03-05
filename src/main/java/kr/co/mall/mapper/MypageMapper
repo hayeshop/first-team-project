@@ -1,0 +1,13 @@
+package kr.co.mall.mapper;
+
+import java.util.ArrayList;
+
+import kr.co.mall.vo.CartVo;
+import kr.co.mall.vo.WishVo;
+
+public interface MypageMapper {
+    public ArrayList<WishVo> wishview(String userid);
+    public void wishdel(String id);
+    public ArrayList<CartVo> cartview(String userid);
+    public void cartdel(String id);
+}
