@@ -1,5 +1,7 @@
 package kr.co.mall.controller;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,10 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mall.service.MypageService;
+import kr.co.mall.vo.ReviewVo;
 
 @Controller
 public class MypageController {
-	
+
 	@Autowired
 	@Qualifier("ms")
 	private MypageService service;
@@ -30,6 +33,12 @@ public class MypageController {
 		return service.wishdel(request);
 	}
 	
+	@RequestMapping("/mypage/cart_add") // wishview에서 장바구니담기
+	public String cart_add(HttpServletRequest request,HttpSession session)
+	{
+		return service.cart_add(request,session);
+	}
+	
 	@RequestMapping("/mypage/cartview")
 	public String cartview(HttpSession session, Model model)
 	{
@@ -41,5 +50,37 @@ public class MypageController {
 	{
 		return service.cartdel(request);
 	}
-
+	
+	@RequestMapping("/mypage/cart_su")
+	public void cart_su(HttpServletRequest request,
+			PrintWriter out,HttpSession session)
+	{
+		service.cart_su(request,out,session);
+	}
+	
+	
+	@RequestMapping("/mypage/jumunview")
+	public String jumunview(HttpSession session,Model model)
+	{
+		return service.jumunview(session,model);
+	}
+	
+	@RequestMapping("/mypage/chgstate")
+    public String chgstate(HttpServletRequest request)
+    {
+		return service.chgstate(request);
+    }
+	
+	@RequestMapping("/mypage/review")
+	public String review(HttpServletRequest request,Model model)
+	{
+		return service.review(request,model);
+	}
+	
+	@RequestMapping("/mypage/review_ok")
+	public String review_ok(ReviewVo rvo, HttpSession session)
+	{
+		return service.review_ok(rvo,session);
+	}
+	
 }
