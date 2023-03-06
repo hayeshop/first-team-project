@@ -1,9 +1,9 @@
 package kr.co.mall.vo;
 
 public class WishVo {
-	
 	private int id,price;
     private String pcode,userid,writeday,pimg,title;
+    
 	public int getId() {
 		return id;
 	}
@@ -46,5 +46,5 @@ public class WishVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-    
+
 }
