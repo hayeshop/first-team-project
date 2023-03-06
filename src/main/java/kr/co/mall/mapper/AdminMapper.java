@@ -7,6 +7,7 @@ import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
 import kr.co.mall.vo.CatVo;
 import kr.co.mall.vo.FaqVo;
+import kr.co.mall.vo.GongjiVo;
 import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.ProductVo;
 
@@ -31,5 +32,13 @@ public interface AdminMapper {
 	public void faq_input(FaqVo fvo);
 
 	public ArrayList<FaqVo> getFaq();
+
+	public void gongji_input(GongjiVo gvo);
+
+	public ArrayList<GongjiVo> getGongji();
+
+	public void gong_del(int id);
+
+	public void gongji_update(GongjiVo gvo);
 	
 }

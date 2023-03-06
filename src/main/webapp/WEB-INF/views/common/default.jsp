@@ -22,7 +22,7 @@
 <body>
 	<header>
 	<div id="top"> <!-- top 로그인,회원가입 / 장바구니, 마이페이지-->
-		<div id="left"><a href="../main/main" style="color:#0080c0;font-size:100px;font-weight:bold;">LOGO</a></div>
+		<div id="left"><a href="../main/main"><img src="../resources/img/logo4.jpg" width="180px"></a></div>
 		<div id="right">
 		<c:if test="${userid==null}">
 		  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a>
@@ -61,8 +61,8 @@
   <decorator:body/>
   	<footer>
   	<div id="bottom">
-  		<div id="footer_logo" style="color:#0080c0;font-size:50px;font-weight:bold;">
-  			LOGO
+  		<div id="footer_logo">
+  			<img src="../resources/img/logo3.jpg" width="140px">
   		</div>
   		<div id="address">
   			<ul>

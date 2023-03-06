@@ -24,6 +24,7 @@ import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
 import kr.co.mall.vo.FaqVo;
+import kr.co.mall.vo.GongjiVo;
 import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.ProductVo;
 
@@ -187,7 +188,21 @@ public class AdminServiceImpl implements AdminService {
 			return "/admin/adminlogin";
 		if(session.getAttribute("userid").equals("admin"))
 		{
+			// FAQ list
 			model.addAttribute("flist",mapper.getFaq());
+			
+			// Gongji list
+			ArrayList<GongjiVo> glist=mapper.getGongji();
+			for(int i=0;i<glist.size();i++)
+			{
+				String content=glist.get(i).getContent().replace("\r\n", "<br>");
+				content=content.replace(")", "]");
+				content=content.replace("(", "[");
+				content=content.replace("'", "");
+				glist.get(i).setContent(content);
+			}
+			model.addAttribute("glist",glist);
+			
 			return "/admin/admincustom";
 		}
 		else
@@ -203,7 +218,52 @@ public class AdminServiceImpl implements AdminService {
 		if(session.getAttribute("userid").equals("admin"))
 		{
 			mapper.faq_input(fvo);
-			return "/admin/admincustom";
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String gongji_input(HttpSession session, GongjiVo gvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.gongji_input(gvo);
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String gong_del(HttpSession session, GongjiVo gvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.gong_del(gvo.getId());
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String gongji_update(HttpSession session, GongjiVo gvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.gongji_update(gvo);
+			return "redirect:/admin/admincustom";
 		}
 		else
 		{

@@ -38,4 +38,18 @@
 	<insert id="faq_input" parameterType="kr.co.mall.vo.FaqVo">
 		insert into faq(que,ans) values(#{que},#{ans})
 	</insert>
+	
+	<insert id="gongji_input" parameterType="kr.co.mall.vo.GongjiVo">
+		insert into gongji(chk,title,content,writeday)
+		values(#{chk},#{title},#{content},now())
+	</insert>
+	<select id="getGongji" resultType="kr.co.mall.vo.GongjiVo">
+		select * from gongji order by id desc, chk
+	</select>
+	<delete id="gong_del">
+		delete from gongji where id=#{param}
+	</delete>
+	<update id="gongji_update" parameterType="kr.co.mall.vo.GongjiVo">
+		update gongji set title=#{title},content=#{content},chk=#{chk} where id=#{id}
+	</update>
 </mapper>

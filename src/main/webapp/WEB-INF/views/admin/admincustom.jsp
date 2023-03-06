@@ -9,6 +9,10 @@
   		margin-top:100px;
   		margin-bottom:100px;
   	}
+  	section a:hover {
+  		color:skyblue;
+  		cursor:pointer;
+  	}
   	section input[type=text] {
   		width:400px;
   		height:30px;
@@ -30,22 +34,31 @@
   		margin-top:10px;
   		cursor:pointer;
   	}
-  	section #faq {
+  	section #faq,#gongji {
   		margin-top:20px;
   		font-size:15px;
   	}
-  	section #faq td {
+  	section #faq td,#gongji td {
   		border-bottom:1px solid skyblue;
   		border-right:1px solid skyblue;
-  	}
-  	section #faq td:first-child {
-  		border-left:0;
-  	}
-  	section #faq td:last-child {
   		border-right:0;
+  		padding:3px;
   	}
 </style>
-
+<script>
+	function upform(id,chk,title,content)
+	{
+		document.gongji.id.value=id;
+		document.gongji.title.value=title;
+		document.gongji.content.value=content;
+		document.gongji.submit.value="공지사항 수정";
+		document.gongji.action="gongji_update";
+		if(chk==1)
+			document.getElementById("chk").checked=true;
+		else
+			document.getElementById("chk").checked=false;
+	}
+</script>
   <section>
 	<!-- 자주묻는질문 등록, 수정, 삭제 -->
 	<form method="post" action="faq_input">
@@ -66,7 +79,7 @@
 	  	<td align="center">${fvo.id}</td>
 	  	<td>${fvo.que}</td>
 	  	<td>${fvo.ans}</td>
-	  	<td>click</td>
+	  	<td align="center"><img src="../resources/img/pen.png" width="15"></td>
 	  </tr>
 	  </c:forEach>
 	</table>
@@ -76,13 +89,30 @@
 
 	<!-- 공지사항 등록, 수정, 삭제 -->
 	<br><br><br><br><br>
-    <form method="post" action="gongji_input">
-      <div><h3> 공지사항 글쓰기 </h3></div>
+    <form name="gongji" method="post" action="gongji_input">
+      <input type="hidden" name="id">
+      <div><h3> 공지사항 관리 </h3></div>
 	  <div><input type="text" name="title" id="title" placeholder="공지 제목"></div>
       <div><textarea cols="40" rows="5" name="content" id="content" placeholder="공지 내용"></textarea></div>
-      <div><input type="checkbox" name="chk" value="1"> 체크하시면 항상 첫 페이지에 나오는 공지사항입니다.</div>
-      <div><input type="submit" value="공지사항 저장" id="submit"></div>
+      <div><input type="checkbox" name="chk" id="chk" value="1"> 체크하시면 항상 첫 페이지에 나오는 공지사항입니다.</div>
+      <div><input type="submit" value="공지사항 저장" name="submit" id="submit"></div>
     </form>
+    <table id="gongji" width="1000" align="center">
+	  <tr align="center" style="background:skyblue;color:white">
+	  	<td>제목</td>
+	  	<td width="650">등록날짜</td>
+	  	<td width="30">수정</td>
+	  	<td width="30">삭제</td>
+	  </tr>
+	  <c:forEach items="${glist}" var="gvo">
+	  <tr>
+	  	<td><c:if test="${gvo.chk==1}"> <b style='color:red;'>[필독]</b> </c:if> ${gvo.title}</td>
+	  	<td>${gvo.content}</td>
+	  	<td align="center"><img src="../resources/img/pen.png" style="cursor:pointer;" width="15" onclick="upform(${gvo.id},${gvo.chk},'${gvo.title}','${gvo.content}')"></td>
+	  	<td align="center"><a href="gong_del?id=${gvo.id}"><img src="../resources/img/trash.png" width="20"></a></td>
+	  </tr>
+	  </c:forEach>
+	</table>
   </section>
 </body>
 </html>

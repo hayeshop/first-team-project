@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 
 import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.FaqVo;
+import kr.co.mall.vo.GongjiVo;
 import kr.co.mall.vo.MemberVo;
 
 public interface AdminService {
@@ -33,5 +34,11 @@ public interface AdminService {
 	public String admincustom(HttpSession session, Model model);
 
 	public String faq_input(HttpSession session, FaqVo fvo);
+
+	public String gongji_input(HttpSession session, GongjiVo gvo);
+
+	public String gong_del(HttpSession session, GongjiVo gvo);
+	
+	public String gongji_update(HttpSession session, GongjiVo gvo);
 
 }

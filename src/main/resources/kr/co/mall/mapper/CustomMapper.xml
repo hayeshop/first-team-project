@@ -10,4 +10,8 @@
 	<select id="getGongji" resultType="kr.co.mall.vo.GongjiVo">
 		select * from gongji order by id desc, chk
 	</select>
+	
+	<select id="gongji_content" resultType="kr.co.mall.vo.GongjiVo">
+		select * from gongji where id=#{param}
+	</select>
 </mapper>

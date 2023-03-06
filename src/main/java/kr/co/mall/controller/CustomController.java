@@ -1,5 +1,7 @@
 package kr.co.mall.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -19,5 +21,11 @@ public class CustomController {
 	public String custom(Model model)
 	{
 		return service.custom(model);
+	}
+	
+	@RequestMapping("/customer/gongji_content")
+	public String gongji_content(Model model,HttpServletRequest request)
+	{
+		return service.gongji_content(model,request);
 	}
 }

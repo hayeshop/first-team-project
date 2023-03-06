@@ -62,15 +62,13 @@
   	section #gongji {
      	margin-top:10px;
     }
-    section #gongji tr:hover {
-      	background:#E3F4FA;
-    }
     section #gongji tr:first-child:hover {
       	background:white;
     }
     section #gongji td {
     	height:30px;
      	font-size:15px;
+     	padding:3px;
     }
     section #gongji td {
      	border-bottom:1px solid skyblue;
@@ -82,9 +80,14 @@
     section #gongji tr:last-child td {
      	border-bottom:2px solid skyblue;
     }
-    section #gongji a {
+    section a {
+    	text-decoration:none;
+    	color:black;
+    }
+    section #gongji a:hover {
      	text-decoration:none;
-     	color:blue;
+     	color:skyblue;
+     	cursor:pointer;
     }
 </style>
 </head>
@@ -106,7 +109,7 @@
 	<br><br><br><br>
 	<h3>공지사항</h3>
 	<table width="1000" align="center" id="gongji">
-	   <tr>
+	   <tr style="background:skyblue;color:white;">
 	        <td width="800"> 제목 </td>
 	        <td align="center"> 작성자 </td>
 	        <td align="right"> 작성일 </td>
@@ -114,8 +117,8 @@
      <c:forEach items="${glist}" var="gvo">
      <tr>
         <td> 
-        <c:if test="${gvo.chk==1}"> <b style='color:red;'>[공지]</b> </c:if> 
-        ${gvo.title}
+        <a href="gongji_content?id=${gvo.id}"><c:if test="${gvo.chk==1}"> <b style='color:red;'>[필독]</b> </c:if> 
+        ${gvo.title}</a>
         </td>
         <td align="center"> 관리자 </td>
         <td align="right"> ${gvo.writeday} </td>

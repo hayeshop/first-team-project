@@ -2,6 +2,8 @@ package kr.co.mall.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -27,5 +29,15 @@ public class CustomServiceImpl implements CustomService {
 		model.addAttribute("glist",glist);
 		
 		return "/customer/custom";
+	}
+
+	@Override
+	public String gongji_content(Model model, HttpServletRequest request) {
+		String id=request.getParameter("id");
+        GongjiVo gvo=mapper.gongji_content(id);
+        String content=gvo.getContent().replace("\r\n", "<br>");
+        gvo.setContent(content);
+        model.addAttribute("gvo",gvo);
+		return "/customer/gongji_content";
 	}
 }

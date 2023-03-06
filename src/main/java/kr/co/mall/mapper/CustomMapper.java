@@ -11,4 +11,6 @@ public interface CustomMapper {
 
 	public ArrayList<GongjiVo> getGongji();
 
+	public GongjiVo gongji_content(String id);
+
 }
