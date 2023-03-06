@@ -27,4 +27,26 @@
 	<select id="product_list" resultType="kr.co.mall.vo.ProductVo">
 		select * from product order by pcode
 	</select>
+	
+	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">
+		select * from member where userid not in('admin')
+	</select>
+	
+	<select id="getFaq" resultType="kr.co.mall.vo.FaqVo">
+		select * from faq
+	</select>
+	<insert id="faq_input" parameterType="kr.co.mall.vo.FaqVo">
+		insert into faq(que,ans) values(#{que},#{ans})
+	</insert>
+	
+	<insert id="gongji_input" parameterType="kr.co.mall.vo.GongjiVo">
+		insert into gongji(chk,title,content,writeday)
+		values(#{chk},#{title},#{content},now())
+	</insert>
+	<select id="getGongji" resultType="kr.co.mall.vo.GongjiVo">
+		select * from gongji order by id desc, chk
+	</select>
+	<delete id="gong_del">
+		delete from gongji where id=#{param}
+	</delete>
 </mapper>

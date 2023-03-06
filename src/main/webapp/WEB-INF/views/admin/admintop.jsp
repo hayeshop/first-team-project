@@ -35,8 +35,8 @@
 	<div>
 	<ul>
 	  <li><a href="adminproduct">상품관리</a></li>
-	  <li>회원관리</li>
-	  <li>고객센터</li>
+	  <li><a href="adminmember">회원관리</a></li>
+	  <li><a href="admincustom">고객센터</a></li>
 	  <li>판매관리</li>
 	</ul>
 	</div>

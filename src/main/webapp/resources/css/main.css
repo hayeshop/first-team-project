@@ -58,7 +58,7 @@
 	  float: left;
 	  text-align: center;
 	  line-height: 40px;
-	  background-color: #5778ff;
+	  background-color: #0080c0;
 	}
 	
 	nav .menu a {
@@ -71,11 +71,11 @@
 	}
 	nav .submenu > li {
 	  line-height: 50px;
-	  background-color: #94a9ff;
+	  background-color: #60b3ce;
 	}
 	
 	nav .menu > li:hover {
-	  background-color: #94a9ff;
+	  background-color: #60b3ce;
 	  transition-duration: 0.5s;
 	}
 	

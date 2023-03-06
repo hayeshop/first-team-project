@@ -41,11 +41,19 @@
   		margin-bottom:20px;
   		cursor:pointer;
   	}
-  	section #pro {
-  		display:none;
-  	}
   	section #pro_list {
   		margin-top:30px;
+  		font-size:15px;
+  	}
+  	section #pro_list td {
+  		border-bottom:1px solid skyblue;
+  		border-left:1px solid skyblue;
+  	}
+  	section #pro_list td:first-child {
+  		border-left:0;
+  	}
+  	section #pro_list td:last-child {
+  		border-right:0;
   	}
 </style>
 <script>
@@ -121,22 +129,22 @@
   // 상품등록 toggle
   function toggle()
   {
-	  if(document.getElementById("pro").style.display==="none")
-	  {
-		  document.getElementById("pro").style.display="block";
-		  document.getElementById("show_btn").value="상품 등록 접기▲";
-	  }
-	  else
+	  if(document.getElementById("pro").style.display==="block")
 	  {
 		  document.getElementById("pro").style.display="none";
 		  document.getElementById("show_btn").value="상품 등록 펼치기▼";
+	  }
+	  else
+	  {
+		  document.getElementById("pro").style.display="block";
+		  document.getElementById("show_btn").value="상품 등록 접기▲";
 	  }
   }
 </script>
 
   <section>
   	<!-- 상품 등록 -->
-  	<div><input type="button" id="show_btn" value="상품 등록 펼치기▼" onclick="toggle()"></div>
+  	<div><input type="button" id="show_btn" value="상품 등록 접기▲" onclick="toggle()"></div>
 	<form method="post" name="pro" id="pro" action="product_input" enctype="multipart/form-data">
 	  <div>
 	    <select name="category" onchange="getCat2(this.value)">

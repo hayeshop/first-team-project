@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mall.service.AdminService;
 import kr.co.mall.vo.AdminVo;
+import kr.co.mall.vo.FaqVo;
+import kr.co.mall.vo.GongjiVo;
+import kr.co.mall.vo.MemberVo;
 
 @Controller
 public class AdminController {
@@ -66,4 +69,37 @@ public class AdminController {
 	{
 		return service.product_input(request);
 	}
+	
+	// 회원 파트
+	@RequestMapping("/admin/adminmember")
+	public String adminmember(Model model,HttpSession session)
+	{
+		return service.adminmember(model,session);
+	}
+	
+	// 고객센터 파트
+	@RequestMapping("/admin/admincustom")
+	public String admincustom(HttpSession session,Model model)
+	{
+		return service.admincustom(session,model);
+	}
+	
+	@RequestMapping("/admin/faq_input")
+	public String faq_input(HttpSession session,FaqVo fvo)
+	{
+		return service.faq_input(session,fvo);
+	}
+	
+	@RequestMapping("/admin/gongji_input")
+	public String gongji_input(HttpSession session,GongjiVo gvo)
+	{
+		return service.gongji_input(session,gvo);
+	}
+	
+	@RequestMapping("/admin/gong_del")
+	public String gong_del(HttpSession session,GongjiVo gvo)
+	{
+		return service.gong_del(session,gvo);
+	}
+	
 }

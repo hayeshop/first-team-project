@@ -6,4 +6,11 @@
   <select id="login_ok" parameterType="kr.co.mall.vo.MemberVo" resultType="kr.co.mall.vo.MemberVo">
      select name,userid from member where userid=#{userid} and pwd=#{pwd}
   </select>
+  <select id="userid_search" resultType="String">
+    select userid from member where name=#{param1} and email=#{param2}
+  </select>
+  
+  <select id="pwd_search" resultType="String">
+    select pwd from member where name=#{param1} and email=#{param2} and userid=#{param3}
+  </select>
 </mapper>

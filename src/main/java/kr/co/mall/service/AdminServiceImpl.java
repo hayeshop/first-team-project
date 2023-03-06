@@ -23,6 +23,9 @@ import kr.co.mall.mapper.AdminMapper;
 import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
+import kr.co.mall.vo.FaqVo;
+import kr.co.mall.vo.GongjiVo;
+import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.ProductVo;
 
 @Service
@@ -161,5 +164,82 @@ public class AdminServiceImpl implements AdminService {
 		mapper.product_input(pvo);
 		
 		return "redirect:/admin/adminproduct";
+	}
+
+	@Override
+	public String adminmember(Model model, HttpSession session) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			
+			model.addAttribute("mlist",mapper.getMember());
+			return "/admin/adminmember";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String admincustom(HttpSession session, Model model) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			model.addAttribute("flist",mapper.getFaq());
+			model.addAttribute("glist",mapper.getGongji());
+			return "/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String faq_input(HttpSession session, FaqVo fvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.faq_input(fvo);
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String gongji_input(HttpSession session, GongjiVo gvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.gongji_input(gvo);
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String gong_del(HttpSession session, GongjiVo gvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.gong_del(gvo.getId());
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
 	}
 }

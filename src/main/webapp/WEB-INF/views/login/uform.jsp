@@ -33,6 +33,12 @@
       border:1px solid skyblue; 
       color:white;
       margin-top:10px;
+      cursor:pointer;
+   	}
+   	
+   	section #login {
+   	  display:none;
+   	  width:150px;
    	}
 </style>
 <script>
@@ -46,11 +52,13 @@
 	   {
 		   var userid=chk.responseText.trim();
 		   if(userid=="1") // 이름, 이메일이 잘못 되었을 경우
-			 document.getElementById("sview").innerText="이름 혹은 이메일이 잘못 되었습니다";
+			 document.getElementById("sview").innerText="이름 혹은 이메일이 잘못 되었습니다.";
 		   else
 	       {		   
-			 document.getElementById("sview").innerText="당신의 아이디 : "+userid;
+			 document.getElementById("sview").innerHTML="<p>회원님의 아이디는 <b>"+userid+"</b> 입니다.";
 			 document.getElementById("uform").style.display="none"; 
+			 document.getElementById("title").style.display="none"; 
+			 document.getElementById("login").style.display="inline-block";
 	       }
 	   }
 	   
@@ -62,12 +70,14 @@
 <body>
 <section>
 <!-- 아이디 조회폼 -->
-	<h4>아이디 찾기 </h4>
+	<h4 id="title">아이디 찾기 </h4>
      <form name="uform" id="uform">
       <input type="text" name="name" placeholder="이 름"> <p>
       <input type="text" name="email" placeholder="이메일"> <p>
       <input type="button" onclick="userid_search()" value="아이디찾기">
      </form>
+     <span id="sview"></span>
+     <input type="button" id="login" onclick="location='login'" value="로그인 바로가기">
 </section>
 </body>
 </html>
