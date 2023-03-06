@@ -1,9 +1,16 @@
 package kr.co.mall.vo;
 
 public class CartVo {
-	private int id,su,price;
+	private int id,su,price,baesong,halin;
 	private String pcode,userid,writeday,pimg,title;
 	
+	
+	public int getHalin() {
+		return halin;
+	}
+	public void setHalin(int halin) {
+		this.halin = halin;
+	}
 	public int getId() {
 		return id;
 	}
@@ -21,6 +28,12 @@ public class CartVo {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public int getBaesong() {
+		return baesong;
+	}
+	public void setBaesong(int baesong) {
+		this.baesong = baesong;
 	}
 	public String getPcode() {
 		return pcode;
@@ -52,5 +65,6 @@ public class CartVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
+	
 }
