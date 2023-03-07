@@ -89,6 +89,15 @@
      	color:skyblue;
      	cursor:pointer;
     }
+    section #mtm {
+    	width:120px;
+    	margin-top:20px;
+    	border:1px solid skyblue;
+    	border-radius:5px;
+    	padding:5px;
+    	background:skyblue;
+    	font-weight:bold;
+    }
 </style>
 </head>
 <body>
@@ -125,6 +134,10 @@
      </tr>
 	 </c:forEach>
 	</table>
+	
+	<br><br><br><br>
+	<h3>1:1 문의하기</h3>
+	<div id="mtm"><a href="mtm">문의글 작성하기</a></div>
 	</section>
 </body>
 </html>

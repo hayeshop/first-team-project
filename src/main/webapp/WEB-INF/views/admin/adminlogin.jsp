@@ -6,6 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+  body {
+  	width:1000px;
+  	margin:auto;
+  	text-align:center;
+  	margin-top:200px;
+  }
   a {
     text-decoration:none;
   }
@@ -25,7 +31,7 @@
 </style>
 </head>
 <body>
-	<a href="../main/main"><h2 align="center" style="color:#0080c0;font-size:100px;font-weight:bold;">LOGO</h2></a>
+	<div><a href="../main/main"><img src="../resources/img/logo4.jpg" width="230px"></a></div>
 	<form method="post" action="adminlogin_ok" align="center">
 	  <div><input type="text" name="userid" placeholder="아이디"></div> <p>
 	  <div><input type="password" name="pwd" placeholder="비밀번호"></div>

@@ -14,4 +14,9 @@
 	<select id="gongji_content" resultType="kr.co.mall.vo.GongjiVo">
 		select * from gongji where id=#{param}
 	</select>
+	
+	<insert id="mtm_input" parameterType="kr.co.mall.vo.MtmVo">
+		insert into mtm(category,userid,title,content,state,writeday)
+		values(#{category},#{userid},#{title},#{content},#{state},now())
+	</insert>
 </mapper>
