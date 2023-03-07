@@ -9,6 +9,7 @@ import kr.co.mall.vo.CatVo;
 import kr.co.mall.vo.FaqVo;
 import kr.co.mall.vo.GongjiVo;
 import kr.co.mall.vo.MemberVo;
+import kr.co.mall.vo.MtmVo;
 import kr.co.mall.vo.ProductVo;
 
 public interface AdminMapper {
@@ -40,5 +41,13 @@ public interface AdminMapper {
 	public void gong_del(int id);
 
 	public void gongji_update(GongjiVo gvo);
+
+	public void faq_update(FaqVo fvo);
+
+	public void faq_del(int id);
+
+	public ArrayList<MtmVo> getMtm();
+
+	public void mtm_update(String ans, String id);
 	
 }

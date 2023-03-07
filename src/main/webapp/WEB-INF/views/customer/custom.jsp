@@ -106,8 +106,8 @@
 	<ul class="faq">
 	  <c:forEach items="${flist}" var="fvo">
 	    <li>
-	    <input type="checkbox" id="faq${fvo.id}">
-	    <label for="faq${fvo.id}">${fvo.que}</label>
+	    <input type="checkbox" id="faq${fvo.num}">
+	    <label for="faq${fvo.num}">${fvo.que}</label>
 	    <div>
 	      <p>${fvo.ans}</p>
 	    </div>

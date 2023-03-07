@@ -2,7 +2,13 @@ package kr.co.mall.vo;
 
 public class FaqVo {
 
-	private int id;
+	private int id,num;
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	private String que,ans;
 	public int getId() {
 		return id;

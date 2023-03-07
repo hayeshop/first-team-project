@@ -41,4 +41,10 @@ public interface AdminService {
 	
 	public String gongji_update(HttpSession session, GongjiVo gvo);
 
+	public String faq_update(HttpSession session, FaqVo fvo);
+
+	public String faq_del(HttpSession session, FaqVo fvo);
+
+	public String mtm_update(HttpSession session, HttpServletRequest request);
+
 }

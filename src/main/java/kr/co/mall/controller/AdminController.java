@@ -108,4 +108,22 @@ public class AdminController {
 		return service.gongji_update(session,gvo);
 	}
 	
+	@RequestMapping("/admin/faq_update")
+	public String faq_update(HttpSession session,FaqVo fvo)
+	{
+		return service.faq_update(session,fvo);
+	}
+	
+	@RequestMapping("/admin/faq_del")
+	public String faq_del(HttpSession session,FaqVo fvo)
+	{
+		return service.faq_del(session, fvo);
+	}
+	
+	@RequestMapping("/admin/mtm_update")
+	public String mtm_update(HttpSession session,HttpServletRequest request)
+	{
+		return service.mtm_update(session,request);
+	}
+	
 }
