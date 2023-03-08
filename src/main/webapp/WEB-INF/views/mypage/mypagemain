@@ -19,18 +19,18 @@
 	  <table width="900" align="center">
 		<caption> <h4> 마이페이지 </h4></caption>
 		  <tr>
-			 <th> 아이디 </th>
-	         <th> 이름 </th>
-	         <th> 우편번호 </th>
-	         <th> 주소 </th>
-	         <th> 전화번호 </th>
-	         <th> 이메일 </th>
-	         <th> 가입일 </th>
+			 <td> 아이디 </td>
+	         <td> 이름 </td>
+	         <td> 우편번호 </td>
+	         <td> 주소 </td>
+	         <td> 전화번호 </td>
+	         <td> 이메일 </td>
+	         <td> 가입일 </td>
 		  </tr>
 		  <tr align="center">
 			 <td> ${mvo.userid} </td>
 	         <td> ${mvo.name} </td>
-	         <td> ${mvo.zip} </td>
+	         <td> ${mvo.post} </td>
 	         <td> ${mvo.juso} ${mvo.juso_etc} </td>
 	         <td> ${mvo.phone} </td>
 	         <td> ${mvo.email} </td>
@@ -40,7 +40,6 @@
 	  
 	  <div align="center"> 
        <span id="edit" onclick="location='member_edit'"> 정보 변경 </span>
-       <span id="edit" onclick="location='out'"> 탈퇴신청 </span>
      </div>
      
 	</section>
