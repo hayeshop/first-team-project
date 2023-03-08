@@ -13,6 +13,10 @@ import kr.co.mall.vo.ReviewVo;
 import kr.co.mall.vo.WishVo;
 
 public interface MypageMapper {
+	public String mypagemain();
+	public MemberVo member_edit(String userid);
+	public String mypage_edit(String userid);
+    public void member_edit_ok(MemberVo mvo);
     public ArrayList<WishVo> wishview(String userid);
     public void wishdel(String id);
     public void cart_add(String pcode, String userid);
