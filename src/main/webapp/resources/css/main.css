@@ -32,8 +32,8 @@
 	  text-align: center;
 	}
 	nav {
-	  width:1000px;
-	  margin:auto;
+		width:1000px;
+		margin:auto;
 	}
 	nav a {
 	  text-decoration:none;
@@ -42,14 +42,13 @@
 	nav a:hover {
 	  color:lightblue;
 	}
-    
-    /* 메뉴 */
+/* 메뉴 */
     *{padding:0;margin:0}
 
 	nav .menu {
 	  width: 1000px;
 	  overflow: hidden;
-	  margin: 150px auto;
+	  margin: 0px auto;
 	}
 	
 	nav .menu > li {
@@ -65,25 +64,11 @@
 	  color: #fff;
 	}	
 	
-	nav .submenu {
-	  height: 0; /*ul의 높이를 안보이게 처리*/
-	  overflow: hidden;
-	}
-	nav .submenu > li {
-	  line-height: 50px;
-	  background-color: #60b3ce;
-	}
-	
 	nav .menu > li:hover {
 	  background-color: #60b3ce;
 	  transition-duration: 0.5s;
 	}
-	
-	nav .menu > li:hover .submenu {
-	  height: 250px; /*서브메뉴 li한개의 높이 50*5*/
-	  transition-duration: 1s;
-	}
-	
+
 	/* 검색창 */
 	nav .search {
 	  display: inline-block;
@@ -111,7 +96,6 @@
 	  margin: auto;
 	  cursor:pointer;
 	}
-	
 	footer {
       width:1000px;
       height:150px;
