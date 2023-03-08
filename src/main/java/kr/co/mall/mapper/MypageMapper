@@ -3,6 +3,8 @@ package kr.co.mall.mapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Param;
 
 import kr.co.mall.vo.CartVo;
@@ -13,7 +15,7 @@ import kr.co.mall.vo.ReviewVo;
 import kr.co.mall.vo.WishVo;
 
 public interface MypageMapper {
-	public String mypagemain();
+	public String mypagemain(HttpSession session);
 	public MemberVo member_edit(String userid);
 	public String mypage_edit(String userid);
     public void member_edit_ok(MemberVo mvo);
