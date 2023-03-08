@@ -15,6 +15,7 @@ import kr.co.mall.mapper.MypageMapper;
 import kr.co.mall.vo.CartVo;
 import kr.co.mall.vo.ProductVo;
 import kr.co.mall.vo.ReviewVo;
+import kr.co.mall.vo.MemberVo;
 
 @Service
 @Qualifier("ms")
@@ -23,6 +24,21 @@ public class MyPageServiceImpl implements MypageService{
 	@Autowired
 	private MypageMapper mapper;
 
+	@Override
+	public String member_edit(HttpSession session,Model model) {
+		String userid=session.getAttribute("userid").toString();
+		model.addAttribute("mvo",mapper.mypage_edit(userid));
+		return "/mypage/mypage_edit";
+	}
+
+	@Override
+	public String member_edit_ok(MemberVo mvo, HttpSession session) {
+		String userid=session.getAttribute("userid").toString();
+		mvo.setUserid(userid);
+		mapper.member_edit_ok(mvo);
+		return "redirect:/mypage/mypagemain";
+	}
+	
 	@Override
 	public String wishview(HttpSession session, Model model) {
 		if(session.getAttribute("userid")==null)
@@ -171,5 +187,11 @@ public class MyPageServiceImpl implements MypageService{
 		int star=mapper.getStar(rvo.getPcode());  // review테이블에서 
 		mapper.setStar(star,rvo.getPcode());  // product테이블
 		return "redirect:/mypage/jumunview"; 
+	}
+
+	@Override
+	public String mypagemain() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
