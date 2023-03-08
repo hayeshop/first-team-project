@@ -14,8 +14,13 @@
       delete from wish where id=#{param}
    </delete>
    
+   <insert id="cart_add">
+     insert into cart(pcode,userid,su,writeday)
+     values(#{param1},#{param2},1,now())
+   </insert>
+   
    <select id="cartview" resultType="kr.co.mall.vo.CartVo">
-     select c.pcode, p.pimg, p.title, p.price, c.id, c.writeday, c.su 
+     select p.halin,c.pcode, p.pimg, p.title, p.price,p.baesong, c.id, c.writeday, c.su 
      from cart as c, product as p
      where userid=#{param} and c.pcode=p.pcode
    </select>
@@ -23,4 +28,60 @@
    <delete id="cartdel">
      delete from cart where id=#{param}
    </delete>
+   
+   <select id="cart_check" resultType="int">
+     select count(*) from cart
+     where pcode=#{param1} and userid=#{param2}
+   </select>
+   
+   <update id="cart_up">
+     update cart set su=su+1
+     where pcode=#{param1} and userid=#{param2}
+   </update>
+   
+   <update id="cart_su">
+     update cart set su=#{param1}
+     where pcode=#{param2} and userid=#{param3}
+   </update>
+   
+   <select id="jumunview" resultType="HashMap">
+     select g.id, g.writeday,p.pimg,p.title,g.su,g.cprice,g.state,g.hugi
+     from gumae as g, product as p
+     where g.userid=#{param} and g.pcode=p.pcode
+     order by g.writeday desc, g.id desc
+   </select>
+   
+   <update id="chgstate">
+     update gumae set state=#{state} where id=#{id}
+   </update>
+   
+   <select id="getPcode" resultType="String">
+     select pcode from gumae where id=#{param}
+   </select>
+   
+   <select id="getProduct" resultType="kr.co.mall.vo.ProductVo">
+     select pimg,title from product where pcode=#{param}
+   </select>
+   
+   <select id="getProduct2"  resultType="kr.co.mall.vo.ProductVo">
+      select pimg,title,pcode from product
+      where pcode=(select pcode from gumae where id=#{param})
+   </select>
+   
+   <insert id="review_ok" parameterType="kr.co.mall.vo.ReviewVo">
+      insert into review(pcode,userid,star,guid,title,content,writeday)
+      values(#{pcode},#{userid},#{star},#{guid},#{title},#{content},now())
+   </insert>
+   
+   <update id="setHugi">
+      update gumae set hugi=1 where id=#{param}
+   </update>
+   
+   <select id="getStar" resultType="int">
+     select  round( avg(star) ) from review where pcode=#{param}
+   </select>
+   
+   <update id="setStar">
+     update product set star=#{param1} where pcode=#{param2}
+   </update>
 </mapper>
