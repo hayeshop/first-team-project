@@ -23,9 +23,9 @@ public class MypageController {
 	private MypageService service;
 
 	@RequestMapping("/mypage/mypagemain")
-	public String mypagemain()
+	public String mypagemain(HttpSession session)
 	{
-		return "/mypage/mypage";
+		return service.mypagemain(session);
 	}
 	
 	@RequestMapping("/mypage/member_edit")
