@@ -11,15 +11,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// import kr.co.mall.service.MemberService;
 import kr.co.mall.service.MypageService;
-import kr.co.mall.vo.ReviewVo;
+import kr.co.mall.vo.MemberVo;
 
 @Controller
 public class MypageController {
-
+	
 	@Autowired
 	@Qualifier("ms")
 	private MypageService service;
+
+	@RequestMapping("/mypage/mypagemain")
+	public String mypagemain()
+	{
+		return "/mypage/mypage";
+	}
+	
+	@RequestMapping("/mypage/member_edit")
+	public String member_edit(HttpSession session,Model model)
+	{
+		return service.member_edit(session,model);
+	}
+	
+	@RequestMapping("/mypage/member_edit_ok")
+	public String member_edit_ok(MemberVo mvo,HttpSession session)
+	{
+		return service.member_edit_ok(mvo,session);
+	}
 	
 	@RequestMapping("/mypage/wishview")
 	public String wishview(HttpSession session, Model model)
@@ -58,29 +77,5 @@ public class MypageController {
 		service.cart_su(request,out,session);
 	}
 	
-	
-	@RequestMapping("/mypage/jumunview")
-	public String jumunview(HttpSession session,Model model)
-	{
-		return service.jumunview(session,model);
-	}
-	
-	@RequestMapping("/mypage/chgstate")
-    public String chgstate(HttpServletRequest request)
-    {
-		return service.chgstate(request);
-    }
-	
-	@RequestMapping("/mypage/review")
-	public String review(HttpServletRequest request,Model model)
-	{
-		return service.review(request,model);
-	}
-	
-	@RequestMapping("/mypage/review_ok")
-	public String review_ok(ReviewVo rvo, HttpSession session)
-	{
-		return service.review_ok(rvo,session);
-	}
 	
 }
