@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<!-- css파일 불러오기 -->
-	<link rel="stylesheet" href="../resources/css/main.css" type="text/css">
+	<link rel="stylesheet" href="../resources/css/main.css?ver=2" type="text/css">
 	
 	<script>
 	  // 검색 기능
@@ -38,17 +38,9 @@
 	<!-- 메뉴 관련 -->
 	<nav>
 	<ul class="menu"> 
-	  <li> <a href="#">카테고리</a>
-	   <ul class="submenu">
-        <li><a href="#">침실가구 </a></li>
-        <li><a href="#">옷장/수납장 </a></li>
-	    <li><a href="#">거실가구 </a></li>
-	    <li><a href="#">주방가구 </a></li>
-	    <li><a href="#">서재가구 </a></li>
-	   </ul>
-	  </li>	
-	  <li> <a href="#">new</a> </li>
-      <li> <a href="#">best</a> </li>
+	  <li style="height:40px;"> <a href="../product/pro_home">가구홈</a></li>	
+	  <li> <a href="#">NEW</a> </li>
+      <li> <a href="#">BEST</a> </li>
       <li> <div class="search">
       	   <form name="search_form" method="post" action="search">
 		     <input type="text" placeholder="검색어를 입력하세요." name="search_text" maxlength="50"/>
