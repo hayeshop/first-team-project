@@ -11,7 +11,7 @@ import kr.co.mall.vo.ReviewVo;
 import kr.co.mall.vo.MemberVo;
 
 public interface MypageService {
-	public String mypagemain();
+	public String mypagemain(HttpSession session);
 	public String member_edit(HttpSession session,Model model);
 	public String member_edit_ok(MemberVo mvo, HttpSession session);
     public String wishview(HttpSession session, Model model);
