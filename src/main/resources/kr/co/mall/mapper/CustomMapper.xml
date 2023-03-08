@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="getGongji" resultType="kr.co.mall.vo.GongjiVo">
-		select * from gongji order by id desc, chk
+		select * from gongji order by chk desc,id desc
 	</select>
 	
 	<select id="gongji_content" resultType="kr.co.mall.vo.GongjiVo">

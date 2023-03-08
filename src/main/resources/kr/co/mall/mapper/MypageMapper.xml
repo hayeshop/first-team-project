@@ -3,5 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mall.mapper.MypageMapper">
-
+	<select id="getMtm" resultType="int">
+		select count(*) from mtm where userid=#{param}
+	</select>
+	<select id="mtm_view" resultType="kr.co.mall.vo.MtmVo">
+		select *,row_number() over(order by id desc) as num 
+		from mtm where userid=#{param} order by id desc
+	</select>
 </mapper>

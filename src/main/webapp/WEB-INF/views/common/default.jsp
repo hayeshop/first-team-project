@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<!-- css파일 불러오기 -->
-	<link rel="stylesheet" href="../resources/css/main.css?ver=1" type="text/css">
+	<link rel="stylesheet" href="../resources/css/main.css" type="text/css">
 	
 	<script>
 	  // 검색 기능
@@ -28,7 +28,7 @@
 		  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a>
 		</c:if>
 		<c:if test="${userid!=null}">
-		  <a href="../mypage/memberview">${name}님</a>,	<a href="../login/logout">로그아웃</a>
+		  <a href="../mypage/mypage">${name}님</a>,	<a href="../login/logout">로그아웃</a>
 		</c:if>
 		   | <a>장바구니</a> | <a href="../customer/custom">고객센터</a>
 		</div>

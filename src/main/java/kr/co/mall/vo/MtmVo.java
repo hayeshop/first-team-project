@@ -2,8 +2,14 @@ package kr.co.mall.vo;
 
 public class MtmVo {
 
-	private int id,category,state;
+	private int id,category,num;
 	private String userid,title,content,writeday,ans;
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public int getId() {
 		return id;
 	}
@@ -15,12 +21,6 @@ public class MtmVo {
 	}
 	public void setCategory(int category) {
 		this.category = category;
-	}
-	public int getState() {
-		return state;
-	}
-	public void setState(int state) {
-		this.state = state;
 	}
 	public String getUserid() {
 		return userid;
