@@ -25,6 +25,12 @@ public class MyPageServiceImpl implements MypageService{
 	private MypageMapper mapper;
 
 	@Override
+	public String mypagemain(HttpSession session) {
+		String userid=session.getAttribute("userid").toString();
+		return "/mypage/mypagemain";
+	}
+	
+	@Override
 	public String member_edit(HttpSession session,Model model) {
 		String userid=session.getAttribute("userid").toString();
 		model.addAttribute("mvo",mapper.mypage_edit(userid));
@@ -189,9 +195,4 @@ public class MyPageServiceImpl implements MypageService{
 		return "redirect:/mypage/jumunview"; 
 	}
 
-	@Override
-	public String mypagemain() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
