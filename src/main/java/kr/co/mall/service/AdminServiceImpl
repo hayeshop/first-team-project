@@ -23,6 +23,7 @@ import kr.co.mall.mapper.AdminMapper;
 import kr.co.mall.vo.AdminVo;
 import kr.co.mall.vo.Cat2Vo;
 import kr.co.mall.vo.Cat3Vo;
+import kr.co.mall.vo.CatVo;
 import kr.co.mall.vo.FaqVo;
 import kr.co.mall.vo.GongjiVo;
 import kr.co.mall.vo.MemberVo;
@@ -66,7 +67,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public String adminproduct(HttpSession session, Model model) {
+	public String adminproduct(HttpSession session, Model model,HttpServletRequest request) {
+		
 		if(session.getAttribute("userid")==null)
 			return "/admin/adminlogin";
 		if(session.getAttribute("userid").equals("admin"))
@@ -81,6 +83,42 @@ public class AdminServiceImpl implements AdminService {
 				String[] img2=plist.get(i).getImg2().split(",");
 				model.addAttribute("img2",img2);
 			}
+			
+			//페이지
+			int page;
+		    if(request.getParameter("page")==null)
+		    {
+		    	page=1;
+		    }
+		    else
+		    {
+		    	page=Integer.parseInt(request.getParameter("page"));
+		    }
+		    int index=(page-1)*20;
+		    
+		    // pstart,pend,chong
+		    int pstart,pend;
+			ArrayList<CatVo> chong;
+		    
+		    pstart=page/10;
+			if(page%10 == 0)
+				pstart=pstart-1;
+			
+			pstart=pstart*10+1;
+		    pend=pstart+9;
+		    
+		    chong=mapper.getCat();
+		    
+		    if(pend>chong)
+		       pend=chong;
+		    
+		    model.addAttribute("page",page);
+		    model.addAttribute("pstart",pstart);
+		    model.addAttribute("pend",pend);
+		    model.addAttribute("chong",chong);
+			
+		    ArrayList<CatVo> list=mapper.getProduct(index);
+		    
 			model.addAttribute("plist",plist);
 			
 			return "/admin/adminproduct";
