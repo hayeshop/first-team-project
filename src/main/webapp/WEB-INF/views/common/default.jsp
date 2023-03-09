@@ -30,7 +30,7 @@
 		<c:if test="${userid!=null}">
 		  <a href="../mypage/mypage">${name}님</a>,	<a href="../login/logout">로그아웃</a>
 		</c:if>
-		   | <a>장바구니</a> | <a href="../customer/custom">고객센터</a>
+		   | <a>장바구니</a>
 		</div>
 	</div>	
 	</header>
@@ -39,8 +39,8 @@
 	<nav>
 	<ul class="menu"> 
 	  <li style="height:40px;"> <a href="../product/pro_home">가구홈</a></li>	
-	  <li> <a href="#">NEW</a> </li>
-      <li> <a href="#">BEST</a> </li>
+	  <li> <a href="#">커뮤니티</a> </li>
+      <li> <a href="../customer/custom">고객센터</a> </li>
       <li> <div class="search">
       	   <form name="search_form" method="post" action="search">
 		     <input type="text" placeholder="검색어를 입력하세요." name="search_text" maxlength="50"/>

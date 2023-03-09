@@ -6,6 +6,8 @@ import kr.co.mall.vo.ProductVo;
 
 public interface ProductMapper {
 
-	public ArrayList<ProductVo> getPro();
+	public ArrayList<ProductVo> getPro(int index);
+
+	public int getChong();
 
 }

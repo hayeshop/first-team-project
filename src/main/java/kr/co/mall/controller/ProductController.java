@@ -1,5 +1,7 @@
 package kr.co.mall.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -16,8 +18,8 @@ public class ProductController {
 	private ProductService service;
 	
 	@RequestMapping("/product/pro_home")
-	public String pro_home(Model model)
+	public String pro_home(Model model,HttpServletRequest request)
 	{
-		return service.pro_home(model);
+		return service.pro_home(model,request);
 	}
 }

@@ -71,6 +71,7 @@
 		<article id="ar1">NEW</article>
 		<article id="ar2">BEST</article>
 		<article id="ar3">초특가 아이템</article>
+		<article id="ar4">커뮤니티</article>
 	</section>
 </body>
 </html>

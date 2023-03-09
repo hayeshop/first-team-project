@@ -102,6 +102,9 @@
 </head>
 <body>
 	<section>
+	<br><br>
+	<h1 style="text-align:center">고객센터</h1>
+	<br><br><br><br>
 	<h3>FAQ</h3>
 	<ul class="faq">
 	  <c:forEach items="${flist}" var="fvo">

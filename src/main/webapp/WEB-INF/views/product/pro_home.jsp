@@ -10,6 +10,7 @@
 	section {
 		width:1000px;
 		margin:auto;
+		margin-top:50px;
 	}
 </style>
 </head>
@@ -23,6 +24,18 @@
 	    <div>${pvo.price}</div>
 	  </div>
 	  </c:forEach>
+	</div>
+	<div align="center">
+	
+	<c:forEach begin="${pstart}" end="${pend}" var="i">
+	  <c:if test="${page!=i}">
+	    <a href="pro_home?page=${i}">${i}</a>
+	  </c:if>
+	  <c:if test="${page==i}">
+	    <a style="color:navy;font-weight:bold">${i}</a>
+	  </c:if>
+	</c:forEach>
+	
 	</div>
 	</section>
 </body>
