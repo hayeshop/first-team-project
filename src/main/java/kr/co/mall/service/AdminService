@@ -19,7 +19,7 @@ public interface AdminService {
 
 	public String adminlogin_ok(AdminVo avo, HttpSession session);
 
-	public String adminproduct(HttpSession session, Model model);
+	public String adminproduct(HttpSession session, Model model, HttpServletRequest request);
 
 	public void getCat2(HttpServletRequest request, PrintWriter out);
 
