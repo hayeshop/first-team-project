@@ -12,36 +12,41 @@
 		margin:auto;
       	text-align:center;
 	}
+	h2 {
+		text-align:center;
+		color:#368AFF;
+		padding-bottom:50px;
+	}
+	section {
+      	color:white;
+      	margin-top:10px;
+      	cursor:pointer;
+	}
+	section input[type=button] {
+      width:100px;
+      height:30px;
+      border:1px solid skyblue; 
+      background:skyblue;
+      border:1px solid skyblue; 
+      color:white;
+      margin-top:10px;
+      cursor:pointer;
+   	}
 </style>
 </head>
 <body>
+	<h2> 마이페이지 </h2>
 	<section>
-	  <table width="900" align="center">
-		<caption> <h4> 마이페이지 </h4></caption>
-		  <tr>
-			 <td> 아이디 </td>
-	         <td> 이름 </td>
-	         <td> 우편번호 </td>
-	         <td> 주소 </td>
-	         <td> 전화번호 </td>
-	         <td> 이메일 </td>
-	         <td> 가입일 </td>
-		  </tr>
-		  <tr align="center">
-			 <td> ${mvo.userid} </td>
-	         <td> ${mvo.name} </td>
-	         <td> ${mvo.post} </td>
-	         <td> ${mvo.juso} ${mvo.juso_etc} </td>
-	         <td> ${mvo.phone} </td>
-	         <td> ${mvo.email} </td>
-	         <td> ${mvo.writeday} </td>
-		  </tr>
-	  </table>
-	  
-	  <div align="center"> 
-       <span id="edit" onclick="location='member_edit'"> 정보 변경 </span>
-     </div>
-     
+		<div align="center">
+			<input type="button" onclick="location='member_edit'" value="회원정보수정">
+			<input type="button" onclick="location='wishview'" value="찜 목록">
+			<!--  <div id="myedit"><a href="/mypage/member_edit">회원정보수정</a></div> <p> -->
+	  		<div id="myplace"><a href="/mypage/place_edit"> 배송지 관리 </a></div> <p>
+	  		<div id="myjumun"><a href="/mypage/jumunview">주문내역</a></div> <p>
+	  		<div id="myreview"><a href="/mypage/review">리뷰 작성</a></div> <p>
+     		<div id="#"><a href="#">문의내역</a></div> <p>
+     		<!-- <div id="mywish"><a href="/mypage/wishview">찜 목록</a></div> <p> -->
+     	</div>
 	</section>
 </body>
 </html>
