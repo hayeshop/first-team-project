@@ -45,9 +45,9 @@ public class AdminController {
 	
 	// 상품 파트
 	@RequestMapping("/admin/adminproduct")
-	public String adminproduct(HttpSession session,Model model)
+	public String adminproduct(HttpSession session,Model model,HttpServletRequest request)
 	{
-		return service.adminproduct(session,model);
+		return service.adminproduct(session,model,request);
 	}
 	@RequestMapping("/admin/getCat2")
 	public void getCat2(HttpServletRequest request,PrintWriter out)

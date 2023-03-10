@@ -26,7 +26,7 @@ public interface AdminMapper {
 
 	public void product_input(ProductVo pvo);
 
-	public ArrayList<ProductVo> product_list();
+	public ArrayList<ProductVo> product_list(int index);
 
 	public ArrayList<MemberVo> getMember();
 
@@ -49,5 +49,7 @@ public interface AdminMapper {
 	public ArrayList<MtmVo> getMtm();
 
 	public void mtm_update(String ans, String id);
+
+	public int getChong();
 	
 }

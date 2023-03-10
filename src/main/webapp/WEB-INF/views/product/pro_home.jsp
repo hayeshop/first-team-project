@@ -12,6 +12,13 @@
 		margin:auto;
 		margin-top:50px;
 	}
+	section a {
+		text-decoration:none;
+		color:black;
+	}
+	section a:hover {
+		color:skyblue;
+	}
 </style>
 </head>
 <body>
@@ -25,17 +32,51 @@
 	  </div>
 	  </c:forEach>
 	</div>
+	
+	<!-- 페이징 처리 -->
 	<div align="center">
 	
+	<!-- 10페이지 전 -->
+	<c:if test="${pstart != 1}">
+          <a href="pro_home?page=${pstart-1}"> &#9194; </a>
+    </c:if>
+    <c:if test="${pstart == 1}">
+      <span style="color:grey;cursor:default"> &#9194; </span>
+    </c:if>
+    
+    <!-- 1페이지 전 -->
+    <c:if test="${page != 1}">
+      <a href="pro_home?page=${page-1}"> &#9664; </a>
+    </c:if>
+    <c:if test="${page == 1}">
+      <span style="color:grey;cursor:default"> &#9664; </span>
+    </c:if>
+	
+	<!-- 페이지 -->
 	<c:forEach begin="${pstart}" end="${pend}" var="i">
 	  <c:if test="${page!=i}">
 	    <a href="pro_home?page=${i}">${i}</a>
 	  </c:if>
 	  <c:if test="${page==i}">
-	    <a style="color:navy;font-weight:bold">${i}</a>
+	    <span style="color:navy;font-weight:bold;cursor:default">${i}</span>
 	  </c:if>
 	</c:forEach>
 	
+	<!-- 1페이지 후 -->
+	<c:if test="${page != chong}">
+      <a href="pro_home?page=${page+1}"> &#9654; </a>
+    </c:if>
+    <c:if test="${page == chong}">
+      <span style="color:grey;cursor:default"> &#9654; </span>
+    </c:if>
+         
+	<!-- 10페이지 후 -->
+	<c:if test="${pend != chong}">
+      <a href="pro_home?page=${pend+1}"> &#9193; </a>
+    </c:if>
+    <c:if test="${pend == chong}">
+      <span style="color:grey;cursor:default"> &#9193; </span>
+    </c:if>
 	</div>
 	</section>
 </body>

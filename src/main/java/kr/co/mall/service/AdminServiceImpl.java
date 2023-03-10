@@ -67,7 +67,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public String adminproduct(HttpSession session, Model model) {
+	public String adminproduct(HttpSession session, Model model, HttpServletRequest request) {
 		if(session.getAttribute("userid")==null)
 			return "/admin/adminlogin";
 		if(session.getAttribute("userid").equals("admin"))
@@ -76,7 +76,35 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("category",mapper.getCat());
 			
 			// product테이블 읽어오기, view에 전달
-			ArrayList<ProductVo> plist=mapper.product_list();
+			int page;
+		    if(request.getParameter("page")==null)
+		    {
+		    	page=1;
+		    }
+		    else
+		    {
+		    	page=Integer.parseInt(request.getParameter("page"));
+		    }
+		    int index=(page-1)*10;
+		    
+		    // pstart,pend,chong		    
+		    int pstart=page/10;
+			if(page%10 == 0)
+				pstart--;
+			pstart=pstart*10+1;
+		    int pend=pstart+9;
+		    
+		    int chong=mapper.getChong();
+		    
+		    if(pend>chong)
+		       pend=chong;
+		    
+		    model.addAttribute("page",page);
+		    model.addAttribute("pstart",pstart);
+		    model.addAttribute("pend",pend);
+		    model.addAttribute("chong",chong);
+			
+			ArrayList<ProductVo> plist=mapper.product_list(index);
 			for(int i=0;i<plist.size();i++)
 			{
 				String[] img2=plist.get(i).getImg2().split(",");

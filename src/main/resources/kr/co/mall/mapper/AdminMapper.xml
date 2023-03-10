@@ -25,7 +25,7 @@
 		values(#{pcode},#{title},#{made},#{price},#{baesong},#{su},#{halin},#{juk},#{img1},#{img2},now())
 	</insert>
 	<select id="product_list" resultType="kr.co.mall.vo.ProductVo">
-		select * from product order by pcode
+		select * from product order by pcode limit #{param},10
 	</select>
 	
 	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">
@@ -66,4 +66,8 @@
 	<update id="mtm_update">
 		update mtm set ans=#{param1} where id=#{param2}
 	</update>
+	
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/10) from product
+	</select>
 </mapper>
