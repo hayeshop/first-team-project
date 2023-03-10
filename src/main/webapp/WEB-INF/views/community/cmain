@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	section {
+		margin:auto;
+      	text-align:center;
+      	background:yellow;
+	}
+	#div_ccat {
+		width:1000px;
+		height:100px;
+		background:blue;
+	}
+	#div_title {
+		padding-top:30px;
+		width:1000px;
+		height:100px;
+	}
+	#div_left{
+		width:900px;
+		height:100px;
+		background:purple;
+	}
+	#div_right{
+		width:100px;
+		height:100px;
+		background:purple;
+	}
+	#div_two {
+		width:1000px;
+		height:600px;
+		background:red;
+	}
+	#div_three {
+		padding-top:30px;
+		width:1000px;
+		height:100px;
+		background:green;
+	}
+	#div_four {
+		width:1000px;
+		height:600px;
+		background:red;
+	}
+</style>
+</head>
+<body>
+<section>
+	<div id="ccat">카테고리</div>
+		<div id="title">
+			<div id="left">인테리어 공유</div> / <div id="right">더보기</div>
+		</div>
+	<div id="two">사진이랑 내용</div>
+	<div id="three"> 인기 후기 / 더보기</div>
+	<div id="four">사진이랑 내용..(아래로 더 추가)</div>
+</section>
+</body>
+</html>
