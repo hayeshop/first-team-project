@@ -22,4 +22,10 @@ public class ProductController {
 	{
 		return service.pro_home(model,request);
 	}
+	
+	@RequestMapping("/product/pcontent")
+	public String pcontent(Model model,HttpServletRequest request)
+	{
+		return service.pcontent(model,request);
+	}
 }

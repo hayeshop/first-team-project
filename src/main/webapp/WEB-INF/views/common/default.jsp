@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<!-- css파일 불러오기 -->
-	<link rel="stylesheet" href="../resources/css/main.css?ver=2" type="text/css">
+	<link rel="stylesheet" href="../resources/css/main.css" type="text/css">
 	
 	<script>
 	  // 검색 기능
@@ -38,7 +38,7 @@
 	<!-- 메뉴 관련 -->
 	<nav>
 	<ul class="menu"> 
-	  <li style="height:40px;"> <a href="../product/pro_home">가구홈</a></li>	
+	  <li style="height:40px;"> <a href="../product/pro_home?pcode=p0">가구홈</a></li>	
 	  <li> <a href="#">커뮤니티</a> </li>
       <li> <a href="../customer/custom">고객센터</a> </li>
       <li> <div class="search">

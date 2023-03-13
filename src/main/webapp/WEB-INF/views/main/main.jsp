@@ -8,7 +8,7 @@
 <style>
 	section {
 		width:1000px;
-		height:500px;
+		height:800px;
 		margin:auto;
 		margin-top:50px;
 	}

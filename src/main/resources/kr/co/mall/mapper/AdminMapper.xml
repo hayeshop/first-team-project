@@ -25,7 +25,7 @@
 		values(#{pcode},#{title},#{made},#{price},#{baesong},#{su},#{halin},#{juk},#{img1},#{img2},now())
 	</insert>
 	<select id="product_list" resultType="kr.co.mall.vo.ProductVo">
-		select * from product order by pcode limit #{param},10
+		select * from product order by id desc limit #{param},10
 	</select>
 	
 	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">

@@ -8,4 +8,6 @@ public interface ProductService {
 
 	public String pro_home(Model model, HttpServletRequest request);
 
+	public String pcontent(Model model, HttpServletRequest request);
+
 }

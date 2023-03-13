@@ -6,8 +6,10 @@ import kr.co.mall.vo.ProductVo;
 
 public interface ProductMapper {
 
-	public ArrayList<ProductVo> getPro(int index);
+	public ArrayList<ProductVo> getPro(String pcode, int index);
 
-	public int getChong();
+	public int getChong(String pcode);
+
+	public ProductVo pcontent(String pcode);
 
 }

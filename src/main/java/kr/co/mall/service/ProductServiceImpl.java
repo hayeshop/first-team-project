@@ -21,15 +21,18 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public String pro_home(Model model, HttpServletRequest request) {
+		String pcode=request.getParameter("pcode");
+		model.addAttribute("pcode",pcode);
+		
 		int page;
 		if(request.getParameter("page")==null)
 			page=1;
 		else
 			page=Integer.parseInt(request.getParameter("page"));
 		
-		int index=(page-1)*18;
+		int index=(page-1)*20;
 		
-		ArrayList<ProductVo> plist=mapper.getPro(index);
+		ArrayList<ProductVo> plist=mapper.getPro(pcode,index);
 		model.addAttribute("plist",plist);
 		
 		int pstart=page/10;
@@ -38,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 		pstart=pstart*10+1;
 		int pend=pstart+9;
 		
-		int chong=mapper.getChong();
+		int chong=mapper.getChong(pcode);
 		
 		if(pend>chong)
 			pend=chong;
@@ -49,5 +52,14 @@ public class ProductServiceImpl implements ProductService {
 		model.addAttribute("page",page);
 		
 		return "/product/pro_home";
+	}
+
+	@Override
+	public String pcontent(Model model, HttpServletRequest request) {
+		String pcode=request.getParameter("pcode");
+		ProductVo pvo=mapper.pcontent(pcode);
+		model.addAttribute("pvo",pvo);
+		
+		return "/product/pcontent";
 	}
 }
