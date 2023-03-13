@@ -1,0 +1,63 @@
+package kr.co.mall.service;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import kr.co.mall.mapper.CommunityMapper;
+import kr.co.mall.vo.CommunityVo;
+
+@Service
+@Qualifier("cs")
+public class CommunityServiceImpl implements CommunityService {
+	
+	@Autowired
+	private CommunityMapper mapper;
+	
+	@Override
+	public String write_ok(CommunityVo cvo, HttpSession session) {
+		if(session.getAttribute("userid")==null)
+		{
+			return "../main/main.jsp";
+		}
+		else
+		{
+			return "redirect:/community/list";
+		}
+	}
+	
+	@Override
+	public String list(Model model,HttpServletRequest request) {
+		ArrayList<CommunityVo> list=mapper.list();
+		model.addAttribute("list",list);
+		return "/community/list";
+	}
+	
+	@Override
+	public String delete(CommunityVo cvo, HttpSession session) {
+		mapper.delete(cvo.getId());
+		return "redirect:/community/list";
+	}
+	
+	@Override
+	public String update(CommunityVo cvo,Model model) {
+		CommunityVo avo2=mapper.update(cvo);
+		model.addAttribute("cvo",cvo2);
+		return "/community/update";
+	}
+
+	@Override
+	public String update_ok(CommunityVo cvo) {
+		String userid="";
+		mapper.update_ok(cvo);
+		return "redirect:/gongji/content";
+		
+	}
+	
+}
