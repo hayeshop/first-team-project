@@ -10,7 +10,7 @@
       width:1000px;
       height:600px;
       margin:auto;
-      margin-top:50px;
+      margin-top:200px;
       text-align:center;
    	}
     
@@ -70,7 +70,7 @@
 <body>
 <section>
 <!-- 아이디 조회폼 -->
-	<h4 id="title">아이디 찾기 </h4>
+	<div><a href="../main/main"><img src="../resources/img/logo4.jpg" width="180px"></a></div>
      <form name="uform" id="uform">
       <input type="text" name="name" placeholder="이 름"> <p>
       <input type="text" name="email" placeholder="이메일"> <p>

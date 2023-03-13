@@ -26,6 +26,7 @@ import kr.co.mall.vo.Cat3Vo;
 import kr.co.mall.vo.FaqVo;
 import kr.co.mall.vo.GongjiVo;
 import kr.co.mall.vo.MemberVo;
+import kr.co.mall.vo.MtmVo;
 import kr.co.mall.vo.ProductVo;
 
 @Service
@@ -66,7 +67,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public String adminproduct(HttpSession session, Model model) {
+	public String adminproduct(HttpSession session, Model model, HttpServletRequest request) {
 		if(session.getAttribute("userid")==null)
 			return "/admin/adminlogin";
 		if(session.getAttribute("userid").equals("admin"))
@@ -75,7 +76,35 @@ public class AdminServiceImpl implements AdminService {
 			model.addAttribute("category",mapper.getCat());
 			
 			// product테이블 읽어오기, view에 전달
-			ArrayList<ProductVo> plist=mapper.product_list();
+			int page;
+		    if(request.getParameter("page")==null)
+		    {
+		    	page=1;
+		    }
+		    else
+		    {
+		    	page=Integer.parseInt(request.getParameter("page"));
+		    }
+		    int index=(page-1)*10;
+		    
+		    // pstart,pend,chong		    
+		    int pstart=page/10;
+			if(page%10 == 0)
+				pstart--;
+			pstart=pstart*10+1;
+		    int pend=pstart+9;
+		    
+		    int chong=mapper.getChong();
+		    
+		    if(pend>chong)
+		       pend=chong;
+		    
+		    model.addAttribute("page",page);
+		    model.addAttribute("pstart",pstart);
+		    model.addAttribute("pend",pend);
+		    model.addAttribute("chong",chong);
+			
+			ArrayList<ProductVo> plist=mapper.product_list(index);
 			for(int i=0;i<plist.size();i++)
 			{
 				String[] img2=plist.get(i).getImg2().split(",");
@@ -188,8 +217,34 @@ public class AdminServiceImpl implements AdminService {
 			return "/admin/adminlogin";
 		if(session.getAttribute("userid").equals("admin"))
 		{
-			model.addAttribute("flist",mapper.getFaq());
-			model.addAttribute("glist",mapper.getGongji());
+			// FAQ list
+			ArrayList<FaqVo> flist=mapper.getFaq();
+			for(int i=0;i<flist.size();i++)
+			{
+				String ans=flist.get(i).getAns().replace("\r\n", "<br>");
+				ans=ans.replace(")", "]");
+				ans=ans.replace("(", "[");
+				ans=ans.replace("'", "");
+				flist.get(i).setAns(ans);
+			}
+			model.addAttribute("flist",flist);
+			
+			// Gongji list
+			ArrayList<GongjiVo> glist=mapper.getGongji();
+			for(int i=0;i<glist.size();i++)
+			{
+				String content=glist.get(i).getContent().replace("\r\n", "<br>");
+				content=content.replace(")", "]");
+				content=content.replace("(", "[");
+				content=content.replace("'", "");
+				glist.get(i).setContent(content);
+			}
+			model.addAttribute("glist",glist);
+			
+			// mtm list
+			ArrayList<MtmVo> mlist=mapper.getMtm();
+			model.addAttribute("mlist",mlist);
+			
 			return "/admin/admincustom";
 		}
 		else
@@ -235,6 +290,68 @@ public class AdminServiceImpl implements AdminService {
 		if(session.getAttribute("userid").equals("admin"))
 		{
 			mapper.gong_del(gvo.getId());
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String gongji_update(HttpSession session, GongjiVo gvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.gongji_update(gvo);
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String faq_update(HttpSession session, FaqVo fvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.faq_update(fvo);
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String faq_del(HttpSession session, FaqVo fvo) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			mapper.faq_del(fvo.getId());
+			return "redirect:/admin/admincustom";
+		}
+		else
+		{
+			return "redirect:/main/main";
+		}
+	}
+
+	@Override
+	public String mtm_update(HttpSession session, HttpServletRequest request) {
+		if(session.getAttribute("userid")==null)
+			return "/admin/adminlogin";
+		if(session.getAttribute("userid").equals("admin"))
+		{
+			String id=request.getParameter("id");
+			String ans=request.getParameter("ans");
+			mapper.mtm_update(ans,id);
 			return "redirect:/admin/admincustom";
 		}
 		else

@@ -3,5 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mall.mapper.MypageMapper">
-
+	<select id="getMtm" resultType="int">
+		select count(*) from mtm where userid=#{param}
+	</select>
+	<select id="mtm_view" resultType="kr.co.mall.vo.MtmVo">
+		select *,row_number() over(order by id desc) as num 
+		from mtm where userid=#{param} order by id desc
+	</select>
+	
+	<select id="cart" resultType="kr.co.mall.vo.CartVo">
+		select p.halin, c.pcode, p.img1, p.title, p.price, p.baesong,
+		c.id, c.writeday, c.su from cart as c, product as p
+		where userid=#{param1} and c.pcode=p.pcode
+	</select>
 </mapper>

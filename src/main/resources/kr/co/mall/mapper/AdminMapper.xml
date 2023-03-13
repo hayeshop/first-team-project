@@ -25,7 +25,7 @@
 		values(#{pcode},#{title},#{made},#{price},#{baesong},#{su},#{halin},#{juk},#{img1},#{img2},now())
 	</insert>
 	<select id="product_list" resultType="kr.co.mall.vo.ProductVo">
-		select * from product order by pcode
+		select * from product order by id desc limit #{param},10
 	</select>
 	
 	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">
@@ -33,7 +33,7 @@
 	</select>
 	
 	<select id="getFaq" resultType="kr.co.mall.vo.FaqVo">
-		select * from faq
+		select *,row_number() over(order by id) as num from faq
 	</select>
 	<insert id="faq_input" parameterType="kr.co.mall.vo.FaqVo">
 		insert into faq(que,ans) values(#{que},#{ans})
@@ -44,9 +44,30 @@
 		values(#{chk},#{title},#{content},now())
 	</insert>
 	<select id="getGongji" resultType="kr.co.mall.vo.GongjiVo">
-		select * from gongji order by id desc, chk
+		select * from gongji order by chk desc,id desc
 	</select>
 	<delete id="gong_del">
 		delete from gongji where id=#{param}
 	</delete>
+	<update id="gongji_update" parameterType="kr.co.mall.vo.GongjiVo">
+		update gongji set title=#{title},content=#{content},chk=#{chk} where id=#{id}
+	</update>
+	
+	<update id="faq_update" parameterType="kr.co.mall.vo.FaqVo">
+		update faq set que=#{que},ans=#{ans} where id=#{id}
+	</update>
+	<delete id="faq_del">
+		delete from faq where id=#{param}
+	</delete>
+	
+	<select id="getMtm" resultType="kr.co.mall.vo.MtmVo">
+		select * from mtm order by id desc
+	</select>
+	<update id="mtm_update">
+		update mtm set ans=#{param1} where id=#{param2}
+	</update>
+	
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/10) from product
+	</select>
 </mapper>

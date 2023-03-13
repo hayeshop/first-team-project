@@ -22,15 +22,15 @@
 <body>
 	<header>
 	<div id="top"> <!-- top 로그인,회원가입 / 장바구니, 마이페이지-->
-		<div id="left"><a href="../main/main" style="color:#0080c0;font-size:100px;font-weight:bold;">LOGO</a></div>
+		<div id="left"><a href="../main/main"><img src="../resources/img/logo4.jpg" width="180px"></a></div>
 		<div id="right">
 		<c:if test="${userid==null}">
 		  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a>
 		</c:if>
 		<c:if test="${userid!=null}">
-		  <a href="#">${name}님</a>,	<a href="../login/logout">로그아웃</a>
+		  <a href="../mypage/mypage">${name}님</a>, <a href="../login/logout">로그아웃</a>
 		</c:if>
-		   | <a>장바구니</a> | <a href="../customer/custom">고객센터</a>
+		   | <a href="../mypage/cart">장바구니</a> | <a href="../customer/custom">고객센터</a>
 		</div>
 	</div>	
 	</header>
@@ -38,17 +38,9 @@
 	<!-- 메뉴 관련 -->
 	<nav>
 	<ul class="menu"> 
-	  <li> <a href="#">카테고리</a>
-	   <ul class="submenu">
-        <li><a href="#">침실가구 </a></li>
-        <li><a href="#">옷장/수납장 </a></li>
-	    <li><a href="#">거실가구 </a></li>
-	    <li><a href="#">주방가구 </a></li>
-	    <li><a href="#">서재가구 </a></li>
-	   </ul>
-	  </li>	
-	  <li> <a href="#">new</a> </li>
-      <li> <a href="#">best</a> </li>
+	  <li style="height:40px;"> <a href="../product/pro_home?pcode=p0">쇼핑홈</a></li>	
+	  <li> <a href="#">커뮤니티</a> </li>
+      <li> <a href="../customer/custom">고객센터</a> </li>
       <li> <div class="search">
       	   <form name="search_form" method="post" action="search">
 		     <input type="text" placeholder="검색어를 입력하세요." name="search_text" maxlength="50"/>
@@ -61,12 +53,12 @@
   <decorator:body/>
   	<footer>
   	<div id="bottom">
-  		<div id="footer_logo" style="color:#0080c0;font-size:50px;font-weight:bold;">
-  			LOGO
+  		<div id="footer_logo">
+  			<img src="../resources/img/logo3.jpg" width="140px">
   		</div>
   		<div id="address">
   			<ul>
-  				<li>경기도</li>
+  				<li>Gyeonggi-do</li>
   				<li>TEL:031-123-4567 Email : mola@email.com</li>
   				<li>COPYRIGHT (C) 하예 ALL RIGHTS RESERVED</li>
   				<li><a style="text-decoration:none;color:grey;font-size:13px;" href="../admin/adminmain">관리자</a></li>

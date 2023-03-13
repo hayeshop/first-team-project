@@ -80,21 +80,37 @@
     section #gongji tr:last-child td {
      	border-bottom:2px solid skyblue;
     }
+    section a {
+    	text-decoration:none;
+    	color:black;
+    }
     section #gongji a:hover {
      	text-decoration:none;
      	color:skyblue;
      	cursor:pointer;
     }
+    section #mtm {
+    	width:120px;
+    	margin-top:20px;
+    	border:1px solid skyblue;
+    	border-radius:5px;
+    	padding:5px;
+    	background:skyblue;
+    	font-weight:bold;
+    }
 </style>
 </head>
 <body>
 	<section>
+	<br><br>
+	<h1 style="text-align:center">고객센터</h1>
+	<br><br><br><br>
 	<h3>FAQ</h3>
 	<ul class="faq">
 	  <c:forEach items="${flist}" var="fvo">
 	    <li>
-	    <input type="checkbox" id="faq${fvo.id}">
-	    <label for="faq${fvo.id}">${fvo.que}</label>
+	    <input type="checkbox" id="faq${fvo.num}">
+	    <label for="faq${fvo.num}">${fvo.que}</label>
 	    <div>
 	      <p>${fvo.ans}</p>
 	    </div>
@@ -113,7 +129,7 @@
      <c:forEach items="${glist}" var="gvo">
      <tr>
         <td> 
-        <a><c:if test="${gvo.chk==1}"> <b style='color:red;'>[필독]</b> </c:if> 
+        <a href="gongji_content?id=${gvo.id}"><c:if test="${gvo.chk==1}"> <b style='color:red;'>[필독]</b> </c:if> 
         ${gvo.title}</a>
         </td>
         <td align="center"> 관리자 </td>
@@ -121,6 +137,10 @@
      </tr>
 	 </c:forEach>
 	</table>
+	
+	<br><br><br><br>
+	<h3>1:1 문의하기</h3>
+	<div id="mtm"><a href="mtm">문의글 작성하기</a></div>
 	</section>
 </body>
 </html>

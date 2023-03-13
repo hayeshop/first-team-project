@@ -12,6 +12,7 @@
   ul {
     width:1000px;
     margin:auto;
+    margin-top:20px;
   }
   ul li {
     list-style:none;
@@ -31,7 +32,7 @@
 </style>
 </head>
 <body>
-	<a href="../main/main" style="text-decoration:none;"><h2 align="center" style="color:#0080c0;">LOGO</h2></a>
+	<div><a href="../main/main" style="text-decoration:none;"><img src="../resources/img/logo3.jpg" width="120px"></a></div>
 	<div>
 	<ul>
 	  <li><a href="adminproduct">상품관리</a></li>

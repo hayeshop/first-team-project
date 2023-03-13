@@ -11,6 +11,7 @@
       width:1000px;
       height:600px;
       margin:auto;
+      margin-top:200px;
       text-align:center;
    }
    section div {
@@ -32,6 +33,7 @@
       border:1px solid skyblue; 
       background:skyblue;
       color:white;
+      margin-bottom:20px;
    }
   </style>
 </head>
@@ -39,7 +41,7 @@
    <section>
       <form method="post" action="login_ok">
        
-        <h3> 로그인 </h3>
+        <div><a href="../main/main"><img src="../resources/img/logo4.jpg" width="180px"></a></div>
         <div> <input type="text" name="userid" placeholder="아이디"> </div>
         <div> <input type="password" name="pwd" placeholder="비밀번호"> </div>
         <div> <input type="submit" value="로그인"> </div>
@@ -47,9 +49,10 @@
         <div id="msg" style="font-size:12px;color:red;">아이디 혹은 비밀번호가 틀립니다</div>
        </c:if>
       </form>
-      <div align="center">
+      <div align="center" style="font-size:14px;">
         <span style="cursor:pointer;" onclick="location='uform'"> 아이디 찾기 </span> |
-        <span style="cursor:pointer;" onclick="location='pform'"> 비밀번호 찾기 </span>
+        <span style="cursor:pointer;" onclick="location='pform'"> 비밀번호 찾기 </span> |
+        <span style="cursor:pointer;" onclick="location='../member/member_input'">회원가입</span>
       </div>
    </section>
 </body>

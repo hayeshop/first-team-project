@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 	<style>
 	  section {
-	  	width:1000px;
+	  	width:400px;
 	  	margin:auto;
+	  	margin-bottom:200px;
+	  	margin-top:100px;
 	  }
 	  section #member_input div {
 	  	margin-top:10px;
@@ -143,7 +145,7 @@
 </head>
 <body>
 	<section>
-	<h1>회원가입</h1>
+	<div style="margin-left:60px;"><a href="../main/main"><img src="../resources/img/logo4.jpg" width="180px"></a></div>
 	<form id="member_input" name="mem" method="post" action="member_input_ok" onsubmit="return mem_check()">
 		<div>
 		  <div>아이디를 입력해주세요.</div>
@@ -185,7 +187,7 @@
 		</div>
 		<div>
 		  <div>본인명의의 휴대전화번호를 입력해주세요.</div>
-		<select>
+		<select name="telecom">
 			<option value="" disabled selected>통신사</option>
 			<option value="1">SKT</option>
 			<option value="2">KT</option>

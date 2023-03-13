@@ -19,7 +19,7 @@ public interface AdminService {
 
 	public String adminlogin_ok(AdminVo avo, HttpSession session);
 
-	public String adminproduct(HttpSession session, Model model);
+	public String adminproduct(HttpSession session, Model model, HttpServletRequest request);
 
 	public void getCat2(HttpServletRequest request, PrintWriter out);
 
@@ -38,5 +38,13 @@ public interface AdminService {
 	public String gongji_input(HttpSession session, GongjiVo gvo);
 
 	public String gong_del(HttpSession session, GongjiVo gvo);
+	
+	public String gongji_update(HttpSession session, GongjiVo gvo);
+
+	public String faq_update(HttpSession session, FaqVo fvo);
+
+	public String faq_del(HttpSession session, FaqVo fvo);
+
+	public String mtm_update(HttpSession session, HttpServletRequest request);
 
 }

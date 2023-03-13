@@ -45,9 +45,9 @@ public class AdminController {
 	
 	// 상품 파트
 	@RequestMapping("/admin/adminproduct")
-	public String adminproduct(HttpSession session,Model model)
+	public String adminproduct(HttpSession session,Model model,HttpServletRequest request)
 	{
-		return service.adminproduct(session,model);
+		return service.adminproduct(session,model,request);
 	}
 	@RequestMapping("/admin/getCat2")
 	public void getCat2(HttpServletRequest request,PrintWriter out)
@@ -100,6 +100,30 @@ public class AdminController {
 	public String gong_del(HttpSession session,GongjiVo gvo)
 	{
 		return service.gong_del(session,gvo);
+	}
+	
+	@RequestMapping("/admin/gongji_update")
+	public String gongji_update(HttpSession session,GongjiVo gvo)
+	{
+		return service.gongji_update(session,gvo);
+	}
+	
+	@RequestMapping("/admin/faq_update")
+	public String faq_update(HttpSession session,FaqVo fvo)
+	{
+		return service.faq_update(session,fvo);
+	}
+	
+	@RequestMapping("/admin/faq_del")
+	public String faq_del(HttpSession session,FaqVo fvo)
+	{
+		return service.faq_del(session, fvo);
+	}
+	
+	@RequestMapping("/admin/mtm_update")
+	public String mtm_update(HttpSession session,HttpServletRequest request)
+	{
+		return service.mtm_update(session,request);
 	}
 	
 }

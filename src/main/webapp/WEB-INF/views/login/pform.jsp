@@ -10,7 +10,7 @@
 	      width:1000px;
 	      height:600px;
 	      margin:auto;
-	      margin-top:50px;
+	      margin-top:200px;
 	      text-align:center;
 	   	}
 	   section #pform {
@@ -71,7 +71,7 @@
 <body>
 <section>
 <!-- 비밀번호 조회폼 -->
-	<h4 id="title">비밀번호 찾기 </h4>
+	<div><a href="../main/main"><img src="../resources/img/logo4.jpg" width="180px"></a></div>
      <form name="pform" id="pform">
       <input type="text" name="userid" placeholder="아이디"> <p>
       <input type="text" name="name" placeholder="이 름"> <p>
