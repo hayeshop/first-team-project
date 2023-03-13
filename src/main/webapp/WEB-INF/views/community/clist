@@ -18,12 +18,14 @@
     <table width="600" align="center">
 		<caption> <h3> 집들이 </h3></caption>
 		 <tr align="center">
+	        <!-- 사진 미리보기도 넣기 -->
 	        <td> 제목 </td>
 	        <td> 작성자 </td>
 	        <td> 작성일 </td>
        </tr>
      <c:forEach items="${clist}" var="cvo">
      <tr>
+     	<!-- 사진 미리보기도 넣기 -->
         <td> ${cvo.title} </td>
         <td> ${cvo.name} </td>
         <td> ${cvo.writeday} </td>
