@@ -5,9 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
- <style>
+<style>
    #section {
       width:1000px;
       height:500px;
@@ -31,6 +29,8 @@
 		  document.getElementsByClassName("up")[size-1].remove();
  	}
  </script>
+</head>
+<body>
   <section>
     <form name="cform" method="post" action="cwrite_ok">
        <h3> 집들이 글쓰기 </h3>
