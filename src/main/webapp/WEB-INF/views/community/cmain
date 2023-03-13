@@ -6,58 +6,60 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	section {
-		margin:auto;
-      	text-align:center;
-      	background:yellow;
-	}
-	#div_ccat {
-		width:1000px;
-		height:100px;
-		background:blue;
-	}
-	#div_title {
-		padding-top:30px;
-		width:1000px;
-		height:100px;
-	}
-	#div_left{
-		width:900px;
-		height:100px;
-		background:purple;
-	}
-	#div_right{
-		width:100px;
-		height:100px;
-		background:purple;
-	}
-	#div_two {
-		width:1000px;
-		height:600px;
-		background:red;
-	}
-	#div_three {
-		padding-top:30px;
-		width:1000px;
-		height:100px;
-		background:green;
-	}
-	#div_four {
-		width:1000px;
-		height:600px;
-		background:red;
-	}
+
 </style>
+<script>
+/* window.onload=function()
+{
+	   var mm=0;
+	   var main=["1.jpg","2.jpg","3.jpg","4.jpg"];
+	   
+	   setInterval(function() 
+	   {
+		   mm++;  
+		   if(mm==main.length)         
+			   mm=0;                            
+		   document.getElementById("moveimg").src="../img/"+main[mm];
+	   },3000);
+} */
+</script>
 </head>
 <body>
-<section>
-	<div id="ccat">카테고리</div>
-		<div id="title">
-			<div id="left">인테리어 공유</div> / <div id="right">더보기</div>
-		</div>
-	<div id="two">사진이랑 내용</div>
-	<div id="three"> 인기 후기 / 더보기</div>
-	<div id="four">사진이랑 내용..(아래로 더 추가)</div>
-</section>
+
+
+<div id="section">
+      <div id="moveimg">
+    	<img src="../img/6.jpg" width="1200" height="280" id="mainimg">
+  	  </div>
+  	  <table width="700" align="center">
+      	<caption> <h3> 커뮤니티 </h3></caption>
+      	<tr>
+      		<td colspan="4"> 집들이 </td>
+      	</tr>
+      	<tr>
+      		<td><img src="#" width="500" height="500"></td> <!-- 대표 이미지  -->
+      		<td> </td> <!-- 제목 -->
+      		<td><img src="img/" width="500" height="500"></td> <!-- 2번째 게시물 대표 이미지  -->
+      		<td> </td> <!-- 2번째 게시물 제목 -->
+      		<td><img src="../resources/" width="500" height="500"></td> <!-- 3번째 게시물 대표 이미지  -->
+      		<td> </td> <!-- 3번째 게시물 제목 -->
+      		<td><img src="#" width="500" height="500"></td> <!-- 4번째 게시물 대표 이미지  -->
+      		<td> </td> <!-- 4번째 게시물 제목 -->
+      	</tr>
+      	<tr>
+      	<tr>
+      		<td colspan="4"> 인기 리뷰 </td>
+      	<tr>
+      		<td><img src="#" width="500" height="500"></td> <!-- 대표 이미지  -->
+      		<td> </td> <!-- 제목 -->
+      		<td><img src="img/" width="500" height="500"></td> <!-- 2번째 리뷰 대표 이미지  -->
+      		<td> </td> <!-- 2번째 리뷰 제목 -->
+      		<td><img src="../resources/" width="500" height="500"></td> <!-- 3번째 리뷰 대표 이미지  -->
+      		<td> </td> <!-- 3번째 리뷰 제목 -->
+      		<td><img src="#" width="500" height="500"></td> <!-- 4번째 리뷰 대표 이미지  -->
+      		<td> </td> <!-- 4번째 리뷰 제목 -->
+      	</tr>
+      </table>
+</div>      
 </body>
 </html>
