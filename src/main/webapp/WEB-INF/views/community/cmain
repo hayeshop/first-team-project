@@ -8,29 +8,11 @@
 <style>
 
 </style>
-<script>
-/* window.onload=function()
-{
-	   var mm=0;
-	   var main=["1.jpg","2.jpg","3.jpg","4.jpg"];
-	   
-	   setInterval(function() 
-	   {
-		   mm++;  
-		   if(mm==main.length)         
-			   mm=0;                            
-		   document.getElementById("moveimg").src="../img/"+main[mm];
-	   },3000);
-} */
-</script>
 </head>
 <body>
 
 
 <div id="section">
-      <div id="moveimg">
-    	<img src="../img/6.jpg" width="1200" height="280" id="mainimg">
-  	  </div>
   	  <table width="700" align="center">
       	<caption> <h3> 커뮤니티 </h3></caption>
       	<tr>
@@ -45,19 +27,6 @@
       		<td> </td> <!-- 3번째 게시물 제목 -->
       		<td><img src="#" width="500" height="500"></td> <!-- 4번째 게시물 대표 이미지  -->
       		<td> </td> <!-- 4번째 게시물 제목 -->
-      	</tr>
-      	<tr>
-      	<tr>
-      		<td colspan="4"> 인기 리뷰 </td>
-      	<tr>
-      		<td><img src="#" width="500" height="500"></td> <!-- 대표 이미지  -->
-      		<td> </td> <!-- 제목 -->
-      		<td><img src="img/" width="500" height="500"></td> <!-- 2번째 리뷰 대표 이미지  -->
-      		<td> </td> <!-- 2번째 리뷰 제목 -->
-      		<td><img src="../resources/" width="500" height="500"></td> <!-- 3번째 리뷰 대표 이미지  -->
-      		<td> </td> <!-- 3번째 리뷰 제목 -->
-      		<td><img src="#" width="500" height="500"></td> <!-- 4번째 리뷰 대표 이미지  -->
-      		<td> </td> <!-- 4번째 리뷰 제목 -->
       	</tr>
       </table>
 </div>      
