@@ -28,7 +28,7 @@
 		  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a>
 		</c:if>
 		<c:if test="${userid!=null}">
-		  <a href="../mypage/mypage">${name}님</a>, <a>환영합니다</a> | <a href="../login/logout">로그아웃</a>
+		  <a href="#">${name}님</a> | <a  href="../mypage/mypage">마이페이지</a> | <a href="../login/logout">로그아웃</a>
 		</c:if>
 		   | <a href="../mypage/cart">장바구니</a>
 		</div>

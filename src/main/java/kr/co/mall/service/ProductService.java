@@ -18,4 +18,6 @@ public interface ProductService {
 
 	public void cart_add(HttpServletRequest request, HttpSession session, PrintWriter out);
 
+	public String order(HttpServletRequest request, HttpSession session, Model model);
+
 }

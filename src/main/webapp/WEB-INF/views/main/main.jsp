@@ -13,14 +13,14 @@
 		margin-top:50px;
 	}
 	#mimage {
-		width:1500px;
-		height:600px;
+		width:1000px;
+		height:400px;
 		margin:auto;
 		overflow:hidden;
 	}
 	#msub {
 		width:7000px;
-		height:600px;
+		height:400px;
 		margin-left:0px;
 	}
 	section article {
@@ -50,13 +50,13 @@
 		{
 			$("#msub").animate(
 			{
-				marginLeft:"-1500px"
-			},2000,function()
+				marginLeft:"-1000px"
+			},3000,function()
 				{
 					$("#msub > img").eq(0).insertAfter($("#msub > img").eq(3));
 					$("#msub").css("margin-left","0px");
 				});
-		},6000);
+		},4500);
 	}
 </script>
 </head>
@@ -64,7 +64,7 @@
 	<!-- 슬라이드 사진 -->
 	<div id="mimage">
 	<div id="msub">
-		<img src="../resources/img/main1.png" width="1500" height="600"><img src="../resources/img/main2.png" width="1500" height="600"><img src="../resources/img/main3.png" width="1500" height="600"><img src="../resources/img/main4.png" width="1500" height="600">
+		<img src="../resources/img/main1.png" width="1000" height="400"><img src="../resources/img/main2.png" width="1000" height="400"><img src="../resources/img/main3.png" width="1000" height="400"><img src="../resources/img/main4.png" width="1000" height="400">
 	</div>
 	</div>
 	<section>

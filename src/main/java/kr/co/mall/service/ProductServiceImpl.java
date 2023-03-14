@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import kr.co.mall.mapper.ProductMapper;
+import kr.co.mall.vo.BaesongVo;
+import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.ProductVo;
 
 @Service
@@ -29,7 +31,8 @@ public class ProductServiceImpl implements ProductService {
 	public String pro_home(Model model, HttpServletRequest request) {
 		String pcode=request.getParameter("pcode");
 		model.addAttribute("pcode",pcode);
-		
+
+		// 페이지 작업
 		int page;
 		if(request.getParameter("page")==null)
 			page=1;
@@ -88,7 +91,7 @@ public class ProductServiceImpl implements ProductService {
 				if(len>3)	// 상품이 3개 이상 => 4개라면
 				{
 					int n=imsi.indexOf("/");
-					imsi.substring(n+1);  // 기존의 상품+현재보는 상품으로 3개 이하의 상품코드를 가진다
+					imsi=imsi.substring(n+1);  // 기존의 상품+현재보는 상품으로 3개 이하의 상품코드를 가진다
 				}
 				// 변경된 imsi를 쿠키변수 pcode에 저장
 				Cookie cookie2=new Cookie("pcode",imsi);
@@ -104,6 +107,8 @@ public class ProductServiceImpl implements ProductService {
 			cookie2.setMaxAge(600);
 			response.addCookie(cookie2);
 		}
+		System.out.println(imsi);
+		
 		// imsi문자열에 있는  pcode를 이용하여 해당 그림파일의 이름 가져오기
 		String[] pcode2=imsi.split("/");
 		ArrayList<ProductVo> plist2=new ArrayList<ProductVo>();
@@ -187,5 +192,37 @@ public class ProductServiceImpl implements ProductService {
 				out.print("1");
 			}
 		}
+	}
+
+	@Override
+	public String order(HttpServletRequest request, HttpSession session, Model model) {
+		if(session.getAttribute("userid")==null)
+			return "redirect:/login/login";
+		
+		String userid=session.getAttribute("userid").toString();
+		MemberVo mvo=mapper.getMember(userid);
+		model.addAttribute("mvo",mvo);
+		
+		// 배송지 정보
+		BaesongVo bvo=mapper.getBaesong(userid);
+		if(bvo==null)
+		{
+			BaesongVo bvo2=new BaesongVo();
+			bvo2.setName(mvo.getName());
+			bvo2.setPhone(mvo.getPhone());
+			bvo2.setPost(mvo.getPost());
+			bvo2.setJuso(mvo.getJuso());
+			bvo2.setJuso_etc(mvo.getJuso_etc());
+			bvo2.setUserid(userid);
+			
+			mapper.setBaesong(bvo2);
+			
+			model.addAttribute("bvo",bvo2);
+		}
+		else
+		{
+			model.addAttribute("bvo",bvo);
+		}
+		return "/product/order";
 	}
 }

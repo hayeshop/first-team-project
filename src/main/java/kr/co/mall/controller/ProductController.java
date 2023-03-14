@@ -44,4 +44,10 @@ public class ProductController {
 	{
 		service.cart_add(request,session,out);
 	}
+	
+	@RequestMapping("/product/order")
+	public String order(HttpServletRequest request,HttpSession session,Model model)
+	{
+		return service.order(request,session,model);
+	}
 }

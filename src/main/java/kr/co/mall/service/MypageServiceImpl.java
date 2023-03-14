@@ -37,6 +37,10 @@ public class MypageServiceImpl implements MypageService {
 			int cnum=mapper.getCart(userid);
 			model.addAttribute("cnum",cnum);
 			
+			// wish테이블에서 userid별로 위시리스트 상품 개수 불러오기
+			int wnum=mapper.getWish(userid);
+			model.addAttribute("wnum",wnum);
+			
 			return "/mypage/mypage";
 		}
 	}
@@ -108,5 +112,44 @@ public class MypageServiceImpl implements MypageService {
 		for(int i=0;i<id.length;i++)
 			mapper.cart_del(id[i]);
 		return "redirect:/mypage/cart";
+	}
+
+	@Override
+	public String wish(HttpSession session, Model model) {
+		if(session.getAttribute("userid")==null)
+		{
+			return "redirect:/login/login";
+		}
+		else
+		{
+			String userid=session.getAttribute("userid").toString();
+			model.addAttribute("wlist",mapper.wish(userid));
+			return "/mypage/wish";
+		}
+	}
+
+	@Override
+	public String wish_del(HttpServletRequest request) {
+		String[] id=request.getParameter("id").split(",");
+		for(int i=0;i<id.length;i++)
+			mapper.wish_del(id[i]);
+		return "redirect:/mypage/wish";
+	}
+
+	@Override
+	public String cart_add(HttpServletRequest request, HttpSession session) {
+		String pcode=request.getParameter("pcode");
+		String userid=session.getAttribute("userid").toString();
+		
+		int cnt=mapper.cart_check(pcode,userid);
+		if(cnt==1)
+		{
+			mapper.cart_up(pcode,userid);
+		}
+		else
+		{
+			mapper.cart_add(pcode,userid);
+		}
+		return "redirect:/mypage/wish";
 	}
 }

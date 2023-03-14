@@ -55,11 +55,15 @@
 	</div>
 
 	<!-- 찜한상품 -->
+	<div class="box">
+	<h3>위시리스트</h3>
+	<div class="num"><a href="wish">${wnum}</a></div>
+	</div>
 	
 	<!-- 장바구니 -->
 	<div class="box">
 	<h3>장바구니</h3>
-	<div class="num"><a href="../mypage/cart">${cnum}</a></div>
+	<div class="num"><a href="cart">${cnum}</a></div>
 	</div>
 	</section>
 </body>

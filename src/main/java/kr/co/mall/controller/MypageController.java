@@ -49,4 +49,22 @@ public class MypageController {
 	{
 		return service.cart_del(request);
 	}
+	
+	@RequestMapping("/mypage/wish")
+	public String wish(HttpSession session,Model model)
+	{
+		return service.wish(session,model);
+	}
+	
+	@RequestMapping("/mypage/wish_del")
+	public String wish_del(HttpServletRequest request)
+	{
+		return service.wish_del(request);
+	}
+	
+	@RequestMapping("/mypage/cart_add")
+	public String cart_add(HttpServletRequest request,HttpSession session)
+	{
+		return service.cart_add(request,session);
+	}
 }

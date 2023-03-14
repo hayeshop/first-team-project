@@ -13,6 +13,13 @@
 		margin:auto;
 		margin-top:100px;
 	}
+	section table a {
+		text-decoration:none;
+		color:black;
+	}
+	section table a:hover {
+		color:skyblue;
+	}
 	section table {
 		border-spacing:0;
 		padding-top:50px;
@@ -39,6 +46,7 @@
 		padding-top:4px;
 		text-align:center;
 		cursor:pointer;
+		margin-left:5px;
 	}
 	section input[type=submit] {
 		width:400px;
@@ -137,9 +145,9 @@
 			  n++;
 	  }
 	  if(n==0)
-		  document.gform.submit.disabled=true;
+		  document.oform.submit.disabled=true;
 	  else
-		  document.gform.submit.disabled=false;
+		  document.oform.submit.disabled=false;
   }
   function subcheck()
   {
@@ -165,9 +173,9 @@
 	  }
 		
 	  if(n==0)
-		  document.gform.submit.disabled=true;
+		  document.oform.submit.disabled=true;
 	  else
-		  document.gform.submit.disabled=false;
+		  document.oform.submit.disabled=false;
 		
 	  price_cal();
   }
@@ -198,8 +206,8 @@
 		  }
 	  }
 	  
-	  document.gform.pcode.value=totalpcode;
-	  document.gform.su.value=totalpcode;
+	  document.oform.pcode.value=totalpcode;
+	  document.oform.su.value=totalpcode;
 	  
 	  cprice=chongprice+bprice-halin;
 	  
@@ -233,7 +241,7 @@
 	  	<tr>
 	  	  <td colspan="7" align="left">
 	  	    <input type="checkbox" onclick="maincheck(this)" id="up"> 전체선택
-	  	    <span id="cdel" onclick="cartdel()"> 선택 삭제</span>
+	  	    <span id="cdel" onclick="cart_del()"> 선택 삭제</span>
 	  	  </td>
 	  	</tr>
 	  	<c:forEach items="${clist}" var="cvo">
@@ -242,7 +250,7 @@
 	  	<input type="hidden" class="baesong" value="${cvo.baesong}">
 	  	<tr>
 	  	  <td><input type="checkbox" class="csub" onclick="subcheck()" value="${cvo.id}"></td>
-	  	  <td><img src="../resources/product/${cvo.img1}" width="100"></td>
+	  	  <td><img src="../resources/product/${cvo.img1}" width="100" height="70"></td>
 	  	  <td><a href="../product/pcontent?pcode=${cvo.pcode}">${cvo.title}</a></td>
 	  	  <td><input type="text" name="su" class="su" value="${cvo.su}"></td>
 	  	  <td class="prin"><fmt:formatNumber value="${(cvo.price-(cvo.price*(cvo.halin/100)))*cvo.su+cvo.baesong}" pattern="#,###" type="number"/>원</td>
@@ -268,10 +276,10 @@
 	  	</tr>
 	  	<tr>
 	  	  <td colspan="7" align="center">
-	  	    <form name="gform" method="post" action="../product/gumae">
+	  	    <form name="oform" method="post" action="../product/order">
 	  	      <input type="hidden" name="pcode">
 	  	      <input type="hidden" name="su">
-	  	      <input type="submit" value="구매하기" name="submit" disabled>
+	  	      <input type="submit" value="주문하기" name="submit" disabled>
 	  	    </form>
 	  	  </td>
 	  	</tr>

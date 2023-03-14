@@ -227,7 +227,7 @@
 	    <c:forEach items="${plist2}" var="pvo">
 	      <a href="pcontent?pcode=${pvo.pcode}"><div><img src="../resources/product/${pvo.img1}" width="70"></div></a> <br>
 	    </c:forEach>
-	    <div align="center" onclick="moveTop()" style="cursor:pointer">TOP</div>
+	    <div align="center" onclick="moveTop()" style="cursor:pointer">△ TOP</div>
 	  </div>
 	
 	  <div id="title">
@@ -257,7 +257,7 @@
 			</div>
 			<div id="btn" style="clear:both">
 			  <span onclick="cart_add()" style="cursor:pointer;margin-right:10px;">장바구니</span> 
-			  <span onclick="gumae()" style="cursor:pointer;margin-right:10px;">구매하기</span>
+			  <span onclick="order()" style="cursor:pointer;margin-right:10px;">구매하기</span>
 			  <c:if test="${wcnt==0 || wcnt==null}">
 			    <img src="../resources/img/w1.png" style="cursor:pointer" width="32" valign="bottom" onclick="wish(this)">
 			  </c:if>
