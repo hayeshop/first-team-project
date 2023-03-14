@@ -10,4 +10,20 @@
 		select *,row_number() over(order by id desc) as num 
 		from mtm where userid=#{param} order by id desc
 	</select>
+	
+	<select id="cart" resultType="kr.co.mall.vo.CartVo">
+		select p.halin, c.pcode, p.img1, p.title, p.price, p.baesong,
+		c.id, c.writeday, c.su from cart as c, product as p
+		where userid=#{param1} and c.pcode=p.pcode
+	</select>
+	<update id="cart_su">
+		update cart set su=#{param1}
+		where pcode=#{param2} and userid=#{param3}
+	</update>
+	<delete id="cart_del">
+		delete from cart where id=#{param}
+	</delete>
+	<select id="getCart" resultType="int">
+		select count(*) from cart where userid=#{param}
+	</select>
 </mapper>

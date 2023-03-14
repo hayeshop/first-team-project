@@ -15,4 +15,27 @@
   <select id="pcontent" resultType="kr.co.mall.vo.ProductVo">
   	select * from product where pcode=#{param}
   </select>
+  <select id="getWish" resultType="int">
+  	select count(*) from wish where pcode=#{param1} and userid=#{param2}
+  </select>
+  <delete id="wish_del">
+  	delete from wish where pcode=#{param1} and userid=#{param2}
+  </delete>
+  <insert id="wish_add">
+  	insert into wish(pcode,userid,writeday) values(#{param1},#{param2},now())
+  </insert>
+  <insert id="cart_add">
+  	insert into cart(pcode,su,userid,writeday)
+  	values(#{param1},#{param2},#{param3},now())
+  </insert>
+  <update id="cart_up">
+  	update cart set su=su+#{param2} where pcode=#{param1} and userid=#{param3}
+  </update>
+  <select id="IsPcode" resultType="int">
+  	select count(*) from cart where pcode=#{param1} and userid=#{param2}
+  </select>
+  
+  <select id="getNow" resultType="kr.co.mall.vo.ProductVo">
+  	select pcode,img1,title from product where pcode=#{param}
+  </select>
 </mapper>

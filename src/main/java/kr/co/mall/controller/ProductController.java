@@ -1,6 +1,10 @@
 package kr.co.mall.controller;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,8 +28,20 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/pcontent")
-	public String pcontent(Model model,HttpServletRequest request)
+	public String pcontent(Model model,HttpServletRequest request, HttpSession session,HttpServletResponse response)
 	{
-		return service.pcontent(model,request);
+		return service.pcontent(model,request,session,response);
+	}
+	
+	@RequestMapping("/product/wish_add")
+	public void wish_add(HttpServletRequest request,HttpSession session, PrintWriter out)
+	{
+		service.wish_add(request,session,out);
+	}
+	
+	@RequestMapping("/product/cart_add")
+	public void cart_add(HttpServletRequest request,HttpSession session,PrintWriter out)
+	{
+		service.cart_add(request,session,out);
 	}
 }

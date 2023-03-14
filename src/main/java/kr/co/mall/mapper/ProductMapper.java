@@ -12,4 +12,18 @@ public interface ProductMapper {
 
 	public ProductVo pcontent(String pcode);
 
+	public int getWish(String pcode, String userid);
+
+	public void wish_del(String pcode, String userid);
+
+	public void wish_add(String pcode, String userid);
+	
+	public void cart_add(String pcode, String su, String userid);
+	
+	public void cart_up(String pcode, String su, String userid);
+
+	public int IsPcode(String pcode, String userid);
+
+	public ProductVo getNow(String string);
+
 }
