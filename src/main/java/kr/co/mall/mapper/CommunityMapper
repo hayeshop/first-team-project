@@ -9,7 +9,7 @@ import kr.co.mall.vo.CommunityVo;
 public interface CommunityMapper {
 	
 	public String cmain();
-	public String write_ok(CommunityVo cvo,HttpSession session);
+	public String write_ok(CommunityVo cvo);
 	public ArrayList<CommunityVo> list();
 	public CommunityVo content(String id);
 	public void delete(int id);
