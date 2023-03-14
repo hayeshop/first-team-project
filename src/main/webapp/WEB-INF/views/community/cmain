@@ -13,19 +13,19 @@
 
 
 <div id="section">
-  	  <table width="700" align="center">
+	<table width="700" align="center">
       	<caption> <h3> 커뮤니티 </h3></caption>
       	<tr>
       		<td colspan="4"> 집들이 </td>
       	</tr>
       	<tr>
-      		<td><img src="#" width="500" height="500"></td> <!-- 대표 이미지  -->
+      		<td><img src="#" width="150" height="150"></td> <!-- 대표 이미지  -->
       		<td> </td> <!-- 제목 -->
-      		<td><img src="img/" width="500" height="500"></td> <!-- 2번째 게시물 대표 이미지  -->
+      		<td><img src="img/" width="150" height="150"></td> <!-- 2번째 게시물 대표 이미지  -->
       		<td> </td> <!-- 2번째 게시물 제목 -->
-      		<td><img src="../resources/" width="500" height="500"></td> <!-- 3번째 게시물 대표 이미지  -->
+      		<td><img src="../resources/" width="150" height="150"></td> <!-- 3번째 게시물 대표 이미지  -->
       		<td> </td> <!-- 3번째 게시물 제목 -->
-      		<td><img src="#" width="500" height="500"></td> <!-- 4번째 게시물 대표 이미지  -->
+      		<td><img src="#" width="150" height="150"></td> <!-- 4번째 게시물 대표 이미지  -->
       		<td> </td> <!-- 4번째 게시물 제목 -->
       	</tr>
       </table>
