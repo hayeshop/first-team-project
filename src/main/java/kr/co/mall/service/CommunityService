@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import kr.co.mall.vo.CommunityVo;
 
 public interface CommunityService {
-	public String write_ok(CommunityVo cvo, HttpSession session);
+	public String write_ok(CommunityVo cvo);
 	public String list(Model model, HttpServletRequest request);
 	public String content(Model model, HttpServletRequest request);
 	public String delete(CommunityVo cvo, HttpSession session);
