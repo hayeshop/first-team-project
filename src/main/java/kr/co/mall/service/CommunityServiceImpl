@@ -47,7 +47,7 @@ public class CommunityServiceImpl implements CommunityService {
 	
 	@Override
 	public String update(CommunityVo cvo,Model model) {
-		CommunityVo avo2=mapper.update(cvo);
+		CommunityVo cvo2=mapper.update(cvo);
 		model.addAttribute("cvo",cvo2);
 		return "/community/update";
 	}
@@ -56,8 +56,16 @@ public class CommunityServiceImpl implements CommunityService {
 	public String update_ok(CommunityVo cvo) {
 		String userid="";
 		mapper.update_ok(cvo);
-		return "redirect:/gongji/content";
+		return "redirect:/community/content";
 		
+	}
+
+	@Override
+	public String content(Model model, HttpServletRequest request) {
+		String id=request.getParameter("id");
+        CommunityVo cvo=mapper.content(id);
+        model.addAttribute("cvo",cvo);
+		return "/community/content";
 	}
 	
 }
