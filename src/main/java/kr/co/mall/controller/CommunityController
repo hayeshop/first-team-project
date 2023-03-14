@@ -33,9 +33,9 @@ public class CommunityController {
 	}
 	
 	@RequestMapping("/community/write_ok")
-	 public String write_ok(CommunityVo cvo, HttpSession session)
+	 public String write_ok(CommunityVo cvo)
 	 {
-		return service.write_ok(cvo,session);
+		return service.write_ok(cvo);
 	 }
 	
 	@RequestMapping("/community/list")
