@@ -21,15 +21,9 @@ public class CommunityServiceImpl implements CommunityService {
 	private CommunityMapper mapper;
 	
 	@Override
-	public String write_ok(CommunityVo cvo, HttpSession session) {
-		if(session.getAttribute("userid")==null)
-		{
-			return "../main/main.jsp";
-		}
-		else
-		{
-			return "redirect:/community/list";
-		}
+	public String write_ok(CommunityVo cvo) {
+		mapper.write_ok(cvo);
+		return "redirect:/community/list";
 	}
 	
 	@Override
@@ -37,6 +31,14 @@ public class CommunityServiceImpl implements CommunityService {
 		ArrayList<CommunityVo> list=mapper.list();
 		model.addAttribute("list",list);
 		return "/community/list";
+	}
+	
+	@Override
+	public String content(Model model, HttpServletRequest request) {
+		String id=request.getParameter("id");
+        CommunityVo cvo=mapper.content(id);
+        model.addAttribute("cvo",cvo);
+		return "/community/content";
 	}
 	
 	@Override
@@ -58,14 +60,6 @@ public class CommunityServiceImpl implements CommunityService {
 		mapper.update_ok(cvo);
 		return "redirect:/community/content";
 		
-	}
-
-	@Override
-	public String content(Model model, HttpServletRequest request) {
-		String id=request.getParameter("id");
-        CommunityVo cvo=mapper.content(id);
-        model.addAttribute("cvo",cvo);
-		return "/community/content";
 	}
 	
 }
