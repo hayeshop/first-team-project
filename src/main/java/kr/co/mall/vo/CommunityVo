@@ -3,13 +3,19 @@ package kr.co.mall.vo;
 public class CommunityVo {
 	
 	private int id;
-	private String title, content, writeday, space, img;
+	private String title, content, writeday, space, cimg, name;
 	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getTitle() {
 		return title;
@@ -35,11 +41,11 @@ public class CommunityVo {
 	public void setSpace(String space) {
 		this.space = space;
 	}
-	public String getImg() {
-		return img;
+	public String getCimg() {
+		return cimg;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setCimg(String cimg) {
+		this.cimg = cimg;
 	}
 	
-} 
+}
