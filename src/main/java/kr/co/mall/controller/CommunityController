@@ -39,9 +39,9 @@ public class CommunityController {
 	 }
 	
 	@RequestMapping("/community/list")
-	public String list(Model model,HttpServletRequest request)
+	public String list(Model model,CommunityVo cvo)
 	{
-		return service.list(model,request);
+		return service.list(model,cvo);
 	}
 	
 	@RequestMapping("/community/content")
