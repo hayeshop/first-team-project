@@ -18,7 +18,6 @@
     <table width="600" align="center">
 		<caption> <h3> 집들이 </h3></caption>
 		 <tr align="center">
-	        <!-- 사진 미리보기도 넣기 -->
 	        <td> 게시물 </td>
 	        <td> 제목 </td>
 	        <td> 작성자 </td>
@@ -26,7 +25,6 @@
        </tr>
      <c:forEach items="${clist}" var="cvo">
      <tr>
-     	<!-- 사진 미리보기도 넣기 -->
      	<td> <img src="../resources/community/${cvo.img}" width="150" height="150"> </td>
         <td> ${cvo.title} </td>
         <td> ${cvo.name} </td>
