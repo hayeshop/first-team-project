@@ -1,6 +1,8 @@
 package kr.co.mall.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.mall.mapper.CommunityMapper;
 import kr.co.mall.vo.CommunityVo;
@@ -21,8 +26,37 @@ public class CommunityServiceImpl implements CommunityService {
 	private CommunityMapper mapper;
 	
 	@Override
-	public String write_ok(CommunityVo cvo) {
-		mapper.write_ok(cvo);
+	public String write_ok(HttpServletRequest request, CommunityVo cvo) throws IOException {
+		String path=request.getRealPath("resources/community");
+		int size=1024*1024*10;
+		MultipartRequest multi=new MultipartRequest(request,path,size,"utf-8",new DefaultFileRenamePolicy());
+		
+		String title=multi.getParameter("title");
+		String name=multi.getParameter("name");
+		String content=multi.getParameter("content");
+		String writeday=multi.getParameter("writeday");
+		String space=multi.getParameter("space");
+		
+		String cimg=multi.getFilesystemName("cimg");
+		
+		Enumeration file=multi.getFileNames();
+		
+		String cimg2="";
+		while(file.hasMoreElements())
+		{
+			cimg2=cimg2+multi.getFilesystemName(file.nextElement().toString())+",";
+		}
+		
+		CommunityVo cvo1 = new CommunityVo();
+		cvo1.setTitle(title);
+		cvo1.setName(name);
+		cvo1.setContent(content);
+		cvo1.setWriteday(writeday);
+		cvo1.setSpace(space);
+		cvo1.setCimg(cimg);
+		
+		mapper.write_ok(request, cvo1);
+		
 		return "redirect:/community/list";
 	}
 	
@@ -62,4 +96,4 @@ public class CommunityServiceImpl implements CommunityService {
 		
 	}
 	
-} 
+}
