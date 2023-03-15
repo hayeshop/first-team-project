@@ -17,14 +17,16 @@
        <td> ${cvo.name}</td>
      </tr>
      <tr>
+       <td> 평수 </td>
+       <td> ${cvo.space}</td>
+     </tr>
+     <tr>
        <td> 작성일 </td>
        <td> ${cvo.writeday}</td>
      </tr>
      <tr>
-     	<td>${cvo.img}</td>
-     </tr>
-     <tr>
        <td> 내 용 </td>
+       <td>${cvo.img}</td>
        <td> ${cvo.content}</td>
      </tr>
      <tr>
