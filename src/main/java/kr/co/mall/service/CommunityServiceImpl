@@ -27,7 +27,7 @@ public class CommunityServiceImpl implements CommunityService {
 	}
 	
 	@Override
-	public String list(Model model,HttpServletRequest request) {
+	public String list(Model model, CommunityVo cvo) {
 		ArrayList<CommunityVo> list=mapper.list();
 		model.addAttribute("list",list);
 		return "/community/list";
