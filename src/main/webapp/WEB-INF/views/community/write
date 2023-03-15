@@ -58,7 +58,7 @@
 </head>
 <body>
   <section>
-    <form id="cform" method="post" action="cwrite_ok">
+    <form id="cform" method="post" action="cwrite_ok" enctype="multipart/form-data">
        <caption><h3> 집들이 글쓰기 </h3></caption>
        <div> 제목 </div>
        <input type="text" name="title" placeholder="제목을 입력해주세요.">
