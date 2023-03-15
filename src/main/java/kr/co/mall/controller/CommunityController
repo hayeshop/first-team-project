@@ -1,5 +1,7 @@
 package kr.co.mall.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -33,9 +35,9 @@ public class CommunityController {
 	}
 	
 	@RequestMapping("/community/write_ok")
-	 public String write_ok(CommunityVo cvo)
+	 public String write_ok(HttpServletRequest request, CommunityVo cvo) throws IOException
 	 {
-		return service.write_ok(cvo);
+		return service.write_ok(request, cvo);
 	 }
 	
 	@RequestMapping("/community/list")
