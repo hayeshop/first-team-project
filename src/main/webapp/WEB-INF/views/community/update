@@ -5,10 +5,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+ <script>
+ 	function add_form()
+ 	{
+	  var size=document.getElementsByClassName("up").length;
+	  if(size<10)
+	  {
+		  var outer=document.getElementById("outer");
+		  outer.innerHTML=outer.innerHTML+"<p class='up'> <input type='file' name='img"+(size+1)+"'> (추가사진) </p>";
+	  }
+ 	}
+ 	function del_form()
+ 	{
+	  var size=document.getElementsByClassName("up").length;
+	  if(size!=1)
+		  document.getElementsByClassName("up")[size-1].remove();
+ 	}
+ </script>
 </head>
 <body>
 <form method="post" action="update_ok">
+	<caption><h3> 수정하기 </h3></caption>
     <input type="hidden" name="id" value="${cvo.id}">
    제목 <input type="text" name="title" value="${cvo.title}"> <p>
    <select>
@@ -24,7 +41,7 @@
    <div id="outer">
 	  	<input type="button" value="사진 추가" onclick="add_form()"> 
 	  	<input type="button" value="삭제" onclick="del_form()"> <br>
-	  	<input type="file" name="img2" class="up"> (추가사진) <br>
+	  	<input type="file" name="img" class="up"> (상세사진) <br>
 	  </div>
    <input type="submit" value="저장">
    </form>
