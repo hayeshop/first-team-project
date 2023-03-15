@@ -9,26 +9,29 @@
 	section {
 		width:1000px;
 		margin:auto;
+		margin-top:40px;
 	}
-	section #mtm_history {
+	section .box {
 		width:100px;
 		height:100px;
 		border:2px solid skyblue;
 		padding:10px;
 		border-radius:5px;
 		text-align:center;
+		display:inline-block;
+		margin-right:10px;
 	}
-	section #mtm_history #mnum {
+	section .box .num {
 		margin-top:20px;
 		border-top:1px solid skyblue;
 		padding:15px;
 		font-size:20px;
 	}
-	section #mtm_history a {
+	section .box a {
 		text-decoration:none;
 		color:black;
 	}
-	section #mtm_history a:hover {
+	section .box a:hover {
 		color:#0080c0;
 	}
 </style>
@@ -46,12 +49,22 @@
 	
 	<!-- 문의 내역 -->
 	<br><br><br><br><br>
-	<div id="mtm_history">
+	<div class="box">
 	<h3>문의 내역</h3>
-	<div id="mnum"><a href="mtm_view">${mnum}</a></div>
+	<div class="num"><a href="mtm_view">${mnum}</a></div>
+	</div>
+
+	<!-- 찜한상품 -->
+	<div class="box">
+	<h3>위시리스트</h3>
+	<div class="num"><a href="wish">${wnum}</a></div>
 	</div>
 	
-	<!-- 찜한상품 -->
+	<!-- 장바구니 -->
+	<div class="box">
+	<h3>장바구니</h3>
+	<div class="num"><a href="cart">${cnum}</a></div>
+	</div>
 	</section>
 </body>
 </html>

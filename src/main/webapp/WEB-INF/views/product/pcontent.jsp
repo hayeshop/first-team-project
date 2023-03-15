@@ -108,6 +108,13 @@
 		padding-top:10px;
 		background:#FaFaFa;
 	}
+	
+	section #layer {
+		position:absolute;
+		left:1600px;
+		top:400px;
+		border:2px solid grey;
+	}
 </style>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -187,7 +194,7 @@
 		chk.send();
 	}
 	
-	function gumae()
+	function order()
 	{
 		document.pform.submit();
 	}
@@ -199,10 +206,30 @@
 	   $('.pli').not($(this)).css('border-top', '3px solid #cccccc');
 	   $('.pli').not($(this)).css('background', '#FaFaFa');
 	})
+	
+	function movelayer()
+	{
+		var top=document.documentElement.scrollTop;
+		document.getElementById("layer").style.top=(top+400)+"px";
+	}
+	document.onscroll=movelayer;
+	
+	function moveTop()
+	{
+		document.documentElement.scrollTop=0;
+	}
 </script>
 </head>
 <body>
 	<section>
+	  <!-- 최근 본 상품 -->
+	  <div id="layer">
+	    <c:forEach items="${plist2}" var="pvo">
+	      <a href="pcontent?pcode=${pvo.pcode}"><div><img src="../resources/product/${pvo.img1}" width="70"></div></a> <br>
+	    </c:forEach>
+	    <div align="center" onclick="moveTop()" style="cursor:pointer">△ TOP</div>
+	  </div>
+	
 	  <div id="title">
 	    <div id="left"><img src="../resources/product/${pvo.img1}" width="500"></div>
 	    <div id="right">
@@ -210,7 +237,7 @@
 	        <span>상품이 장바구니에 담겼습니다.</span>
 	        <span id="btn2" onclick="location='../mypage/cart'" style="cursor:pointer">장바구니로 이동</span>
 	      </div>
-	      <form name="pform" method="post" action="gumae">
+	      <form name="pform" method="post" action="order">
 	        <input type="hidden" name="pcode" value="${pvo.pcode}">
 	        <div style="font-size:14px;">${pvo.made}</div>
 	        <div id="ptitle">${pvo.title}</div>
@@ -230,7 +257,7 @@
 			</div>
 			<div id="btn" style="clear:both">
 			  <span onclick="cart_add()" style="cursor:pointer;margin-right:10px;">장바구니</span> 
-			  <span onclick="gumae()" style="cursor:pointer;margin-right:10px;">구매하기</span>
+			  <span onclick="order()" style="cursor:pointer;margin-right:10px;">구매하기</span>
 			  <c:if test="${wcnt==0 || wcnt==null}">
 			    <img src="../resources/img/w1.png" style="cursor:pointer" width="32" valign="bottom" onclick="wish(this)">
 			  </c:if>
@@ -250,7 +277,7 @@
 	  	</ul>
 	  </div>
 	  <div id="pcontent" align="center">
-	    <c:forEach begin="0" end="${im_leng-1}" var="i">
+	    <c:forEach begin="1" end="${im_leng-1}" var="i">
 	  	  <img src="../resources/product/${img2[i]}" width="750" height="850" style="margin-top:50px;">
 	    </c:forEach>
 	  </div>

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<!-- css파일 불러오기 -->
-	<link rel="stylesheet" href="../resources/css/main.css?ver=1" type="text/css">
+	<link rel="stylesheet" href="../resources/css/main.css" type="text/css">
 	
 	<script>
 	  // 검색 기능
@@ -28,9 +28,9 @@
 		  <a href="../login/login"> 로그인</a> | <a href="../member/member_input">회원가입</a>
 		</c:if>
 		<c:if test="${userid!=null}">
-		  <a href="../mypage/mypage">${name}님</a>, <a href="../login/logout">로그아웃</a>
+		  <a href="#">${name}님</a> | <a  href="../mypage/mypage">마이페이지</a> | <a href="../login/logout">로그아웃</a>
 		</c:if>
-		   | <a href="../mypage/cart">장바구니</a> | <a href="../customer/custom">고객센터</a>
+		   | <a href="../mypage/cart">장바구니</a>
 		</div>
 	</div>	
 	</header>
@@ -39,7 +39,7 @@
 	<nav>
 	<ul class="menu"> 
 	  <li style="height:40px;"> <a href="../product/pro_home?pcode=p0">쇼핑홈</a></li>	
-	  <li> <a href="#">커뮤니티</a> </li>
+	  <li> <a href="../community/cmain">커뮤니티</a> </li>
       <li> <a href="../customer/custom">고객센터</a> </li>
       <li> <div class="search">
       	   <form name="search_form" method="post" action="search">
