@@ -3,6 +3,7 @@ package kr.co.mall.controller;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/pcontent")
-	public String pcontent(Model model,HttpServletRequest request, HttpSession session)
+	public String pcontent(Model model,HttpServletRequest request, HttpSession session,HttpServletResponse response)
 	{
-		return service.pcontent(model,request,session);
+		return service.pcontent(model,request,session,response);
 	}
 	
 	@RequestMapping("/product/wish_add")
@@ -42,5 +43,23 @@ public class ProductController {
 	public void cart_add(HttpServletRequest request,HttpSession session,PrintWriter out)
 	{
 		service.cart_add(request,session,out);
+	}
+	
+	@RequestMapping("/product/order")
+	public String order(HttpServletRequest request,HttpSession session,Model model)
+	{
+		return service.order(request,session,model);
+	}
+	
+	@RequestMapping("/product/bae_view")
+	public String bae_view(HttpSession session,Model model)
+	{
+		return service.bae_view(session,model);
+	}
+	
+	@RequestMapping("/product/bae_add")
+	public String bae_add()
+	{
+		return service.bae_add();
 	}
 }

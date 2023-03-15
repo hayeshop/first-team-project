@@ -1,5 +1,8 @@
 package kr.co.mall.controller;
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +36,35 @@ public class MypageController {
 	public String cart(HttpSession session,Model model)
 	{
 		return service.cart(session,model);
+	}
+	
+	@RequestMapping("/mypage/cart_su")
+	public void cart_su(HttpServletRequest request,HttpSession session,PrintWriter out)
+	{
+		service.cart_su(request,session,out);
+	}
+	
+	@RequestMapping("/mypage/cart_del")
+	public String cart_del(HttpServletRequest request)
+	{
+		return service.cart_del(request);
+	}
+	
+	@RequestMapping("/mypage/wish")
+	public String wish(HttpSession session,Model model)
+	{
+		return service.wish(session,model);
+	}
+	
+	@RequestMapping("/mypage/wish_del")
+	public String wish_del(HttpServletRequest request)
+	{
+		return service.wish_del(request);
+	}
+	
+	@RequestMapping("/mypage/cart_add")
+	public String cart_add(HttpServletRequest request,HttpSession session)
+	{
+		return service.cart_add(request,session);
 	}
 }
