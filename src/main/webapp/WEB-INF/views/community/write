@@ -6,10 +6,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-   #section {
+   section {
       width:1000px;
       height:500px;
       margin:auto;
+   }
+   section #cform div {
+   	 margin-top:15px;
+   }
+   section #cform input[type=text] {
+	 margin-top:10px;
+	 width: 300px;
+	 height:30px;
+   }
+   section #cform input[type=submit] {
+	 margin-top:30px;
+	 width:200px;
+	 height:50px;
+	 background:skyblue;
+	 border:1px solid skyblue;
+	 color:white;
+   }
+   section #cform input[type=button] {
+	  	margin-left:5px;
+	  	width:120px;
+	  	height:30px;
+   }
+   section #cform select {
+	  	position: relative;
+  		width: 100px;
+  		height: 35px;
    }
  </style>
  <script>
@@ -19,7 +45,7 @@
 	  if(size<10)
 	  {
 		  var outer=document.getElementById("outer");
-		  outer.innerHTML=outer.innerHTML+"<p class='up'> <input type='file' name='img2"+(size+1)+"'> (상세사진) </p>";
+		  outer.innerHTML=outer.innerHTML+"<p class='up'> <input type='file' name='img2"+(size+1)+"'> (추가사진) </p>";
 	  }
  	}
  	function del_form()
@@ -32,8 +58,8 @@
 </head>
 <body>
   <section>
-    <form name="cform" method="post" action="cwrite_ok">
-       <h3> 집들이 글쓰기 </h3>
+    <form id="cform" method="post" action="cwrite_ok">
+       <caption><h3> 집들이 글쓰기 </h3></caption>
        <div> 제목 </div>
        <input type="text" name="title" placeholder="제목을 입력해주세요.">
        <div>
@@ -51,7 +77,7 @@
 	  <div id="outer">
 	  	<input type="button" value="사진 추가" onclick="add_form()"> 
 	  	<input type="button" value="삭제" onclick="del_form()"> <br>
-	  	<input type="file" name="img2" class="up"> (추가사진) <br>
+	  	<input type="file" name="img2" class="up"> (상세사진) <br>
 	  </div>
 	  <input type="submit" value="글 저장">
     </form>
