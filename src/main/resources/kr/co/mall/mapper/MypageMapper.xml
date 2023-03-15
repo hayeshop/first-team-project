@@ -16,4 +16,35 @@
 		c.id, c.writeday, c.su from cart as c, product as p
 		where userid=#{param1} and c.pcode=p.pcode
 	</select>
+	<update id="cart_su">
+		update cart set su=#{param1}
+		where pcode=#{param2} and userid=#{param3}
+	</update>
+	<delete id="cart_del">
+		delete from cart where id=#{param}
+	</delete>
+	<select id="getCart" resultType="int">
+		select count(*) from cart where userid=#{param}
+	</select>
+	
+	<select id="wish" resultType="kr.co.mall.vo.WishVo">
+		select p.pcode,p.img1,p.title,p.price,w.id,w.writeday
+		from wish as w, product as p 
+		where w.pcode=p.pcode and userid=#{param}
+	</select>
+	<select id="getWish" resultType="int">
+		select count(*) from wish where userid=#{param}
+	</select>
+	<delete id="wish_del">
+		delete from wish where id=#{id}
+	</delete>
+	<select id="cart_check" resultType="int">
+		select count(*) from cart where pcode=#{param1} and userid=#{param2}
+	</select>
+	<update id="cart_up">
+		update cart set su=su+1 where pcode=#{param1} and userid=#{param2}
+	</update>
+	<insert id="cart_add">
+		insert into cart(pcode,userid,su,writeday) values(#{param1},#{param2},1,now())
+	</insert>
 </mapper>

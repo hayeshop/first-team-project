@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.mall.mapper.CommunityMapper">
+	<insert id="cwrite_ok" parameterType="kr.co.mall.vo.CommunityVo">
+		insert into community(title,name,content,img,space,writeday)
+		values(#{title},#{name},#{content},${cimg},${space},now())
+	</insert>
+	
+	<select id="clist" resultType="kr.co.mall.vo.CommunityVo">
+		select * from community
+	</select>
+	
+	<select id="ccontent" resultType="kr.co.mall.vo.CommunityVo">
+		select * from community where id=#{param}
+	</select>
+	
+	<delete id="cdelete">
+		delete from community where id=#{param}
+	</delete>
+	
+	<select id="cupdate" resultType="kr.co.mall.vo.CommunityVo" parameterType="kr.co.mall.vo.CommunityVo">
+		select * from community where id=#{id}
+	</select>
+	
+	<update id="cupdate_ok" parameterType="kr.co.mall.vo.CommunityVo">
+		update community set title=#{title},name=#{name},content=#{content},where id=#{id}
+	</update>
+</mapper>

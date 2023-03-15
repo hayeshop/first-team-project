@@ -34,4 +34,22 @@
   <select id="IsPcode" resultType="int">
   	select count(*) from cart where pcode=#{param1} and userid=#{param2}
   </select>
+  
+  <select id="getNow" resultType="kr.co.mall.vo.ProductVo">
+  	select pcode,img1,title from product where pcode=#{param}
+  </select>
+  
+  <select id="getMember" resultType="kr.co.mall.vo.MemberVo">
+  	select * from member where userid=#{param}
+  </select>
+  <select id="getBaesong" resultType="kr.co.mall.vo.BaesongVo">
+  	select * from baesong where userid=#{param}
+  </select>
+  <insert id="setBaesong" parameterType="kr.co.mall.vo.BaesongVo">
+  	insert into baesong(name,phone,post,juso,juso_etc,userid)
+  	values(#{name},#{phone},#{post},#{juso},#{juso_etc},#{userid})
+  </insert>
+  <select id="bae_view" resultType="kr.co.mall.vo.BaesongVo">
+  	select * from baesong where userid=#{param}
+  </select>
 </mapper>
