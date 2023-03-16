@@ -53,4 +53,4 @@ public class CommunityVo {
 		this.cimg2 = cimg2;
 	}
 	
-}
+} 
