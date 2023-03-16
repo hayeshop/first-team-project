@@ -13,22 +13,29 @@
 
 
 <div id="section">
-	<table width="700" align="center">
-      	<caption> <h3> 커뮤니티 </h3></caption>
+	<caption> <h3> 집들이 </h3></caption>
+	<table  align="center" width="990" id="table">
+		<tr align="right"><a href="list"> 더 보기 </a> </tr>
       	<tr>
-      		<td colspan="4"> 집들이 </td>
+      	<c:forEach items="${cmain}" var="cvo" varStatus="sts">
+      		<td><img src="../resources/community/${cvo.img}" width="150" height="150"></td> <!-- 대표 이미지  -->
+      		<td><img src="../resources/community/${cvo.img}" width="150" height="150"></td> <!-- 2번째 게시물 대표 이미지  -->
+      		<td><img src="../resources/community/${cvo.img}" width="150" height="150"></td> <!-- 3번째 게시물 대표 이미지  -->
+      		<td><img src="../resources/community/${cvo.img}" width="150" height="150"></td> <!-- 4번째 게시물 대표 이미지  -->
+      	<c:if test="${sts.count%4 == 0}">
       	</tr>
       	<tr>
-      		<td><img src="#" width="150" height="150"></td> <!-- 대표 이미지  -->
-      		<td> </td> <!-- 제목 -->
-      		<td><img src="img/" width="150" height="150"></td> <!-- 2번째 게시물 대표 이미지  -->
-      		<td> </td> <!-- 2번째 게시물 제목 -->
-      		<td><img src="../resources/" width="150" height="150"></td> <!-- 3번째 게시물 대표 이미지  -->
-      		<td> </td> <!-- 3번째 게시물 제목 -->
-      		<td><img src="#" width="150" height="150"></td> <!-- 4번째 게시물 대표 이미지  -->
-      		<td> </td> <!-- 4번째 게시물 제목 -->
+      	</c:if>
+     	</c:forEach>
       	</tr>
+      	<tr>
+      		<td>${cvo.title}</td>
+      		<td>${cvo.title}</td> <!-- 2번째 게시물 제목 -->
+      		<td>${cvo.title}</td> <!-- 3번째 게시물 제목 -->
+      		<td>${cvo.title}</td> <!-- 4번째 게시물 제목 -->
+      	</tr>
+      	<tr><a href="write">글쓰기</a> </tr>
       </table>
 </div>      
 </body>
-</html>
+</html> 
