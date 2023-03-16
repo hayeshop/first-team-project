@@ -194,7 +194,7 @@
 		chk.send();
 	}
 	
-	function gumae()
+	function order()
 	{
 		document.pform.submit();
 	}
@@ -237,7 +237,7 @@
 	        <span>상품이 장바구니에 담겼습니다.</span>
 	        <span id="btn2" onclick="location='../mypage/cart'" style="cursor:pointer">장바구니로 이동</span>
 	      </div>
-	      <form name="pform" method="post" action="gumae">
+	      <form name="pform" method="post" action="order">
 	        <input type="hidden" name="pcode" value="${pvo.pcode}">
 	        <div style="font-size:14px;">${pvo.made}</div>
 	        <div id="ptitle">${pvo.title}</div>
