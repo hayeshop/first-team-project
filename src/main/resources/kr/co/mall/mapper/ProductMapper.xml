@@ -76,4 +76,15 @@
   <update id="chg_ok">
   	update baesong set cla=#{param1} where id=#{param2}
   </update>
+  
+  <select id="getOcode" resultType="int">
+  	select ifnull(max(right(ordercode,4)),0)+1 from gumae
+  	where ordercode like concat(#{param},'%')
+  </select>
+  <insert id="order_ok" parameterType="kr.co.mall.vo.OrderVo">
+  	insert into gumae(bae_id,su,pay,pro_juk,pprice,use_juk,
+  	userid,pcode,ordercode,writeday,bank,card,gigan,gibonpay)
+  	values(#{bae_id},#{su},#{pay},#{pro_juk},#{pprice},#{use_juk},
+  	#{userid},#{pcode},#{ordercode},now(),#{bank},#{card},#{gigan},#{gibonpay})
+  </insert>
 </mapper>
