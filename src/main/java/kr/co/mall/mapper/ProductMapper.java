@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.co.mall.vo.BaesongVo;
 import kr.co.mall.vo.MemberVo;
+import kr.co.mall.vo.OrderVo;
 import kr.co.mall.vo.ProductVo;
 
 public interface ProductMapper {
@@ -49,5 +50,9 @@ public interface ProductMapper {
 	public void gibonchg(String userid);
 
 	public void chg_ok(String cla, String id);
+
+	public int getOcode(String ordercode);
+
+	public void order_ok(OrderVo ovo);
 
 }
