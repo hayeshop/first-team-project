@@ -32,7 +32,9 @@
      <tr>
        <td colspan="2" align="center">
          <a href="clist"> 목록 </a>
-         <a href="cupdate?id=${cvo.id}"> 수정 </a>
+         
+         <a href="update?id=${cvo.id}"> 수정 </a>
+         
          <a href="javascript:viewform()"> 삭제 </a>
        </td>
      </tr>
@@ -52,6 +54,10 @@
    {
 	   document.getElementById("delform").style.display="table-row";
    }
+   function userid_check()
+   {
+	   var id =document.form.name.value;
+   }
   </script>
 </body>
-</html>
+</html> 
