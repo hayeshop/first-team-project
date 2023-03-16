@@ -5,6 +5,7 @@
   <pattern> /admin/* </pattern>
   <pattern> /login/* </pattern>
   <pattern> /member/member_input </pattern>
+  <pattern> /product/bae* </pattern>
  </excludes>
  <!-- 기본 패턴 -->
  <decorator name="default" page="default.jsp">
