@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mall.service.ProductService;
 import kr.co.mall.vo.BaesongVo;
+import kr.co.mall.vo.OrderVo;
 
 @Controller
 public class ProductController {
@@ -98,6 +99,18 @@ public class ProductController {
 	public void chg_ok(HttpServletRequest request,PrintWriter out)
 	{
 		service.chg_ok(request,out);
+	}
+	
+	@RequestMapping("/product/order_ok")
+	public String order_ok(HttpSession session,OrderVo ovo)
+	{
+		return service.order_ok(session,ovo);
+	}
+	
+	@RequestMapping("/product/order_view")
+	public String order_view()
+	{
+		return "/product/order_view";
 	}
 	
 }
