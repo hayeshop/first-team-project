@@ -9,35 +9,42 @@
 	section {
   		width:1000px;
   		margin:auto;
-  		margin-top:30px;
+  		margin-top:50px;
   	}
+  	
+   section #table td:hover {
+      border:1px solid skyblue;
+    }
+   section a {
+      text-decoration:none;
+      color:black;
+   }
 </style>
 </head>
 <body>
 <section>
-    <table width="600" align="center" border="1">
-		<caption> <h3> 집들이 </h3></caption>
-		 <tr align="center">
-	        <td> 게시물 </td>
-	        <td> 제목 </td>
-	        <td> 작성자 </td>
-	        <td> 작성일 </td>
+    <table width="600" align="center" id="table">
+    <caption> <h3> 집들이 </h3></caption>
+		<tr>
+     		<c:forEach items="${list}" var="cvo" varStatus="sts">
+     			<td width="1000" onclick="location='content?id=${cvo.id}'">
+     				<div align="center" style="height:140px"> <img src="../resources/community/${cvo.img}" width="180" height="140"> </div>
+     				<div> ${cvo.title} </div>  
+        			<div> ${cvo.name} </div>
+        			<div> ${cvo.writeday} </div>
+        		</td>
+      		<c:if test="${sts.count%4 == 0}">
+        </tr>
+        
+        <tr>
+      </c:if>
+     </c:forEach>
        </tr>
-     <c:forEach items="${list}" var="cvo">
-     <tr>
-     	<td> <img src="../resources/community/${cvo.img}"> </td>
-        <td> ${cvo.title} </td>
-        <td> ${cvo.name} </td>
-        <td> ${cvo.writeday} </td>
-      </tr>
-	  </c:forEach>
-	  <c:if test="${sessionScope.userid != null}">
 	  <tr>
         <td colspan="4" align="center">
           <a href="write"> 집들이 게시판 글쓰기</a>
         </td>
       </tr>
-      </c:if>
 	</table>
 </section>
 </body>
