@@ -36,6 +36,7 @@ public class CommunityServiceImpl implements CommunityService {
 			return "/login/login";
 		
 		String id=multi.getParameter("id");
+		String userid=multi.getParameter("userid");
 		String title=multi.getParameter("title");
 		String name=session.getAttribute("name").toString();
 		String content=multi.getParameter("content");
@@ -54,6 +55,7 @@ public class CommunityServiceImpl implements CommunityService {
 		
 		CommunityVo cvo1 = new CommunityVo();
 		cvo1.setId(id);
+		cvo1.setUserid(userid);
 		cvo1.setTitle(title);
 		cvo1.setName(name);
 		cvo1.setContent(content);
@@ -102,4 +104,4 @@ public class CommunityServiceImpl implements CommunityService {
 		
 	}
 	
-} 
+}
