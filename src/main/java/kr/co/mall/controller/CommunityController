@@ -35,9 +35,9 @@ public class CommunityController {
 	}
 	
 	@RequestMapping("/community/write_ok")
-	 public String write_ok(HttpServletRequest request, CommunityVo cvo) throws IOException
+	 public String write_ok(HttpSession session, HttpServletRequest request, CommunityVo cvo) throws IOException
 	 {
-		return service.write_ok(request, cvo);
+		return service.write_ok(session, request, cvo);
 	 }
 	
 	@RequestMapping("/community/list")
