@@ -1,6 +1,7 @@
 package kr.co.mall.service;
 
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import kr.co.mall.mapper.ProductMapper;
 import kr.co.mall.vo.BaesongVo;
 import kr.co.mall.vo.MemberVo;
+import kr.co.mall.vo.OrderVo;
 import kr.co.mall.vo.ProductVo;
 
 @Service
@@ -232,6 +234,7 @@ public class ProductServiceImpl implements ProductService {
 		int price=0;	// 상품가격(할인까지 처리)
 		int bae=0;	// 배송비
 		int cprice=0;	// 총 금액
+		String juk="";
 		String pprice=""; // 각 상품의 가격
 		for(int i=0;i<pcode.length;i++)
 		{
@@ -239,12 +242,13 @@ public class ProductServiceImpl implements ProductService {
 			pvo.setSu(Integer.parseInt(su[i]));
 			plist.add(pvo);
 			
-			// 상품가격, 배송비
+			// 상품가격, 배송비, 적립금
 			int imsi=(pvo.getPrice()-(int)(pvo.getPrice()*pvo.getHalin()/100.0))*pvo.getSu();
 			price=price+imsi;
 			int imsi2=pvo.getBaesong();
 			bae=bae+imsi2;
 			
+			juk=juk+(pvo.getPrice()*pvo.getJuk()/100)*pvo.getSu()+",";
 			pprice=pprice+(imsi+imsi2)+",";
 		}
 		cprice=price+bae;
@@ -255,6 +259,7 @@ public class ProductServiceImpl implements ProductService {
 		model.addAttribute("bae",bae);
 		model.addAttribute("cprice",cprice);
 		model.addAttribute("pprice",pprice);
+		model.addAttribute("juk",juk);
 		model.addAttribute("plist",plist);
 		
 		return "/product/order";
@@ -342,5 +347,45 @@ public class ProductServiceImpl implements ProductService {
 		{
 			out.print("1");
 		}
+	}
+
+	@Override
+	public String order_ok(HttpSession session, OrderVo ovo) {
+		LocalDate today=LocalDate.now();
+		int y=today.getYear();
+		int m=today.getMonthValue();
+		String mm=m+"";
+		if(mm.length()==1)
+			mm="0"+mm;
+		
+		int d=today.getDayOfMonth();
+		String dd=d+"";
+		if(dd.length()==1)
+			dd="0"+dd;
+		
+		String ordercode="j"+y+mm+dd;
+		int num=mapper.getOcode(ordercode);
+		String code=String.format("%04d", num);
+		ordercode=ordercode+code;
+		ovo.setOrdercode(ordercode);
+		
+		String userid=session.getAttribute("userid").toString();
+		ovo.setUserid(userid);
+		
+		String[] pcode=ovo.getPcode().split(",");
+		String[] su=ovo.getSu2().split(",");
+		String[] pprice=ovo.getCprice2().split(",");
+		String[] juk=ovo.getJuk2().split(",");
+		
+		for(int i=0;i<pcode.length;i++)
+		{
+			ovo.setPcode(pcode[i]);
+			ovo.setSu(Integer.parseInt(su[i]));
+			ovo.setPprice(Integer.parseInt(pprice[i]));
+			ovo.setPro_juk(Integer.parseInt(juk[i]));
+			mapper.order_ok(ovo);			
+		}
+		
+		return "redirect:/product/order_view?ordercode="+ordercode;
 	}
 }

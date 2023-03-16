@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import kr.co.mall.vo.BaesongVo;
+import kr.co.mall.vo.OrderVo;
 
 public interface ProductService {
 
@@ -37,5 +38,7 @@ public interface ProductService {
 	public String bae_cla(HttpServletRequest request, Model model);
 
 	public void chg_ok(HttpServletRequest request, PrintWriter out);
+
+	public String order_ok(HttpSession session, OrderVo ovo);
 
 }
