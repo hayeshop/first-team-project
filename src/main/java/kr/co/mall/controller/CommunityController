@@ -69,4 +69,4 @@ public class CommunityController {
 	{
 		return service.update_ok(cvo);
 	}
-}
+} 
