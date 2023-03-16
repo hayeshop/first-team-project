@@ -26,10 +26,13 @@ public class CommunityServiceImpl implements CommunityService {
 	private CommunityMapper mapper;
 	
 	@Override
-	public String write_ok(HttpServletRequest request, CommunityVo cvo) throws IOException {
+	public String write_ok(HttpSession session, HttpServletRequest request, CommunityVo cvo) throws IOException {
 		String path=request.getRealPath("resources/community");
 		int size=1024*1024*10;
 		MultipartRequest multi=new MultipartRequest(request,path,size,"utf-8",new DefaultFileRenamePolicy());
+		
+		if(session.getAttribute("userid")==null)
+			return "/login/login";
 		
 		String title=multi.getParameter("title");
 		String name=multi.getParameter("name");
@@ -55,7 +58,7 @@ public class CommunityServiceImpl implements CommunityService {
 		cvo1.setSpace(space);
 		cvo1.setCimg(cimg);
 		
-		mapper.write_ok(request, cvo1);
+		mapper.write_ok(session, request, cvo1);
 		
 		return "redirect:/community/list";
 	}
@@ -96,4 +99,4 @@ public class CommunityServiceImpl implements CommunityService {
 		
 	}
 	
-} 
+}
