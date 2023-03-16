@@ -71,14 +71,14 @@
 	}
 	section table {
 		border-spacing:0;
-		margin-top:30px;
+		margin-top:60px;
 		margin-bottom:60px;
 	}
 	section table tr:first-child td {
-		border-top:2px solid #cccccc;
+		border-top:2px solid #98ACC2;
 	}
 	section table tr:last-child td {
-		border-bottom:2px solid #cccccc;
+		border-bottom:2px solid #98ACC2;
 	}
 	section table td {
 		height:30px;
@@ -95,16 +95,18 @@
 		width:65px;
 		height:14px;
 		border:1px solid #aaaaaa;
-		padding:4px;
+		padding:3px;
 		margin-left:20px;
 		cursor:pointer;
 	}
 	section input[type=button] {
-		width:50px;
+		font-size:14px;
+		font-weight:100;
+		width:48px;
 		border:1px solid #aaaaaa;
 		background:#fff;
-		padding:4px;
 		cursor:pointer;
+		padding:1px;
 	}
 	section input[type=text] {
 		width:100px;
@@ -128,6 +130,7 @@
 		background:#0080c0;
 		color:#fff;
 		margin-top:20px;
+		cursor:pointer;
 	}
 </style>
 <script>
@@ -177,7 +180,7 @@
 			document.getElementById("use_pnt").value = v_point;
 		}
 
-		var v_left = document.getElementsByName("left_pnt");
+		var v_left = document.getElementById("left_pnt");
 		for (var i = 0; i < v_left.length; i++) {
 			v_left[i].innerText = pnt - v_point;
 		}
@@ -212,12 +215,13 @@
 	    </ul>
 	  </div>
 	  <hr>
-	  <form name="oform" method="post" action="order_ok" onsubmit="return check(this)">
-	    <input type="hidden" name="id" value="${bvo.id}">
+	  <form name="oform" method="post" action="order_ok">
+	    <input type="hidden" name="bae_id" value="${bvo.id}">
 	    <input type="hidden" name="cla" value="${bvo.cla}">
 		<input type="hidden" name="pcode" value="${pcode}">
 		<input type="hidden" name="su2" value="${su}">
-		<input type="hidden" name="cprice" value="${cprice}">
+		<input type="hidden" name="cprice2" value="${pprice}">
+		<input type="hidden" name="juk2" value="${juk}">
 		<!-- 구매자 정보 -->
 		<table width="1000" align="center">
 		  <caption> <h3 align="left"> 구매자 정보 </h3> </caption>
@@ -287,8 +291,8 @@
 		  <tr align="left">
 		    <td width="120" valign="top">포인트</td>
 		    <td>
-		      <input type="checkbox" id="chk_use" onclick="chkPoint(${cprice},${mvo.juk})"> 포인트 전체 사용 <br>
-		      <input type="text" name="use_pnt" id="use_pnt" onchange="changePoint(${cprice},${mvo.juk})" value="0"> p (사용가능 포인트: <span name="left_pnt">${mvo.juk}</span>p)
+		      <input type="checkbox" id="chk_use" onclick="chkPoint(${cprice},${mvo.juk})" value="1"> 포인트 전체 사용 <br>
+		      <input type="text" name="use_juk" id="use_pnt" onchange="changePoint(${cprice},${mvo.juk})"> p (사용가능 포인트: <span id="left_pnt">${mvo.juk}</span>p)
 		    </td>
 		  </tr>
 		  <tr align="left">
@@ -307,7 +311,7 @@
 		      <div class="pay">
 		        * 입금은행
 				<select name="bank">
-					<option value="" disabled> 선택 </option>
+					<option value="" disabled selected> 선택 </option>
 					<option value="1"> 국민은행 </option>
 					<option value="2"> 우리은행 </option>
 					<option value="3"> 신한은행 </option>
@@ -326,7 +330,7 @@
 		      <div class="pay">
 		        * 카드선택
 				<select name="card">
-					<option value="" disabled> 선택 </option>
+					<option value="" disabled selected> 선택 </option>
 					<option value="1"> 신한카드 </option>
 					<option value="2"> 우리카드 </option>
 					<option value="3"> NH농협카드 </option>
@@ -339,7 +343,7 @@
 				<hr>
 				* 할부기간
 				<select name="gigan">
-					<option value="" disabled> 선택 </option>
+					<option value="" disabled selected> 선택 </option>
 					<option value="1"> 일시불 </option>
 					<option value="2"> 2개월 </option>
 					<option value="3"> 3개월 </option>
@@ -356,11 +360,12 @@
 			  
 			  <div class="pay">
 			    * 통신사 종류
-				<select name="comp">
-					<option value="0"> KT </option>
-					<option value="1"> SKT </option>
-					<option value="2"> LG U+ </option>
-					<option value="3"> 알뜰통신사 </option>
+				<select name="telecom">
+					<option value="" disabled selected> 선택 </option>
+					<option value="1"> KT </option>
+					<option value="2"> SKT </option>
+					<option value="3"> LG U+ </option>
+					<option value="4"> 알뜰통신사 </option>
 				</select>
 				<hr>
 				<input type="checkbox" name="gibonpay" value="2">

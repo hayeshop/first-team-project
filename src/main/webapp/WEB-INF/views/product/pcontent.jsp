@@ -129,7 +129,8 @@
 			max:10,
 			spin:function(e,ui)	// spinner의 값을 바꿀 때 실행되는 함수
 			{
-				// alert(ui.value);
+				// alert(ui.value+",");
+				$("#su2").val(ui.value+",");
 			}
 		});
 	});
@@ -238,7 +239,7 @@
 	        <span id="btn2" onclick="location='../mypage/cart'" style="cursor:pointer">장바구니로 이동</span>
 	      </div>
 	      <form name="pform" method="post" action="order">
-	        <input type="hidden" name="pcode" value="${pvo.pcode}">
+	        <input type="hidden" name="pcode" value="${pvo.pcode},">
 	        <div style="font-size:14px;">${pvo.made}</div>
 	        <div id="ptitle">${pvo.title}</div>
 	        <div>${pvo.halin}% <s style="color:grey"><fmt:formatNumber value="${pvo.price}" type="number"/>원</s></div>
@@ -253,7 +254,8 @@
 	        </div>
 	        <div id="juk"><span>최대 <fmt:formatNumber value="${pvo.price*(pvo.juk/100)}" pattern="#,###" type="number"/>원 적립</span></div>
 	        <div id="suform">
-			  <input type="text" name="su" id="su" value="1" readonly>
+			  <input type="text" id="su" value="1" readonly>
+			  <input type="hidden" name="su" id="su2" value="1,">
 			</div>
 			<div id="btn" style="clear:both">
 			  <span onclick="cart_add()" style="cursor:pointer;margin-right:10px;">장바구니</span> 
