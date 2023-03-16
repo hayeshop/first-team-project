@@ -43,10 +43,37 @@
   	select * from member where userid=#{param}
   </select>
   <select id="getBaesong" resultType="kr.co.mall.vo.BaesongVo">
-  	select * from baesong where userid=#{param}
+  	select * from baesong where userid=#{param} and gibon=1
   </select>
   <insert id="setBaesong" parameterType="kr.co.mall.vo.BaesongVo">
   	insert into baesong(name,phone,post,juso,juso_etc,userid)
   	values(#{name},#{phone},#{post},#{juso},#{juso_etc},#{userid})
   </insert>
+  <select id="bae_view" resultType="kr.co.mall.vo.BaesongVo">
+  	select * from baesong where userid=#{param}
+  </select>
+  <update id="gibon">
+  	update baesong set gibon=0 where userid=#{param}
+  </update>
+  <insert id="bae_add_ok" parameterType="kr.co.mall.vo.BaesongVo">
+  	insert into baesong(name,phone,post,juso,juso_etc,userid,gibon)
+  	values(#{name},#{phone},#{post},#{juso},#{juso_etc},#{userid},#{gibon})
+  </insert>
+  <select id="bae_up" resultType="kr.co.mall.vo.BaesongVo">
+  	select * from baesong where id=#{param}
+  </select>
+  <update id="bae_up_ok" parameterType="kr.co.mall.vo.BaesongVo">
+  	update baesong set name=#{name},phone=#{phone},post=#{post},juso=#{juso},
+  	juso_etc=#{juso_etc},gibon=#{gibon} where id=#{id}
+  </update>
+  <delete id="bae_del">
+  	delete from baesong where id=#{param}
+  </delete>
+  <update id="gibonchg">
+    update baesong set gibon=1
+    where id=(select max(id) from baesong where userid=#{param})
+  </update>
+  <update id="chg_ok">
+  	update baesong set cla=#{param1} where id=#{param2}
+  </update>
 </mapper>
