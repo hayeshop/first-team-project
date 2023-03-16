@@ -2,6 +2,7 @@ package kr.co.mall.mapper;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import kr.co.mall.vo.CommunityVo;
@@ -12,7 +13,7 @@ public interface CommunityMapper {
 	public String write_ok(CommunityVo cvo);
 	public ArrayList<CommunityVo> list();
 	public CommunityVo content(String id);
-	public void delete(int id);
+	public void delete(String id);
 	public CommunityVo update(CommunityVo cvo);
 	public void update_ok(CommunityVo cvo);
 }
