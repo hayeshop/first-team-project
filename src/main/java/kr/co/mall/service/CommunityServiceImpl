@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -34,8 +35,9 @@ public class CommunityServiceImpl implements CommunityService {
 		if(session.getAttribute("userid")==null)
 			return "/login/login";
 		
+		String id=multi.getParameter("id");
 		String title=multi.getParameter("title");
-		String name=multi.getParameter("name");
+		String name=session.getAttribute("name").toString();
 		String content=multi.getParameter("content");
 		String writeday=multi.getParameter("writeday");
 		String space=multi.getParameter("space");
@@ -51,6 +53,7 @@ public class CommunityServiceImpl implements CommunityService {
 		}
 		
 		CommunityVo cvo1 = new CommunityVo();
+		cvo1.setId(id);
 		cvo1.setTitle(title);
 		cvo1.setName(name);
 		cvo1.setContent(content);
@@ -58,7 +61,7 @@ public class CommunityServiceImpl implements CommunityService {
 		cvo1.setSpace(space);
 		cvo1.setCimg(cimg);
 		
-		mapper.write_ok(session, request, cvo1);
+		mapper.write_ok(cvo1);
 		
 		return "redirect:/community/list";
 	}
@@ -99,4 +102,4 @@ public class CommunityServiceImpl implements CommunityService {
 		
 	}
 	
-}
+} 
