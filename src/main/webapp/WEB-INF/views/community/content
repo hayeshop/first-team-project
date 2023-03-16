@@ -56,7 +56,7 @@
    }
    function userid_check()
    {
-	   var id =document.form.name.value;
+	   var id= document.form.name.value;
    }
   </script>
 </body>
