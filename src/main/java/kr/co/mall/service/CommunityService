@@ -16,4 +16,4 @@ public interface CommunityService {
 	public String delete(CommunityVo cvo, HttpSession session);
 	public String update(CommunityVo cvo, Model model);
 	public String update_ok(CommunityVo cvo);
-} 
+}
