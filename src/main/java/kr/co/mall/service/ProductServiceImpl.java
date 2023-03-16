@@ -1,6 +1,7 @@
 package kr.co.mall.service;
 
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -223,6 +224,123 @@ public class ProductServiceImpl implements ProductService {
 		{
 			model.addAttribute("bvo",bvo);
 		}
+		
+		// 상품 정보
+		String[] pcode=request.getParameter("pcode").split(",");
+		String[] su=request.getParameter("su").split(",");
+		ArrayList<ProductVo> plist=new ArrayList<ProductVo>();
+		int price=0;	// 상품가격(할인까지 처리)
+		int bae=0;	// 배송비
+		int cprice=0;	// 총 금액
+		String pprice=""; // 각 상품의 가격
+		for(int i=0;i<pcode.length;i++)
+		{
+			ProductVo pvo=mapper.pcontent(pcode[i]);
+			pvo.setSu(Integer.parseInt(su[i]));
+			plist.add(pvo);
+			
+			// 상품가격, 배송비
+			int imsi=(pvo.getPrice()-(int)(pvo.getPrice()*pvo.getHalin()/100.0))*pvo.getSu();
+			price=price+imsi;
+			int imsi2=pvo.getBaesong();
+			bae=bae+imsi2;
+			
+			pprice=pprice+(imsi+imsi2)+",";
+		}
+		cprice=price+bae;
+		
+		model.addAttribute("pcode",request.getParameter("pcode"));
+		model.addAttribute("su",request.getParameter("su"));
+		model.addAttribute("price",price);
+		model.addAttribute("bae",bae);
+		model.addAttribute("cprice",cprice);
+		model.addAttribute("pprice",pprice);
+		model.addAttribute("plist",plist);
+		
 		return "/product/order";
+	}
+
+	@Override
+	public String bae_view(HttpSession session, Model model) {
+		String userid=session.getAttribute("userid").toString();
+		model.addAttribute("blist",mapper.bae_view(userid));
+		return "/product/bae_view";
+	}
+
+	@Override
+	public String bae_add() {
+		return "/product/bae_add";
+	}
+
+	@Override
+	public String bae_add_ok(BaesongVo bvo, HttpSession session) {
+		String userid=session.getAttribute("userid").toString();
+		bvo.setUserid(userid);
+		
+		if(bvo.getGibon()==1)
+			mapper.gibon(userid);
+		
+		mapper.bae_add_ok(bvo);
+		return "redirect:/product/bae_view";
+	}
+
+	@Override
+	public String bae_up(HttpServletRequest request, Model model) {
+		String id=request.getParameter("id");
+		model.addAttribute("bvo",mapper.bae_up(id));
+		return "/product/bae_up";
+	}
+
+	@Override
+	public String bae_up_ok(BaesongVo bvo, HttpSession session) {
+		String userid=session.getAttribute("userid").toString();
+		
+		if(bvo.getGibon()==1)
+			mapper.gibon(userid);
+		
+		mapper.bae_up_ok(bvo);
+		return null;
+	}
+
+	@Override
+	public String bae_del(HttpServletRequest request, HttpSession session) {
+		String id=request.getParameter("id");
+		int chk=Integer.parseInt(request.getParameter("chk"));
+		
+		mapper.bae_del(id);
+		
+		if(chk==1)
+		{
+			String userid=session.getAttribute("userid").toString();
+			mapper.gibonchg(userid);
+		}
+		
+		return "redirect:/product/bae_view";
+	}
+
+	@Override
+	public String bae_cla(HttpServletRequest request, Model model) {
+		String cla=request.getParameter("cla");
+		String id=request.getParameter("id");
+		
+		model.addAttribute("cla",cla);
+		model.addAttribute("id",id);
+		
+		return "/product/bae_cla";
+	}
+
+	@Override
+	public void chg_ok(HttpServletRequest request, PrintWriter out) {
+		String id=request.getParameter("id");
+		String cla=request.getParameter("cla");
+		try
+		{
+			mapper.chg_ok(cla,id);
+			out.print("0");
+		}
+		catch(Exception e)
+		{
+			out.print("1");
+		}
 	}
 }
