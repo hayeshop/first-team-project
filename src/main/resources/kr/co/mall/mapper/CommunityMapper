@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.mall.mapper.CommunityMapper">
 	<insert id="write_ok" parameterType="kr.co.mall.vo.CommunityVo">
-		insert into community(title,name,content,writeday,space)
-		values(#{title},#{name},#{content},now(),#{space})
+		insert into community(id,userid,title,name,content,writeday,space,cimg,cimg2)
+		values(#{id},#{userid},#{title},#{name},#{content},now(),#{space},#{cimg},#{cimg2})
 	</insert>
 	
 	<select id="list" resultType="kr.co.mall.vo.CommunityVo">
@@ -14,6 +14,7 @@
 	
 	<select id="content" resultType="kr.co.mall.vo.CommunityVo">
 		select * from community where id=#{param}
+		
 	</select>
 	
 	<delete id="delete">
