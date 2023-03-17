@@ -55,4 +55,10 @@ public interface ProductMapper {
 
 	public void order_ok(OrderVo ovo);
 
+	public void juk_up(int use_juk, String userid);
+
+	public ArrayList<OrderVo> getOrder(String ordercode);
+
+	public ArrayList<ProductVo> getProduct(String pcode);
+
 }

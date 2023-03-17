@@ -3,6 +3,7 @@ package kr.co.mall.mapper;
 import java.util.ArrayList;
 
 import kr.co.mall.vo.CartVo;
+import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.MtmVo;
 import kr.co.mall.vo.WishVo;
 
@@ -31,5 +32,9 @@ public interface MypageMapper {
 	public void cart_up(String pcode, String userid);
 
 	public void cart_add(String pcode, String userid);
+
+	public int getOrder(String userid);
+
+	public MemberVo getMember(String userid);
 
 }
