@@ -3,58 +3,85 @@ package kr.co.mall.vo;
 public class CommunityVo {
 	
 	private String id, userid, name, title, content, writeday, space, cimg, cimg2;
+
+	private String[] img;
 	
+	public String[] getImg() {
+		return img;
+	}
+
+	public void setImg(String[] img) {
+		this.img = img;
+	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getUserid() {
 		return userid;
 	}
+
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public String getWriteday() {
 		return writeday;
 	}
+
 	public void setWriteday(String writeday) {
 		this.writeday = writeday;
 	}
+
 	public String getSpace() {
 		return space;
 	}
+
 	public void setSpace(String space) {
 		this.space = space;
 	}
+
 	public String getCimg() {
 		return cimg;
 	}
+
 	public void setCimg(String cimg) {
 		this.cimg = cimg;
 	}
+
 	public String getCimg2() {
 		return cimg2;
 	}
+
 	public void setCimg2(String cimg2) {
 		this.cimg2 = cimg2;
 	}
