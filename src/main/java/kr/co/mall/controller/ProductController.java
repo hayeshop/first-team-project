@@ -108,9 +108,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/order_view")
-	public String order_view()
+	public String order_view(HttpServletRequest request,HttpSession session,Model model)
 	{
-		return "/product/order_view";
+		return service.order_view(request,session,model);
 	}
 	
 }

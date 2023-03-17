@@ -67,4 +67,10 @@ public class MypageController {
 	{
 		return service.cart_add(request,session);
 	}
+	
+	@RequestMapping("/mypage/mem_up")
+	public String mem_up(HttpSession session,Model model)
+	{
+		return service.mem_up(session,model);
+	}
 }
