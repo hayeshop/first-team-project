@@ -13,6 +13,9 @@
   		margin:auto;
   		margin-top:10px;
   	}
+  	section #table title {
+  		text-align: left;
+  	}
   	section #table td {
       vertical-align:top;
       border:1px solid white;
@@ -28,14 +31,8 @@
 </head>
 <body>
 <section>
-    <table width="600" align="center" id="table">
+    <table width="1000" align="center" id="table">
     <caption> <h3> 집들이 </h3></caption>
-		<tr>
-			<td> 게시글 </td>
-     		<td> 제 목 </td>
-     		<td> 작성자 </td>
-     		<td> 작성일 </td>
-   		</tr>
    	<c:forEach items="${list}" var="cvo">
    		<tr>
    			<td>
@@ -50,7 +47,7 @@
   	</c:forEach>
 	  <tr>
         <td colspan="4" align="center">
-          <a href="write"> 집들이 게시판 글쓰기</a>
+          <a href="write"> 글쓰기</a>
         </td>
       </tr>
 	</table>
