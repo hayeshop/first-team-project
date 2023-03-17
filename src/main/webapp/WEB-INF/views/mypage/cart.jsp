@@ -207,7 +207,7 @@
 	  }
 	  
 	  document.oform.pcode.value=totalpcode;
-	  document.oform.su.value=totalpcode;
+	  document.oform.su.value=totalsu;
 	  
 	  cprice=chongprice+bprice-halin;
 	  

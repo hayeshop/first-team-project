@@ -85,7 +85,7 @@
 		padding-left:10px;
 	}
 	section table tr td:first-child {
-		background:#eeeeee;
+		background:#CAD7E6;
 		padding-right:10px;
 	}
 	section #bs {
@@ -126,11 +126,13 @@
 	section #sbtn {
 		width:300px;
 		height:40px;
+		font-size:16px;
 		border:1px solid #0080c0;
 		background:#0080c0;
 		color:#fff;
 		margin-top:20px;
 		cursor:pointer;
+		margin-bottom:80px;
 	}
 </style>
 <script>
@@ -185,6 +187,8 @@
 			v_left[i].innerText = pnt - v_point;
 		}
 		document.getElementById("result_pnt").innerHTML = comma(amt - v_point);
+		
+		v_left.innerText=pnt-v_point;
 	}
 	function comma(num)
 	{
@@ -207,7 +211,7 @@
 <body>
 	<section>
 	  <div class="box_title">
-	    <h2 class="main_title">주문/결제</h2>
+	    <h2 class="main_title">주문결제</h2>
 	    <ul class="list">
 	      <li class="list_item">장바구니</li>
 	      <li class="list_item select" >주문결제</li>
@@ -292,7 +296,7 @@
 		    <td width="120" valign="top">포인트</td>
 		    <td>
 		      <input type="checkbox" id="chk_use" onclick="chkPoint(${cprice},${mvo.juk})" value="1"> 포인트 전체 사용 <br>
-		      <input type="text" name="use_juk" id="use_pnt" onchange="changePoint(${cprice},${mvo.juk})"> p (사용가능 포인트: <span id="left_pnt">${mvo.juk}</span>p)
+		      <input type="text" name="use_juk" id="use_pnt" onchange="changePoint(${cprice},${mvo.juk})" value="0"> p (사용가능 포인트: <span id="left_pnt">${mvo.juk}</span>p)
 		    </td>
 		  </tr>
 		  <tr align="left">
@@ -321,7 +325,7 @@
 					<option value="7"> 축협 </option>
 				</select>
 				<hr>
-				* <b></b>까지 입금이 가능합니다.
+				* <b>${gihan}</b>까지 입금이 가능합니다.
 				<hr>
 				<input type="checkbox" name="gibonpay" value="0">
 				선택한 결제수단으로 향후 결제 이용에 동의합니다. (선택)
