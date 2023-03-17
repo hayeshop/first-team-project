@@ -59,6 +59,6 @@ public interface ProductMapper {
 
 	public ArrayList<OrderVo> getOrder(String ordercode);
 
-	public ArrayList<ProductVo> getProduct(String pcode);
+	public ProductVo getProduct(String pcode);
 
 }

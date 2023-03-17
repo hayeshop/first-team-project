@@ -419,15 +419,15 @@ public class ProductServiceImpl implements ProductService {
 		model.addAttribute("ordercode",ordercode);
 		
 		ArrayList<OrderVo> olist=mapper.getOrder(ordercode);
-		model.addAttribute("olist",olist);
+
 		int cprice=0;
 		String ptitle="";
 		String su="";
 		for(int i=0;i<olist.size();i++)
 		{
 			cprice=cprice+olist.get(i).getPprice();
-			ArrayList<ProductVo> plist=mapper.getProduct(olist.get(i).getPcode());
-			ptitle=ptitle+plist.get(i).getTitle()+",";
+			ProductVo pvo=mapper.getProduct(olist.get(i).getPcode());
+			ptitle=ptitle+pvo.getTitle()+",";
 			int use_juk=olist.get(i).getUse_juk();
 			model.addAttribute("use_juk",use_juk);
 			int payprice=cprice-use_juk;

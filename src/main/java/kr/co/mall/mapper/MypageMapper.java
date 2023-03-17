@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import kr.co.mall.vo.CartVo;
 import kr.co.mall.vo.MemberVo;
 import kr.co.mall.vo.MtmVo;
+import kr.co.mall.vo.OrderVo;
 import kr.co.mall.vo.WishVo;
 
 public interface MypageMapper {
@@ -36,5 +37,11 @@ public interface MypageMapper {
 	public int getOrder(String userid);
 
 	public MemberVo getMember(String userid);
+
+	public void pwd_up_ok(String pwd, String userid);
+
+	public void mem_up_ok(MemberVo mvo);
+
+	public ArrayList<OrderVo> getOrderList(String userid);
 
 }
