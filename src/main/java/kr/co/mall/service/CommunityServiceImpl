@@ -36,14 +36,14 @@ public class CommunityServiceImpl implements CommunityService {
 			return "/login/login";
 		
 		String id=multi.getParameter("id");
-		String userid=multi.getParameter("userid");
+		String userid=session.getAttribute("userid").toString();
 		String title=multi.getParameter("title");
 		String name=session.getAttribute("name").toString();
 		String content=multi.getParameter("content");
 		String writeday=multi.getParameter("writeday");
 		String space=multi.getParameter("space");
 		
-		String cimg=multi.getFilesystemName("cimg");
+		//String cimg=multi.getFilesystemName("cimg");
 		
 		Enumeration file=multi.getFileNames();
 		
@@ -61,7 +61,7 @@ public class CommunityServiceImpl implements CommunityService {
 		cvo1.setContent(content);
 		cvo1.setWriteday(writeday);
 		cvo1.setSpace(space);
-		cvo1.setCimg(cimg);
+		cvo1.setCimg(cimg2);
 		
 		mapper.write_ok(cvo1);
 		
@@ -71,6 +71,13 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public String list(Model model, CommunityVo cvo) {
 		ArrayList<CommunityVo> list=mapper.list();
+		for(int i=0;i<list.size();i++)  //  ,로 구분된 그림파일명의 집합을 배열로 변경
+		{
+		  
+			  String[] img=list.get(i).getCimg().split(",");
+			  list.get(i).setImg(img);
+		   
+		}
 		model.addAttribute("list",list);
 		return "/community/list";
 	}
