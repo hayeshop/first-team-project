@@ -173,8 +173,12 @@
 		      <td>${ordercode}</td>
 		    </tr>
 		    <tr>
-		      <td>상품명 / 수량</td>
-		      <td>${ptitle} / ${su}</td>
+		      <td>상품명</td>
+		      <td>${ptitle}</td>
+		    </tr>
+		    <tr>
+		      <td>수량</td>
+		      <td>${su}</td>
 		    </tr>
 		    <tr>
 			  <td>총 상품 가격</td>

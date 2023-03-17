@@ -55,4 +55,16 @@
 	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">
 		select * from member where userid=#{param}
 	</select>
+	
+	<update id="pwd_up_ok">
+		update member set pwd=#{param1} where userid=#{param2}
+	</update>
+	<update id="mem_up_ok" parameterType="kr.co.mall.vo.MemberVo">
+		update member set email=#{email},post=#{post},juso=#{juso},juso_etc=#{juso_etc},
+		telecom=#{telecom},phone=#{phone} where userid=#{userid}
+	</update>
+	
+	<select id="getOrderList" resultType="kr.co.mall.vo.OrderVo">
+		select * from orderinfo where userid=#{param}
+	</select>
 </mapper>
