@@ -6,16 +6,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-
+	section{
+	  width:1000px;
+      height:500px;
+      margin:auto;
+      text-align:center;
+	}
 </style>
 </head>
 <body>
 
 
-<div id="section">
+<section>
 	<caption> <h3> 집들이 </h3></caption>
 	<table  align="center" width="990" id="table">
-		<tr align="right"><a href="list"> 더 보기 </a> </tr>
+		<tr><a href="list"> 더 보기 </a> </tr>
       	<tr>
       	<c:forEach items="${cmain}" var="cvo" varStatus="sts">
       		<td><img src="../resources/community/${cvo.img}" width="150" height="150"></td> <!-- 대표 이미지  -->
@@ -36,6 +41,6 @@
       	</tr>
       	<tr><a href="write">글쓰기</a> </tr>
       </table>
-</div>      
+</section>      
 </body>
 </html>
