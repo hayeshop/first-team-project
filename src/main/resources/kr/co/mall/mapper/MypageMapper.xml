@@ -47,4 +47,12 @@
 	<insert id="cart_add">
 		insert into cart(pcode,userid,su,writeday) values(#{param1},#{param2},1,now())
 	</insert>
+	
+	<select id="getOrder" resultType="int">
+		select count(distinct ordercode) from orderinfo where userid=#{param}
+	</select>
+	
+	<select id="getMember" resultType="kr.co.mall.vo.MemberVo">
+		select * from member where userid=#{param}
+	</select>
 </mapper>
