@@ -28,4 +28,4 @@
 	<update id="update_ok" parameterType="kr.co.mall.vo.CommunityVo">
 		update community set title=#{title},name=#{name},content=#{content},where id=#{id}
 	</update>
-</mapper>
+</mapper> 
