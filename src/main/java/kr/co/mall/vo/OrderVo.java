@@ -3,6 +3,12 @@ package kr.co.mall.vo;
 public class OrderVo {
 	private int id,bae_id,su,pay,pro_juk,state,pprice,bank,card,gigan,gibonpay,use_juk;
 	private String userid,pcode,ordercode,writeday,su2,cprice2,juk2;
+	public int getUse_juk() {
+		return use_juk;
+	}
+	public void setUse_juk(int use_juk) {
+		this.use_juk = use_juk;
+	}
 	public int getBank() {
 		return bank;
 	}
