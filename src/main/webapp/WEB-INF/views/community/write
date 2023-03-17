@@ -63,13 +63,13 @@
        <div> 제목 </div>
        <input type="text" name="title" placeholder="제목을 입력해주세요.">
        <div>
-		<select>
+		<select name="space">
 			<option value="" disabled selected>평수 선택</option>
-			<option value="1">1~9평</option>
-			<option value="2">10평대</option>
-			<option value="3">20평대</option>
-			<option value="4">30평대</option>
-			<option value="5">40평대</option>
+			<option value="1~9평">1~9평</option>
+			<option value="10평대">10평대</option>
+			<option value="20평대">20평대</option>
+			<option value="30평대">30평대</option>
+			<option value="40평대">40평대</option>
 		</select>
 		</div>
        <div> 내용 </div>
