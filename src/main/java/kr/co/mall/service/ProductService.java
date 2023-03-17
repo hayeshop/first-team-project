@@ -41,4 +41,6 @@ public interface ProductService {
 
 	public String order_ok(HttpSession session, OrderVo ovo);
 
+	public String order_view(HttpServletRequest request, HttpSession session, Model model);
+
 }

@@ -25,4 +25,6 @@ public interface MypageService {
 
 	public String cart_add(HttpServletRequest request, HttpSession session);
 
+	public String mem_up(HttpSession session, Model model);
+
 }

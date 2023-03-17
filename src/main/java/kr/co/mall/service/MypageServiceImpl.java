@@ -28,6 +28,8 @@ public class MypageServiceImpl implements MypageService {
 		else
 		{
 			String userid=session.getAttribute("userid").toString();
+			// 회원정보
+			model.addAttribute("mvo",mapper.getMember(userid));
 			
 			// mtm테이블에서 userid별로 문의한 숫자 불러오기
 			int mnum=mapper.getMtm(userid);
@@ -40,6 +42,10 @@ public class MypageServiceImpl implements MypageService {
 			// wish테이블에서 userid별로 위시리스트 상품 개수 불러오기
 			int wnum=mapper.getWish(userid);
 			model.addAttribute("wnum",wnum);
+			
+			// order테이블에서 userid별로 주문 개수 불러오기
+			int onum=mapper.getOrder(userid);
+			model.addAttribute("onum",onum);
 			
 			return "/mypage/mypage";
 		}
@@ -151,5 +157,13 @@ public class MypageServiceImpl implements MypageService {
 			mapper.cart_add(pcode,userid);
 		}
 		return "redirect:/mypage/wish";
+	}
+
+	@Override
+	public String mem_up(HttpSession session, Model model) {
+		String userid=session.getAttribute("userid").toString();
+		
+		model.addAttribute("mvo",mapper.getMember(userid));
+		return "/mypage/mem_up";
 	}
 }

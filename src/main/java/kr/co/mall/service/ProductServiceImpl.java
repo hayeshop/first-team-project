@@ -262,6 +262,17 @@ public class ProductServiceImpl implements ProductService {
 		model.addAttribute("juk",juk);
 		model.addAttribute("plist",plist);
 		
+		LocalDateTime today=LocalDateTime.now();
+		LocalDateTime xday=today.plusDays(1);
+		int y=xday.getYear();
+		int m=xday.getMonthValue();
+		int d=xday.getDayOfMonth();
+		int h=xday.getHour();
+		int mm=xday.getMinute();
+		int s=xday.getSecond();
+		String gihan=y+"년 "+m+"월 "+d+"일 "+h+"시 "+mm+"분 "+s+"초";
+		model.addAttribute("gihan",gihan);
+		
 		return "/product/order";
 	}
 
@@ -386,6 +397,52 @@ public class ProductServiceImpl implements ProductService {
 			mapper.order_ok(ovo);			
 		}
 		
+		// member테이블 적립금 업데이트
+		mapper.juk_up(ovo.getUse_juk(),userid);
+		
 		return "redirect:/product/order_view?ordercode="+ordercode;
+	}
+
+	@Override
+	public String order_view(HttpServletRequest request, HttpSession session, Model model) {
+		// 구매자 정보
+		String userid=session.getAttribute("userid").toString();
+		
+		MemberVo mvo=mapper.getMember(userid);
+		model.addAttribute("mvo",mvo);
+		
+		BaesongVo bvo=mapper.getBaesong(userid);
+		model.addAttribute("bvo",bvo);
+		
+		// 주문 정보
+		String ordercode=request.getParameter("ordercode");
+		model.addAttribute("ordercode",ordercode);
+		
+		ArrayList<OrderVo> olist=mapper.getOrder(ordercode);
+		model.addAttribute("olist",olist);
+		int cprice=0;
+		String ptitle="";
+		String su="";
+		for(int i=0;i<olist.size();i++)
+		{
+			cprice=cprice+olist.get(i).getPprice();
+			ArrayList<ProductVo> plist=mapper.getProduct(olist.get(i).getPcode());
+			ptitle=ptitle+plist.get(i).getTitle()+",";
+			int use_juk=olist.get(i).getUse_juk();
+			model.addAttribute("use_juk",use_juk);
+			int payprice=cprice-use_juk;
+			model.addAttribute("payprice",payprice);
+			su=su+olist.get(i).getSu()+"개,";
+			int pay=olist.get(i).getPay();
+			model.addAttribute("pay",pay);
+		}
+		ptitle=ptitle.substring(0, ptitle.length()-1); // 마지막 콤마 지우기
+		su=su.substring(0, su.length()-1);
+		
+		model.addAttribute("cprice",cprice);
+		model.addAttribute("ptitle",ptitle);
+		model.addAttribute("su",su);
+		
+		return "/product/order_view";
 	}
 }
