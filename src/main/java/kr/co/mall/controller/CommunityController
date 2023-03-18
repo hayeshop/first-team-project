@@ -22,12 +22,6 @@ public class CommunityController {
 	@Qualifier("cs")
 	private CommunityService service;
 	
-	@RequestMapping("/community/cmain")
-	public String cmain()
-	{
-		return "/community/cmain";
-	}
-	
 	@RequestMapping("/community/write")
 	public String write()
 	{
