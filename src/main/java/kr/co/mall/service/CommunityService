@@ -14,6 +14,4 @@ public interface CommunityService {
 	public String list(Model model, CommunityVo cvo);
 	public String content(Model model, HttpServletRequest request);
 	public String delete(CommunityVo cvo, HttpSession session);
-	public String update(CommunityVo cvo, Model model);
-	public String update_ok(CommunityVo cvo);
 }
