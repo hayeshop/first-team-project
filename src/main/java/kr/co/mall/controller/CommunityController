@@ -58,15 +58,4 @@ public class CommunityController {
 		return service.delete(cvo, session);
 	}
 	
-	@RequestMapping("/community/update")
-	public String update(CommunityVo cvo, Model model)
-	{
-		return service.update(cvo,model);
-	}
-	
-	@RequestMapping("community/update_ok")
-	public String update_ok(CommunityVo cvo)
-	{
-		return service.update_ok(cvo);
-	}
 }
