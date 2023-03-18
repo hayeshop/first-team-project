@@ -96,19 +96,4 @@ public class CommunityServiceImpl implements CommunityService {
 		return "redirect:/community/list";
 	}
 	
-	@Override
-	public String update(CommunityVo cvo,Model model) {
-		CommunityVo cvo2=mapper.update(cvo);
-		model.addAttribute("cvo",cvo2);
-		return "/community/update";
-	}
-
-	@Override
-	public String update_ok(CommunityVo cvo) {
-		String userid="";
-		mapper.update_ok(cvo);
-		return "redirect:/community/content";
-		
-	}
-	
 } 
