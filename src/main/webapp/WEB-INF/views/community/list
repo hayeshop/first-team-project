@@ -8,25 +8,63 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	section {
-  		width:1000px;
-  		margin:auto;
-  		margin-top:10px;
-  	}
-  	section #table title {
-  		text-align: left;
-  	}
-  	section #table td {
-      vertical-align:top;
-      border:1px solid white;
-      padding:3px;
-   }
-   section #table td div {
-      width:230px;
-   }
-   section #table td:hover {
-      border:1px solid skyblue;
-    }
+  section {
+    display: block;
+    margin-bottom: 16px;
+    margin-top: 16px;
+  }
+  
+  #table {
+    width: 1000px;
+    border-collapse: collapse;
+    margin: 16px auto;
+  }
+  
+  #table caption {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  #table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  #table td img {
+    margin: 0 auto;
+    max-width: 150px;
+    max-height: 150px;
+  }
+  
+  #table td a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  #table td a:hover {
+    text-decoration: underline;
+  }
+  
+  #table tr:last-child td {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-top: 1px solid #ddd;
+  }
+  
+  #table tr:last-child td a {
+    color: #007bff;	
+  }
+  
+  #table tr:last-child td a:hover {
+    text-decoration: underline;
+    color: #0056b3; 
+  }
 </style>
 </head>
 <body>
@@ -37,7 +75,7 @@
    		<tr>
    			<td>
    			  <c:forEach items="${cvo.img}" var="img">
-   			   <img src="../resources/community/${img}" width="150" height="150">
+   			   <a href="content?id=${cvo.id}"> <img src="../resources/community/${img}" width="150" height="150">
    			  </c:forEach>
    			</td>
      		<td> <a href="content?id=${cvo.id}"> ${cvo.title} </a></td>
@@ -46,7 +84,7 @@
    		</tr>
   	</c:forEach>
 	  <tr>
-        <td colspan="4" align="center">
+        <td colspan="4" align="center" bgcolor="#f2f2f2">
           <a href="write"> 글쓰기</a>
         </td>
       </tr>
