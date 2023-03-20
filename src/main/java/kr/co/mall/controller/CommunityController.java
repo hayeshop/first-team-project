@@ -1,5 +1,7 @@
 package kr.co.mall.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +25,7 @@ public class CommunityController {
 	@RequestMapping("/community/cmain")
 	public String cmain()
 	{
-		return "/community/cmain";
+		return "redirect:/community/clist";
 	}
 	
 	@RequestMapping("/community/cwrite")
@@ -33,9 +35,9 @@ public class CommunityController {
 	}
 	
 	@RequestMapping("/community/cwrite_ok")
-	 public String write_ok(CommunityVo cvo)
+	 public String write_ok(HttpSession session, HttpServletRequest request, CommunityVo cvo) throws IOException
 	 {
-		return service.cwrite_ok(cvo);
+		return service.cwrite_ok(session, request, cvo);
 	 }
 	
 	@RequestMapping("/community/clist")
@@ -54,17 +56,5 @@ public class CommunityController {
 	public String cdelete(CommunityVo cvo, HttpSession session)
 	{
 		return service.cdelete(cvo, session);
-	}
-	
-	@RequestMapping("/community/cupdate")
-	public String cupdate(CommunityVo cvo, Model model)
-	{
-		return service.cupdate(cvo,model);
-	}
-	
-	@RequestMapping("community/cupdate_ok")
-	public String cupdate_ok(CommunityVo cvo)
-	{
-		return service.cupdate_ok(cvo);
 	}
 }

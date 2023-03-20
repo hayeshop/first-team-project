@@ -3,8 +3,20 @@ package kr.co.mall.vo;
 public class CommunityVo {
 	
 	private int id;
-	private String title, content, writeday, space, img;
+	private String userid, name, title, content, writeday, space, img;
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public int getId() {
 		return id;
 	}

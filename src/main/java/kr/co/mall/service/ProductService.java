@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
+import kr.co.mall.vo.BaesongVo;
+import kr.co.mall.vo.OrderVo;
+
 public interface ProductService {
 
 	public String pro_home(Model model, HttpServletRequest request);
@@ -23,5 +26,21 @@ public interface ProductService {
 	public String bae_view(HttpSession session, Model model);
 
 	public String bae_add();
+
+	public String bae_add_ok(BaesongVo bvo, HttpSession session);
+
+	public String bae_up(HttpServletRequest request, Model model);
+
+	public String bae_up_ok(BaesongVo bvo, HttpSession session);
+
+	public String bae_del(HttpServletRequest request, HttpSession session);
+
+	public String bae_cla(HttpServletRequest request, Model model);
+
+	public void chg_ok(HttpServletRequest request, PrintWriter out);
+
+	public String order_ok(HttpSession session, OrderVo ovo);
+
+	public String order_view(HttpServletRequest request, HttpSession session, Model model);
 
 }

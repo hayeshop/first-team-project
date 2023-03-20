@@ -51,5 +51,7 @@ public interface AdminMapper {
 	public void mtm_update(String ans, String id);
 
 	public int getChong();
+
+	public ArrayList<ProductVo> getPro();
 	
 }

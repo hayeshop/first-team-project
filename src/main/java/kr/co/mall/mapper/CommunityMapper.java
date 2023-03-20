@@ -13,6 +13,4 @@ public interface CommunityMapper {
 	public ArrayList<CommunityVo> clist();
 	public CommunityVo ccontent(String id);
 	public void cdelete(int id);
-	public CommunityVo cupdate(CommunityVo cvo);
-	public void cupdate_ok(CommunityVo cvo);
 }

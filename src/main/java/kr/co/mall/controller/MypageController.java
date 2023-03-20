@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mall.service.MypageService;
+import kr.co.mall.vo.MemberVo;
+import kr.co.mall.vo.OrderVo;
 
 @Controller
 public class MypageController {
@@ -66,5 +68,35 @@ public class MypageController {
 	public String cart_add(HttpServletRequest request,HttpSession session)
 	{
 		return service.cart_add(request,session);
+	}
+	
+	@RequestMapping("/mypage/mem_up")
+	public String mem_up(HttpSession session,Model model)
+	{
+		return service.mem_up(session,model);
+	}
+	
+	@RequestMapping("/mypage/pwd_up")
+	public String pwd_up(HttpSession session)
+	{
+		return service.pwd_up(session);
+	}
+	
+	@RequestMapping("/mypage/pwd_up_ok")
+	public String pwd_up_ok(HttpSession session,HttpServletRequest request)
+	{
+		return service.pwd_up_ok(session,request);
+	}
+	
+	@RequestMapping("/mypage/mem_up_ok")
+	public String mem_up_ok(HttpSession session,MemberVo mvo)
+	{
+		return service.mem_up_ok(session,mvo);
+	}
+	
+	@RequestMapping("/mypage/order_list")
+	public String order_list(OrderVo ovo,Model model,HttpSession session)
+	{
+		return service.order_list(ovo,model,session);
 	}
 }

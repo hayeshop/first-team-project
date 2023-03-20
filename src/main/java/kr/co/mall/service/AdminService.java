@@ -47,4 +47,6 @@ public interface AdminService {
 
 	public String mtm_update(HttpSession session, HttpServletRequest request);
 
+	public String main(Model model);
+
 }

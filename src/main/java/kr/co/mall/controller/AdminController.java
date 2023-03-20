@@ -126,4 +126,11 @@ public class AdminController {
 		return service.mtm_update(session,request);
 	}
 	
+
+	@RequestMapping("/main/main")
+	public String main(Model model)
+	{
+		return service.main(model);
+	}
+	
 }

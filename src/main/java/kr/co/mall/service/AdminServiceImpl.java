@@ -359,4 +359,11 @@ public class AdminServiceImpl implements AdminService {
 			return "redirect:/main/main";
 		}
 	}
+
+	@Override
+	public String main(Model model) {
+		ArrayList<ProductVo> plist=mapper.getPro();
+		model.addAttribute("plist",plist);
+		return "main/main";
+	}
 }

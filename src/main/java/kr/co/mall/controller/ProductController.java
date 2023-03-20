@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mall.service.ProductService;
+import kr.co.mall.vo.BaesongVo;
+import kr.co.mall.vo.OrderVo;
 
 @Controller
 public class ProductController {
@@ -62,4 +64,53 @@ public class ProductController {
 	{
 		return service.bae_add();
 	}
+	
+	@RequestMapping("/product/bae_add_ok")
+	public String bae_add_ok(BaesongVo bvo,HttpSession session)
+	{
+		return service.bae_add_ok(bvo,session);
+	}
+	
+	@RequestMapping("/product/bae_up")
+	public String bae_up(HttpServletRequest request,Model model)
+	{
+		return service.bae_up(request,model);
+	}
+	
+	@RequestMapping("/product/bae_up_ok")
+	public String bae_up_ok(BaesongVo bvo,HttpSession session)
+	{
+		return service.bae_up_ok(bvo,session);
+	}
+	
+	@RequestMapping("/product/bae_del")
+	public String bae_del(HttpServletRequest request,HttpSession session)
+	{
+		return service.bae_del(request,session);
+	}
+	
+	@RequestMapping("/product/bae_cla")
+	public String bae_cla(HttpServletRequest request,Model model)
+	{
+		return service.bae_cla(request,model);
+	}
+	
+	@RequestMapping("/product/chg_ok")
+	public void chg_ok(HttpServletRequest request,PrintWriter out)
+	{
+		service.chg_ok(request,out);
+	}
+	
+	@RequestMapping("/product/order_ok")
+	public String order_ok(HttpSession session,OrderVo ovo)
+	{
+		return service.order_ok(session,ovo);
+	}
+	
+	@RequestMapping("/product/order_view")
+	public String order_view(HttpServletRequest request,HttpSession session,Model model)
+	{
+		return service.order_view(request,session,model);
+	}
+	
 }

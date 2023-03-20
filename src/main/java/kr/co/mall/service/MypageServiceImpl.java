@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 
 import kr.co.mall.mapper.MypageMapper;
 import kr.co.mall.vo.CartVo;
+import kr.co.mall.vo.MemberVo;
+import kr.co.mall.vo.OrderVo;
 
 @Service
 @Qualifier("ms")
@@ -28,6 +30,8 @@ public class MypageServiceImpl implements MypageService {
 		else
 		{
 			String userid=session.getAttribute("userid").toString();
+			// 회원정보
+			model.addAttribute("mvo",mapper.getMember(userid));
 			
 			// mtm테이블에서 userid별로 문의한 숫자 불러오기
 			int mnum=mapper.getMtm(userid);
@@ -40,6 +44,10 @@ public class MypageServiceImpl implements MypageService {
 			// wish테이블에서 userid별로 위시리스트 상품 개수 불러오기
 			int wnum=mapper.getWish(userid);
 			model.addAttribute("wnum",wnum);
+			
+			// order테이블에서 userid별로 주문 개수 불러오기
+			int onum=mapper.getOrder(userid);
+			model.addAttribute("onum",onum);
 			
 			return "/mypage/mypage";
 		}
@@ -151,5 +159,54 @@ public class MypageServiceImpl implements MypageService {
 			mapper.cart_add(pcode,userid);
 		}
 		return "redirect:/mypage/wish";
+	}
+
+	@Override
+	public String mem_up(HttpSession session, Model model) {
+		String userid=session.getAttribute("userid").toString();
+		
+		model.addAttribute("mvo",mapper.getMember(userid));
+		return "/mypage/mem_up";
+	}
+
+	@Override
+	public String pwd_up(HttpSession session) {
+		if(session.getAttribute("userid")==null)
+		{
+			return "redirect:/login/login";
+		}
+		else
+		{
+			return "/mypage/pwd_up";
+		}
+	}
+
+	@Override
+	public String pwd_up_ok(HttpSession session, HttpServletRequest request) {
+		String userid=session.getAttribute("userid").toString();
+		String pwd=request.getParameter("pwd");
+		
+		mapper.pwd_up_ok(pwd,userid);
+		
+		return "/mypage/pwd_up_ok";
+	}
+
+	@Override
+	public String mem_up_ok(HttpSession session, MemberVo mvo) {
+		String userid=session.getAttribute("userid").toString();
+		mvo.setUserid(userid);
+		
+		mapper.mem_up_ok(mvo);
+		
+		return "redirect:/mypage/mypage";
+	}
+
+	@Override
+	public String order_list(OrderVo ovo, Model model, HttpSession session) {
+		String userid=session.getAttribute("userid").toString();
+		
+		ArrayList<OrderVo> olist=mapper.getOrderList(userid);
+		
+		return null;
 	}
 }

@@ -1,6 +1,7 @@
 package kr.co.mall.service;
 
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import kr.co.mall.mapper.ProductMapper;
 import kr.co.mall.vo.BaesongVo;
 import kr.co.mall.vo.MemberVo;
+import kr.co.mall.vo.OrderVo;
 import kr.co.mall.vo.ProductVo;
 
 @Service
@@ -232,6 +234,7 @@ public class ProductServiceImpl implements ProductService {
 		int price=0;	// 상품가격(할인까지 처리)
 		int bae=0;	// 배송비
 		int cprice=0;	// 총 금액
+		String juk="";
 		String pprice=""; // 각 상품의 가격
 		for(int i=0;i<pcode.length;i++)
 		{
@@ -239,22 +242,36 @@ public class ProductServiceImpl implements ProductService {
 			pvo.setSu(Integer.parseInt(su[i]));
 			plist.add(pvo);
 			
-			// 상품가격, 배송비
+			// 상품가격, 배송비, 적립금
 			int imsi=(pvo.getPrice()-(int)(pvo.getPrice()*pvo.getHalin()/100.0))*pvo.getSu();
 			price=price+imsi;
 			int imsi2=pvo.getBaesong();
 			bae=bae+imsi2;
 			
+			juk=juk+(pvo.getPrice()*pvo.getJuk()/100)*pvo.getSu()+",";
 			pprice=pprice+(imsi+imsi2)+",";
 		}
 		cprice=price+bae;
 		
 		model.addAttribute("pcode",request.getParameter("pcode"));
 		model.addAttribute("su",request.getParameter("su"));
+		model.addAttribute("price",price);
 		model.addAttribute("bae",bae);
 		model.addAttribute("cprice",cprice);
 		model.addAttribute("pprice",pprice);
+		model.addAttribute("juk",juk);
 		model.addAttribute("plist",plist);
+		
+		LocalDateTime today=LocalDateTime.now();
+		LocalDateTime xday=today.plusDays(1);
+		int y=xday.getYear();
+		int m=xday.getMonthValue();
+		int d=xday.getDayOfMonth();
+		int h=xday.getHour();
+		int mm=xday.getMinute();
+		int s=xday.getSecond();
+		String gihan=y+"년 "+m+"월 "+d+"일 "+h+"시 "+mm+"분 "+s+"초";
+		model.addAttribute("gihan",gihan);
 		
 		return "/product/order";
 	}
@@ -269,5 +286,163 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public String bae_add() {
 		return "/product/bae_add";
+	}
+
+	@Override
+	public String bae_add_ok(BaesongVo bvo, HttpSession session) {
+		String userid=session.getAttribute("userid").toString();
+		bvo.setUserid(userid);
+		
+		if(bvo.getGibon()==1)
+			mapper.gibon(userid);
+		
+		mapper.bae_add_ok(bvo);
+		return "redirect:/product/bae_view";
+	}
+
+	@Override
+	public String bae_up(HttpServletRequest request, Model model) {
+		String id=request.getParameter("id");
+		model.addAttribute("bvo",mapper.bae_up(id));
+		return "/product/bae_up";
+	}
+
+	@Override
+	public String bae_up_ok(BaesongVo bvo, HttpSession session) {
+		String userid=session.getAttribute("userid").toString();
+		
+		if(bvo.getGibon()==1)
+			mapper.gibon(userid);
+		
+		mapper.bae_up_ok(bvo);
+		return null;
+	}
+
+	@Override
+	public String bae_del(HttpServletRequest request, HttpSession session) {
+		String id=request.getParameter("id");
+		int chk=Integer.parseInt(request.getParameter("chk"));
+		
+		mapper.bae_del(id);
+		
+		if(chk==1)
+		{
+			String userid=session.getAttribute("userid").toString();
+			mapper.gibonchg(userid);
+		}
+		
+		return "redirect:/product/bae_view";
+	}
+
+	@Override
+	public String bae_cla(HttpServletRequest request, Model model) {
+		String cla=request.getParameter("cla");
+		String id=request.getParameter("id");
+		
+		model.addAttribute("cla",cla);
+		model.addAttribute("id",id);
+		
+		return "/product/bae_cla";
+	}
+
+	@Override
+	public void chg_ok(HttpServletRequest request, PrintWriter out) {
+		String id=request.getParameter("id");
+		String cla=request.getParameter("cla");
+		try
+		{
+			mapper.chg_ok(cla,id);
+			out.print("0");
+		}
+		catch(Exception e)
+		{
+			out.print("1");
+		}
+	}
+
+	@Override
+	public String order_ok(HttpSession session, OrderVo ovo) {
+		LocalDate today=LocalDate.now();
+		int y=today.getYear();
+		int m=today.getMonthValue();
+		String mm=m+"";
+		if(mm.length()==1)
+			mm="0"+mm;
+		
+		int d=today.getDayOfMonth();
+		String dd=d+"";
+		if(dd.length()==1)
+			dd="0"+dd;
+		
+		String ordercode="j"+y+mm+dd;
+		int num=mapper.getOcode(ordercode);
+		String code=String.format("%04d", num);
+		ordercode=ordercode+code;
+		ovo.setOrdercode(ordercode);
+		
+		String userid=session.getAttribute("userid").toString();
+		ovo.setUserid(userid);
+		
+		String[] pcode=ovo.getPcode().split(",");
+		String[] su=ovo.getSu2().split(",");
+		String[] pprice=ovo.getCprice2().split(",");
+		String[] juk=ovo.getJuk2().split(",");
+		
+		for(int i=0;i<pcode.length;i++)
+		{
+			ovo.setPcode(pcode[i]);
+			ovo.setSu(Integer.parseInt(su[i]));
+			ovo.setPprice(Integer.parseInt(pprice[i]));
+			ovo.setPro_juk(Integer.parseInt(juk[i]));
+			mapper.order_ok(ovo);			
+		}
+		
+		// member테이블 적립금 업데이트
+		mapper.juk_up(ovo.getUse_juk(),userid);
+		
+		return "redirect:/product/order_view?ordercode="+ordercode;
+	}
+
+	@Override
+	public String order_view(HttpServletRequest request, HttpSession session, Model model) {
+		// 구매자 정보
+		String userid=session.getAttribute("userid").toString();
+		
+		MemberVo mvo=mapper.getMember(userid);
+		model.addAttribute("mvo",mvo);
+		
+		BaesongVo bvo=mapper.getBaesong(userid);
+		model.addAttribute("bvo",bvo);
+		
+		// 주문 정보
+		String ordercode=request.getParameter("ordercode");
+		model.addAttribute("ordercode",ordercode);
+		
+		ArrayList<OrderVo> olist=mapper.getOrder(ordercode);
+
+		int cprice=0;
+		String ptitle="";
+		String su="";
+		for(int i=0;i<olist.size();i++)
+		{
+			cprice=cprice+olist.get(i).getPprice();
+			ProductVo pvo=mapper.getProduct(olist.get(i).getPcode());
+			ptitle=ptitle+pvo.getTitle()+",";
+			int use_juk=olist.get(i).getUse_juk();
+			model.addAttribute("use_juk",use_juk);
+			int payprice=cprice-use_juk;
+			model.addAttribute("payprice",payprice);
+			su=su+olist.get(i).getSu()+"개,";
+			int pay=olist.get(i).getPay();
+			model.addAttribute("pay",pay);
+		}
+		ptitle=ptitle.substring(0, ptitle.length()-1); // 마지막 콤마 지우기
+		su=su.substring(0, su.length()-1);
+		
+		model.addAttribute("cprice",cprice);
+		model.addAttribute("ptitle",ptitle);
+		model.addAttribute("su",su);
+		
+		return "/product/order_view";
 	}
 }
