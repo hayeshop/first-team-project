@@ -174,7 +174,7 @@
 	
 	function cart_add()
 	{
-		var su=document.pform.su.value;
+		var su=document.pform.su1.value;
 		var chk=new XMLHttpRequest();
 		chk.onload=function()
 		{
@@ -185,6 +185,10 @@
 				{
 					document.getElementById("cart_move").style.visibility="hidden";
 				},3000);
+			}
+			else if(chk.responseText=="1")
+			{
+				alert("장바구니 담기에 실패했습니다. 잠시후에 다시 시도해주세요.");
 			}
 			else
 			{
@@ -225,8 +229,8 @@
 	<section>
 	  <!-- 최근 본 상품 -->
 	  <div id="layer">
-	    <c:forEach items="${plist2}" var="pvo">
-	      <a href="pcontent?pcode=${pvo.pcode}"><div><img src="../resources/product/${pvo.img1}" width="70"></div></a> <br>
+	    <c:forEach items="${plist2}" var="pvo2">
+	      <a href="pcontent?pcode=${pvo2.pcode}"><div><img src="../resources/product/${pvo2.img1}" width="70"></div></a> <br>
 	    </c:forEach>
 	    <div align="center" onclick="moveTop()" style="cursor:pointer">△ TOP</div>
 	  </div>
@@ -254,7 +258,7 @@
 	        </div>
 	        <div id="juk"><span>최대 <fmt:formatNumber value="${pvo.price*(pvo.juk/100)}" pattern="#,###" type="number"/>원 적립</span></div>
 	        <div id="suform">
-			  <input type="text" id="su" value="1" readonly>
+			  <input type="text" name="su1" id="su" value="1" readonly>
 			  <input type="hidden" name="su" id="su2" value="1,">
 			</div>
 			<div id="btn" style="clear:both">
