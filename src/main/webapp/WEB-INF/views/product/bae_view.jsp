@@ -37,7 +37,7 @@
 		cursor:pointer;
 	}
 	section #right {
-		margin-left:254px;
+		margin-left:208px;
 	}
 	section #chuga {
 		text-align:center;
@@ -85,9 +85,11 @@
 	  <c:forEach items="${blist}" var="bvo">
 	    <c:if test="${bvo.gibon==1}">
 	      <c:set var="tt" value="id='gib'"/>
+		  <c:set var="chk" value="1"/>
 	    </c:if>
 	    <c:if test="${bvo.gibon!=1}">
 	      <c:set var="tt" value=""/>
+		  <c:set var="chk" value="0"/>
 	    </c:if>
 	    <div class="jusolist" ${tt}>
 	      ${bvo.name} <p>
@@ -113,6 +115,7 @@
 	      </c:if>
 	      <p>
 	      <span id="left" onclick="baeup(${bvo.id})">수정</span>
+	      <span id="left" onclick="location='bae_del?id=${bvo.id}&chk=${chk}'">삭제</span>
 	      <span id="right" onclick="order_move(${bvo.id},'${bvo.name}',${bvo.gibon},'${bvo.juso} ${bvo.juso_etc}','${bvo.phone}','${cla}',${bvo.cla})">선택</span>
 	    </div>
 	  </c:forEach>

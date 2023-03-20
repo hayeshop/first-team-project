@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,9 +27,23 @@
 	}
 	section article {
 		width:1000px;
-		height:200px;
+		height:400px;
 		margin:auto;
 		text-align:center;
+	}
+	section table td {
+		width:246px;
+		vertical-align:top;
+		height:250px;
+		border:1px solid white;
+		padding:3px;
+	}
+	section table td div {
+		width:188px;
+	}
+	section table td:hover {
+		border:1px solid #a8bfc8;
+		cursor:pointer;
 	}
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -68,10 +84,22 @@
 	</div>
 	</div>
 	<section>
-		<article id="ar1">NEW</article>
-		<article id="ar2">BEST</article>
-		<article id="ar3">초특가 아이템</article>
-		<article id="ar4">커뮤니티</article>
+		<article id="ar1">NEW
+		<table align="center" width="850">
+	  <tr>
+	  <c:forEach items="${plist}" var="pvo" varStatus="sts">	
+	    <td onclick="location='../product/pcontent?pcode=${pvo.pcode}'">
+	      <div align="center" width="140px"><img src="../resources/product/${pvo.img1}" width="180" height="140"></div>
+	      <div><b>${pvo.title}</b></div>
+	      <div>${pvo.halin}% <s><fmt:formatNumber value="${pvo.price}" type="number"/>원</s></div>
+	      <div style="color:red;font-weight:bold;"><fmt:formatNumber value="${pvo.price-(pvo.price*(pvo.halin)/100)}" type="number" pattern="#,###"/>원</div>
+	    </td>
+	    <c:if test="${sts.count%5==0 }">
+		  </tr>
+		  <tr>  
+	    </c:if>
+	  </c:forEach>
+	  </table>
 	</section>
 </body>
 </html>

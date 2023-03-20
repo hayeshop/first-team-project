@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,6 +18,12 @@
 		font-size:17px;
 	}
 	section input[type=submit] {
+		width:400px;
+		height:54px;
+		margin-top:10px;
+		cursor:pointer;
+	}
+	section input[type=button] {
 		width:400px;
 		height:54px;
 		margin-top:10px;
@@ -47,14 +54,22 @@
 </head>
 <body>
 	<section>
-	  <form name="baesong" method="post" action="bae_add_ok">
-	    <div><input type="text" name="name" placeholder="받는사람"></div>
-	    <div><input type="text" name="phone" placeholder="휴대폰 번호"></div>
-	    <div><input type="text" name="post" placeholder="우편번호" readonly onclick="juso_search()"></div>
-	    <div><input type="text" name="juso" placeholder="주소" readonly></div>
-	    <div><input type="text" name="juso_etc" placeholder="상세주소"></div>
-	    <div><input type="checkbox" name="gibon" value="1">기본 배송지로 설정</div>
+	  <c:if test="${bvo.gibon==1}">
+	    <c:set var="imsi" value="checked"/>
+	  </c:if>
+	  <c:if test="${bvo.gibon!=1}">
+	    <c:set var="imsi" value=""/>
+	  </c:if>
+	  <form name="baesong" method="post" action="bae_up_ok">
+	   <input type="hidden" name="id" value="${bvo.id}">
+	    <div><input type="text" name="name" placeholder="받는사람" value="${bvo.name}"></div>
+	    <div><input type="text" name="phone" placeholder="휴대폰 번호" value="${bvo.phone}"></div>
+	    <div><input type="text" name="post" placeholder="우편번호" readonly onclick="juso_search()" value="${bvo.post}"></div>
+	    <div><input type="text" name="juso" placeholder="주소" readonly value="${bvo.juso}"></div>
+	    <div><input type="text" name="juso_etc" placeholder="상세주소" value="${bvo.juso_etc}"></div>
+	    <div><input type="checkbox" name="gibon" value="1" ${imsi}>기본 배송지로 설정</div>
 	    <div><input type="submit" value="저장"></div>
+	    <div><input type="button" value="취소" onclick="location='bae_view'"></div>
 	  </form>
 	</section>
 </body>

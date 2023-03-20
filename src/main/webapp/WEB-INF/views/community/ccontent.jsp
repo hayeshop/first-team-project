@@ -10,11 +10,34 @@
 		width:1000px;
 		margin:auto;
 	}
+	section table {
+        width: 1000px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-collapse: collapse;
+    }
+    section table td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+    section table td:first-child {
+        font-weight: bold;
+        background-color: #e0e0e0;
+        width: 20%;
+    }
 </style>
 <script>
    function viewform()
    {
 	   document.getElementById("delform").style.display="table-row";
+   }
+   function userid_check()
+   {
+	   var id= document.form.name.value;
    }
 </script>
 </head>
@@ -39,7 +62,9 @@
      </tr>
      <tr>
        <td> 내 용 </td>
-       <td>${cvo.img}</td>
+       <td><c:forEach items="${cvo.img}" var="img">
+   			   <img src="../resources/community/${img}" width="150" height="150">
+   			  </c:forEach></td>
        <td> ${cvo.content}</td>
      </tr>
      <tr>
