@@ -70,4 +70,8 @@
 	<select id="getChong" resultType="int">
 		select ceil(count(*)/10) from product
 	</select>
+	
+	<select id="getPro" resultType="kr.co.mall.vo.ProductVo">
+		select * from product order by id desc limit 1,15
+	</select>
 </mapper>
